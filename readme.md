@@ -1,5 +1,8 @@
 # Cours et TP BTS2 CIEL IR - Liaisons séries
 
+Cours et sujets de TP pour les étudiants du BTS CIEL ème année du Lycée Polyvalent Edouard Branly.
+L'usage des ces documents en dehors de la formation nommé ci-dessus est formellement interdit.
+
 ## Sommaire
 
 ### La voie série
