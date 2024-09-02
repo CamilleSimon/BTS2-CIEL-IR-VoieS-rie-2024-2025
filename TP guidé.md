@@ -12,21 +12,21 @@ Pour le moment, il n'est pas possible d'utiliser le moniteur de série, il faut 
 
 L'objet Serial dans l'IDE Arduino est essentiel pour la communication série entre l'Arduino et un ordinateur ou un autre appareil série. Voici quelques méthodes utiles :
 
--   `Serial.begin(speed)` : Initialise la communication série avec la vitesse spécifiée en bits par seconde. Exemple : Serial.begin(9600); pour une vitesse de 9600 bps (Attention : les bauds sont un nombre d'octet par seconde; 9600 bps = 1200 bauds).
+- `Serial.begin(speed)` : Initialise la communication série avec la vitesse spécifiée en bits par seconde. Exemple : Serial.begin(9600); pour une vitesse de 9600 bps (Attention : les bauds sont un nombre d'octet par seconde; 9600 bps = 1200 bauds).
 
--   `Serial.end()` : Termine la communication série et libère les ressources associées.
+- `Serial.end()` : Termine la communication série et libère les ressources associées.
 
--   `Serial.print(data)` : Envoie les données à la liaison série sous forme de texte sans saut de ligne à la fin. Les données peuvent être de différents types (chaînes de caractères, nombres, etc.).
+- `Serial.print(data)` : Envoie les données à la liaison série sous forme de texte sans saut de ligne à la fin. Les données peuvent être de différents types (chaînes de caractères, nombres, etc.).
 
--   `Serial.println(data)` : Envoie les données à la liaison série sous forme de texte suivi d'un saut de ligne, ce qui facilite la lecture de plusieurs lignes de données.
+- `Serial.println(data)` : Envoie les données à la liaison série sous forme de texte suivi d'un saut de ligne, ce qui facilite la lecture de plusieurs lignes de données.
 
--   `Serial.read()` : Lit un octet de données de la liaison série. Retourne -1 si aucune donnée n'est disponible.
+- `Serial.read()` : Lit un octet de données de la liaison série. Retourne -1 si aucune donnée n'est disponible.
 
--   `Serial.available()` : Retourne le nombre de bytes disponibles pour la lecture dans le buffer série.
+- `Serial.available()` : Retourne le nombre de bytes disponibles pour la lecture dans le buffer série.
 
--   `Serial.peek()` : Lit le prochain byte disponible dans le buffer sans le retirer du buffer.
+- `Serial.peek()` : Lit le prochain byte disponible dans le buffer sans le retirer du buffer.
 
--   `Serial.flush()` : Vide le buffer de sortie, s'assurant que tous les caractères ont été transmis avant de continuer.
+- `Serial.flush()` : Vide le buffer de sortie, s'assurant que tous les caractères ont été transmis avant de continuer.
 
 ## 1. Initialisation de la communication
 
@@ -79,6 +79,8 @@ En utilisant le moins d'instructions possible, ecrivez un algorithme qui permet 
 ```
 AaBbCc...Zz
 ```
+
+## Ceci est un texte
 
 ## 4. Réception de données
 
