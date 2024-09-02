@@ -1,3 +1,5 @@
+# Cours et TP BTS2 CIEL IR - Liaisons séries
+
 ## Sommaire
 
 ### La voie série
@@ -5,10 +7,8 @@
 1. [Introduction](Introduction.md)
 2. [La norme RS-232](Norme%20RS-232.md)
 3. [TP guidé - Envoi et réception de données](TP%20guidé.md)
-4. TP - Code de César
-5. TP - Niveau de la machine à café
-
-###
+4. [TP - Code de César](TP%20Code%20César.md)
+5. [TP - Niveau de la machine à café](TP%20machine%20à%20café.md)
 
 ## Sources et liens utiles
 

@@ -24,4 +24,4 @@ La voie série est essentielle dans de nombreux domaines, y compris les environn
 
 En somme, la voie série est comme une ligne de communication discrète mais efficace, permettant aux appareils de "parler" entre eux, un bit à la fois. Et même si c'est plus lent qu'une autoroute de bits en parallèle, c'est souvent suffisant et bien plus pratique dans bien des cas.
 
-Dans la prochaine partie du cours, nous allons voir une des normes les plus courantes pour les communciations en série : [la norme RS-232](/Voie%20série/Norme%20RS-232.md).
+Dans la prochaine partie du cours, nous allons voir une des normes les plus courantes pour les communciations en série : [la norme RS-232](Norme%20RS-232.md).
