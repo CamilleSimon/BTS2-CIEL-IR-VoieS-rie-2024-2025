@@ -82,7 +82,11 @@ AaBbCc...Zz
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
+```C++
 
+MON CODE ICI
+
+```
 
 ## 4. Réception de données
 
