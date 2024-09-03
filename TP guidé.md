@@ -80,6 +80,8 @@ En utilisant le moins d'instructions possible, ecrivez un algorithme qui permet 
 AaBbCc...Zz
 ```
 
+> Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
+
 ## 4. Réception de données
 
 // C++ code Mathis Mota
