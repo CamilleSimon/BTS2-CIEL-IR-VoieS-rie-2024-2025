@@ -81,6 +81,29 @@ AaBbCc...Zz
 ```
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
+// C++ code
+//
+
+void setup()
+{
+Serial.begin(9600);
+  
+  char number1 = 65;
+  char number2 = 97;
+  for(int i= 0; i <26; i++)
+  {
+    char maj = 65 +i; 
+    char min = 97 +i;
+    
+Serial.print(maj);
+    Serial.print(min);
+  }
+}
+
+void loop()
+{
+
+}
 
 ## 4. Réception de données
 
