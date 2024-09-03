@@ -81,8 +81,8 @@ AaBbCc...Zz
 ```
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
-void setup()
 ```C++
+void setup()
 {
   // ouverture de la liaison à une vitesse de 9600 bits par seconde.
     Serial.begin(9600);
