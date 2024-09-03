@@ -82,6 +82,27 @@ AaBbCc...Zz
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
+```C++
+void setup()
+{
+  Serial.begin(9600);
+  
+  int i = 97;
+  int j = 65;
+  char lettre_majuscule;
+  char lettre_minuscule;
+  
+  for(int k = 0; k < 26; k++){
+  	lettre_minuscule = i+k;
+  	lettre_majuscule = j+k;
+    
+    Serial.print(lettre_majuscule);
+    Serial.print(lettre_minuscule);
+    
+    
+  }
+}
+```
 ## 4. Réception de données
 
 Les données reçu par l'Arduino sont stockées dans un buffer, une sorte de file d'attente de caractère. Pour le consulter, on utilise la fonction `available()` qui retourne le nombre de caractères présents dans le buffer. Si le buffer est vide, la fonction retourne -1.
