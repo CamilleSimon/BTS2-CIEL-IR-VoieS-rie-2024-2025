@@ -95,7 +95,7 @@ void setup()
       	char p= number2 +i;
   		Serial.print(j);
       	Serial.print(p);
-  		}
+  	}
 }
 ```
 ## 4. Réception de données
