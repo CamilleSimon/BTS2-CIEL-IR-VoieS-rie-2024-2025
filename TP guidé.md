@@ -81,7 +81,21 @@ AaBbCc...Zz
 ```
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
-
+void setup()
+{
+  // ouverture de la liaison à une vitesse de 9600 bits par seconde.
+    Serial.begin(9600);
+  
+  	char number1 = 65;
+  	char number2 = 97;
+  		
+  for(int i = 0; i <26; ++i){
+      	char j= number1 +i;
+      	char p= number2 +i;
+  		Serial.print(j);
+      	Serial.print(p);
+  		}
+}
 ## 4. Réception de données
 
 Les données reçu par l'Arduino sont stockées dans un buffer, une sorte de file d'attente de caractère. Pour le consulter, on utilise la fonction `available()` qui retourne le nombre de caractères présents dans le buffer. Si le buffer est vide, la fonction retourne -1.
