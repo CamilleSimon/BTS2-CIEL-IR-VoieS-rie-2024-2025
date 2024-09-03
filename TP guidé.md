@@ -82,9 +82,7 @@ AaBbCc...Zz
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
-## 4. Réception de données
-
-// C++ code Mathis Mota
+``` C++ code Mathis Mota
 //
 void setup()
 {
@@ -104,6 +102,9 @@ void setup()
   }
 
  }
+## 4. Réception de données
+
+
 
 void loop(){
 }
