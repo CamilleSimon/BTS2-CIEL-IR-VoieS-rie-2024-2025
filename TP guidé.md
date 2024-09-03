@@ -96,14 +96,9 @@ Serial.begin(9600);
     char maj = 65 +i; 
     char min = 97 +i;
     
-Serial.print(maj);
+    Serial.print(maj);
     Serial.print(min);
   }
-}
-
-void loop()
-{
-
 }
  ```
 ## 4. Réception de données
