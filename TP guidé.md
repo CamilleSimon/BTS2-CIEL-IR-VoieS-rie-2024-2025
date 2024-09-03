@@ -80,6 +80,27 @@ En utilisant le moins d'instructions possible, ecrivez un algorithme qui permet 
 AaBbCc...Zz
 ```
 
+> Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
+ ```
+// C++ code
+//
+
+void setup()
+{
+Serial.begin(9600);
+  
+  char number1 = 65;
+  char number2 = 97;
+  for(int i= 0; i <26; i++)
+  {
+    char maj = 65 +i; 
+    char min = 97 +i;
+    
+    Serial.print(maj);
+    Serial.print(min);
+  }
+}
+ ```
 ## 4. Réception de données
 
 Les données reçu par l'Arduino sont stockées dans un buffer, une sorte de file d'attente de caractère. Pour le consulter, on utilise la fonction `available()` qui retourne le nombre de caractères présents dans le buffer. Si le buffer est vide, la fonction retourne -1.
