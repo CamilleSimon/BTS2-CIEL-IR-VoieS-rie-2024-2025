@@ -1,5 +1,12 @@
 # Les liaisons séries - TP - Niveaux de la machine à café
 
+## Conseils
+
+-   Munissez vous d'une feuille de papier et d'un crayon pour comprendre comment ce TP fonctionne avant de vous lancez dans le code.
+-   Lisez le TP en entier avant de commencer.
+-   Commentez votre code et utilisez des noms de variables ayant du sens !
+-   Utilisez Tinkercad pour tester votre code. Une fois que tout fonctionne, copier/coller votre code dans un fichier `TP machine à café.c`
+
 ## Enoncé
 
 Vous êtes chargé de créer un système IoT pour le futur distributeur de café des étudiants. Ce distributeur peut délivrer trois boissons différentes. Pour commander leur boisson, les étudiants doivent taper le nom de celle-ci sur l'interface textuelle du distributeur. Le distributeur affiche en temps réel la quantité restante de chaque boisson dans la réserve de la machine à l'aide de LEDs de couleur.
