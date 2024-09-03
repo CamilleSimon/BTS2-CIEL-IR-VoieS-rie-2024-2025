@@ -81,6 +81,7 @@ AaBbCc...Zz
 ```
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
+ ```
 // C++ code
 //
 
@@ -104,7 +105,7 @@ void loop()
 {
 
 }
-
+ ```
 ## 4. Réception de données
 
 Les données reçu par l'Arduino sont stockées dans un buffer, une sorte de file d'attente de caractère. Pour le consulter, on utilise la fonction `available()` qui retourne le nombre de caractères présents dans le buffer. Si le buffer est vide, la fonction retourne -1.
