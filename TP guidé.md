@@ -99,9 +99,6 @@ void setup()
     Serial.print(car2);
  }
 }
-void loop()
-{
-}
 ```
 
 ## 4. Réception de données
