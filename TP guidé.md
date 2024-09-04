@@ -83,7 +83,24 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+void setup()
+  
+{
+	Serial.begin(9600);
+  
+	int variable = 'A';
+  	int variable2 = 'a';
+	for(int i = 0; i < 26; i++)
+	{
+ 		char caractere = variable + i;
+      char caractere2 = variable2 + i;
+		Serial.print(caractere);
+		Serial.print(caractere2);
+	}
+
+  
+  
+}
 ```
 
 ## 4. Réception de données
