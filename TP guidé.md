@@ -83,7 +83,7 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-  	for(int i= 65; i < 123;i++)
+  	for(int i= 65; i < 91;i++)
     {
       char caractere = i;
       Serial.print(caractere);
