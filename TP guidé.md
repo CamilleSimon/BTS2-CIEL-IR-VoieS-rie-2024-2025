@@ -93,14 +93,11 @@ void setup()
   for(int i(0); i<26; i++){
   	int var = 'A';
     int var2 = 'a';
-    
-    for(int j(0); j<1; j++){
     char car = var + i;
     char car2 = var2 + i;
     Serial.print(car);
     Serial.print(car2);
-  }
-        }
+ }
 }
 void loop()
 {
