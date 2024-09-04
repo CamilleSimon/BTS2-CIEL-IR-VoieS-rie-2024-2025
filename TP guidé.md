@@ -82,8 +82,7 @@ AaBbCc...Zz
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
-```c++
-// C++ code
+```// C++ code
 //
 void setup()
 {
