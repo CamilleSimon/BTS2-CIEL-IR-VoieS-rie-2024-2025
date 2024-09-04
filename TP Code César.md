@@ -5,6 +5,9 @@
 -   Munissez vous d'une feuille de papier et d'un crayon pour comprendre comment le code de César fonctionne avant de vous lancez dans le code.
 -   Lisez le TP en entier avant de commencer.
 -   Commentez votre code et utilisez des noms de variables ayant du sens !
+-   Utilisez Tinkercad pour tester votre code. Une fois que tout fonctionne, copier/coller votre code dans un fichier :
+    -   Pour la partie 1, mettez votre code dans le fichier `TP Code César partie 1.c`.
+    -   De même pour la partie 2, dans le fichier `TP Code César partie 2.c`
 
 ## Enoncé
 
@@ -64,6 +67,6 @@ Exemple :
 
 ## Bonus
 
-Sécurisez votre code afin qu'il ne s'execute que dans des situations valides. Exemple : valeur d'oparation invalide, valeur de clé invalide, message contenant des caractères interdits.
+Sécurisez votre code afin qu'il ne s'exécute que dans des situations valides. Exemple : valeur d'opération invalide, valeur de clé invalide, message contenant des caractères interdits.=
 
 Une fois ce TP terminé, vous pouvez passer au suivant : [TP - Niveaux de la machine à café](/Voie%20série/TP%20machine%20à%20café.md)
