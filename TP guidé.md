@@ -95,7 +95,7 @@ void loop()
   	
   	for(int j = 0; j < 26; j++)
 	{
-      		char caractere = 64+j;
+      		char caractere = 65+j;
       		char caractere2 = 97+j;
 		Serial.print(caractere);
       		Serial.print(caractere2);
