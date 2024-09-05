@@ -10,7 +10,7 @@ String chiffrement(String msg, int key) {
         char c = msg[i];
         char CesarChar = c + key; // Appliquer la clé de chiffrement
         if (CesarChar > 'z') { // Vérifier si dépassement de 'z'
-             CesarChar = (CesarChar - 'z' - 1) + 'a'; // 123 est 'z' + 1, 97 est 'a'
+             CesarChar = (CesarChar - 'z' - 1) + 'a'; // Vérifier si dépassement de'z'
         }
         result += CesarChar;
     }
@@ -42,7 +42,7 @@ void loop() {
         // Lire la ligne complète depuis le port série
         String input = Serial.readStringUntil('\n'); 
         
-        // Parse l'entrée pour extraire l'opération, la clé, et le message
+        // Parse l'entrée pour extraire l'opération, la clé, et le message via les comma délimiteurs
         int firstComma = input.indexOf(',');  // Trouver la première virgule
         int secondComma = input.indexOf(',', firstComma + 1); // Deuxième virgule
 
