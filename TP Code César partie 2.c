@@ -8,10 +8,14 @@ String chiffrement(String msg, int key) {
     String result = "";
     for (int i = 0; i < msg.length(); i++) {
         char c = msg[i];
-        char CesarChar = c + key; // Appliquer la clé de chiffrement
-        if (CesarChar > 'z') { // Vérifier si dépassement de 'z'
-             CesarChar = (CesarChar - 'z' - 1) + 'a'; // Vérifier si dépassement de'z'
+        int CesarInt = c + key; // Appliquer la clé de chiffrement
+        char CesarChar; // caractère codé en char
+
+        if (CesarInt > 'z') { // Vérifier si dépassement de 'z'
+             CesarInt = (CesarInt - 'z' - 1) + 'a'; // Vérifier si dépassement de'z'
         }
+
+        CesarChar = CesarInt;
         result += CesarChar;
     }
     return result;
@@ -22,10 +26,14 @@ String dechiffrement(String msg, int key) {
     String result = "";
     for (int i = 0; i < msg.length(); i++) {
         char c = msg[i];
-        char CesarChar = c - key; // Appliquer la clé de déchiffrement
-        if (CesarChar < 'a') { // Vérifier si dépassement sous 'a'
-            CesarChar = (CesarChar + 'z' + 1) - 'a';
+        char CesarInt = c - key; // Appliquer la clé de déchiffrement
+        char CesarChar; // caractère codé en char
+        
+        if (CesarInt < 'a') { // Vérifier si dépassement sous 'a'
+            CesarInt = (CesarInt + 'z' + 1) - 'a';
         }
+
+        CesarChar = CesarInt;
         result += CesarChar;
     }
     return result;

@@ -1,3 +1,5 @@
+
+
 // C++ code
 //
 void setup()
@@ -9,7 +11,8 @@ void setup()
 void loop()
 {	
     char readChar; // caractère à lire
-    char CesarChar; // caractère codé
+    int CesarInt; // caractère codé en int
+  	char CesarChar; // caractère codé en char
     String message = "";
     String messageCoder = "";
 
@@ -18,14 +21,15 @@ void loop()
         readChar = Serial.read(); // Lecture du caractère
 
         // Appliquer le chiffrement de César avec un décalage de 6
-        CesarChar = readChar + 6; 
+        CesarInt = readChar + 6; 
 
         // Vérifier si CesarChar dépasse 'z' (ASCII 122)
-        if (CesarChar > 122) 
+        if (CesarInt > 122) 
         {
             // Calculer le dépassement après 'z' et recommencer à 'a'
-            CesarChar = (CesarChar - 123) + 97; // 123 est 'z' + 1, 97 est 'a'
+            CesarInt = (CesarInt - 123) + 97; // 123 est 'z' + 1, 97 est 'a'
         }
+      	CesarChar = CesarInt; // Convertir la valeur encodée en int en char
 		message += readChar; // Ajouter le caractère au message
         messageCoder += CesarChar; // Ajouter le caractère codé au message codé
     }
