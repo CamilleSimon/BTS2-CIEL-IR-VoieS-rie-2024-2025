@@ -37,6 +37,7 @@ void loop(){
       			if(cafe < totalcharge / 4){
       				allumer(LUMIERE[0])
                 }
+                Serial.print("Vous avez selectionner un cafe")
       		case "chocolat chaud":
       			cohcolatchaud -= 1;
       		case "the":
