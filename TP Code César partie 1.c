@@ -15,15 +15,16 @@ void loop() {
     // Vérifier si le caractère est une lettre minuscule
     if (inputChar >= 'a' && inputChar <= 'z') {
       // Ajouter la valeur de la clé au caractère
-      char encryptedChar = inputChar + key;
+      char charint = inputChar + key;
       
       // Si le décalage dépasse 'z', le faire revenir au début de l'alphabet
-      if (encryptedChar > 'z') {
-        encryptedChar = encryptedChar - 26;
+      if (charint > 'z') {
+        charint = charint - 26;
       }
       
       // Afficher le caractère chiffré
-      Serial.print(encryptedChar);
+       inputChar = charint;
+      Serial.print(inputChar);
     }
   }
 }
