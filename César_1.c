@@ -6,6 +6,7 @@ void setup()
 void loop()
 {
     char password = 0;
+    int charInt;
     int buff = 0;
     int cle = 6;
 
@@ -13,17 +14,17 @@ void loop()
 
     while (buff > 0)
     {
+
         password = Serial.read();
-        password = password + cle;
+        charInt = password + cle;
 
-        if (password > 'z') {
-            password = password - 26;
+
+        if (charInt > 'z') {
+            charInt = charInt - 26;
         }
 
-        if (password >= 'a' || password <= 'z') {
-            Serial.print(password);
-        }
-
+        password = charInt;
+        Serial.print(password);
         buff = Serial.available();
     }
 }
