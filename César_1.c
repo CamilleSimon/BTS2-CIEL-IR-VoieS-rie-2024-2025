@@ -16,6 +16,10 @@ void loop()
         password = Serial.read();
         password = password + cle;
 
+        if (password > 'z') {
+            password = password - 26;
+        }
+
         if (password >= 'a' && password <= 'z') {
             Serial.print(password);
         }
