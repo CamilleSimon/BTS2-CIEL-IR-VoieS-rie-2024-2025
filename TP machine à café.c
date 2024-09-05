@@ -20,7 +20,7 @@ void loop(){
   	int buff = 0;
   	if (messagedemande == false){
   		Serial.print("Choisissez : cafe, chocolat chaud, the \n");
-      	Serial.print("Qauntite :   " + String(cafe) + "        " + String(chocolatchaud) + "         " + String(the) + "\n");
+      	Serial.print("Qauntite :    " + String(cafe) + "        " + String(chocolatchaud) + "         " + String(the) + "\n");
       	messagedemande = true;
   	}
   	else{
