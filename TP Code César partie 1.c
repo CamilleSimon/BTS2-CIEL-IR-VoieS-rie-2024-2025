@@ -13,7 +13,7 @@ void loop() {
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
-      	readChar = readChar + key; // Ajout de la cle au caractère..
+      	readChar = readChar + key; // Ajout de la cle au caractère
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
