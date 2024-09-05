@@ -2,7 +2,6 @@
 //
 void setup(){
   	Serial.begin(9600);
-  	pinMode(13, OUTPUT);
 }
 
 const int totalcharge = 10;
@@ -20,8 +19,8 @@ void allumer(int Led){
 void loop(){
   	int buff = 0;
   	if (messagedemande == false){
-  		Serial.print("Choisissez : café, chocolat chaud, thé \n");
-      	Serial.print("Qauntité :   " + String(cafe) + "         " + String(chocolatchaud) + "         " + String(the) + "\n");
+  		Serial.print("Choisissez : cafe, chocolat chaud, the \n");
+      	Serial.print("Qauntite :   " + String(cafe) + "        " + String(chocolatchaud) + "         " + String(the) + "\n");
       	messagedemande = true;
   	}
   	else{
@@ -31,16 +30,16 @@ void loop(){
       	char lettre = Serial.read();
   		choix += lettre;
   	}
-  	if (choix == "café" or choix == "chocolat chaud" or choix == "thé"){
+  	if (choix == "cafe" or choix == "chocolat chaud" or choix == "the"){
   		switch(choix)
-          	case "café":
+          	case "cafe":
       			cafe -= 1;
       			if(cafe < totalcharge / 4){
       				allumer(LUMIERE[0])
                 }
       		case "chocolat chaud":
       			cohcolatchaud -= 1;
-      		case "thé":
+      		case "the":
       			the -= 1;
     }
   	else{
