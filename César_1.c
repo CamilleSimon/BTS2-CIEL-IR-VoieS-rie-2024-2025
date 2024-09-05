@@ -20,7 +20,7 @@ void loop()
             password = password - 26;
         }
 
-        if (password >= 'a' && password <= 'z') {
+        if (password >= 'a' || password <= 'z') {
             Serial.print(password);
         }
 
