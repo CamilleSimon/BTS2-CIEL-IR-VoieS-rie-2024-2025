@@ -113,7 +113,10 @@ void loop()
     int buffer = Serial.available();
     if(buffer > 0) // si le buffer n'est pas vide
     {
-        // Traitement
+        Serial.println(buffer);
+    }
+    else{
+        Serial.println(-1);
     }
 }
 ```
@@ -129,11 +132,12 @@ void loop()
 
     if(buff != -1)
     {
-        // traitement lorsque le buffer n'est pas vide
+        Serial.println(buff);
     }
+
     else
     {
-        // traitement lorsque le buffer est vide
+        Serial.println(-1);
     }
 }
 ```
