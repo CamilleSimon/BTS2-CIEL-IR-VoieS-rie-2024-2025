@@ -1,4 +1,3 @@
-```c++
 int key;
 int operation;
 
@@ -21,9 +20,9 @@ void loop() {
     Serial.println(message);  
 
     if (operation == 0) {
-      chiffrement(key, message.substring(3));  
+      chiffrement(key, message.substring(4));  
     } else if (operation == 1) {
-      dechiffrement(key, message.substring(3));  
+      dechiffrement(key, message.substring(4));  
     } else {
       Serial.println("Rentrez un message valide  ");
     }
@@ -44,12 +43,14 @@ void chiffrement(int key, String message) {
 }
 
 void dechiffrement(int key, String message) {
-  Serial.print("Déchiffrement: ");
+  Serial.print("Dechiffrement: ");
   for (int i = 0; i < message.length(); i++) {
     char charcesar = message[i] - key;
-   
+    // Gestion du dépassement pour les lettres en fin d'alphabet
+    if (charcesar < 'a') {
       charcesar = 'z' - ('a' - charcesar - 1);
     }
-    Serial.print(charcesar);  
+    Serial.print(charcesar);  // Affiche le caractère déchiffré
   }
-  Serial.println();  
+  Serial.println();  // Nouvelle ligne après le message
+}
