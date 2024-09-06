@@ -15,16 +15,13 @@ void loop()
     {
         readChar = Serial.read() + key; // lecture du caractère
       	char result = readChar;
-      	if (result > 'z')
+      	if (readChar > 'z')
       	{
-          	char result = readChar - 26; // permet de revenir à a
+          	result = readChar - 26; // permet de revenir à a
         	Serial.print(result); // envoi du caractère
-        
+
       	}
-      	else
-      	{
-        	Serial.print(result); // envoi du caractère   
-      	}
+        Serial.print(result); // envoi du caractère   
       	buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 } 
