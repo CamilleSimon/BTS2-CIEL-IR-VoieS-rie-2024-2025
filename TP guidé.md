@@ -103,10 +103,6 @@ void setup()
   }
 }
 
-void loop()
-{
-
-}
 ```
 
 ## 4. Réception de données
