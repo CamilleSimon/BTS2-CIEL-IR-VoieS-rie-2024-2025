@@ -90,10 +90,10 @@ void setup()
   	int variablemaj = 'A';	
   	for(int i=0;i <=25;i++)
     {
-  		char maj = variablemaj;
-      	Serial.print(maj);
-      	char min = variablemin;
-      	Serial.print(min);
+        char maj = variablemaj;
+        Serial.print(maj);
+        char min = variablemin;
+        Serial.print(min);
       	variablemin++;
       	variablemaj++; 
     }
