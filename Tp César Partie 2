@@ -1,0 +1,55 @@
+int key;
+int operation;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  String texte = "";  
+  while (Serial.available() > 0) {  
+    char readChar = Serial.read();
+    texte += readChar;
+    delay(10);
+  }
+
+  if (texte.length() > 1) {
+    operation = texte[0] - '0';
+    key = texte[2] - '0';
+
+    Serial.print("texte: ");
+    Serial.println(texte);
+
+    if (operation == 0) {
+      chiffrement(key, texte.substring(4));
+    } else if (operation == 1) {
+      dechiffrement(key, texte.substring(4));
+    } else {
+      Serial.println("Rentrez un message valide ");
+    }
+  }
+}
+
+void chiffrement(int key, String texte) {
+  Serial.print("Chiffrement: ");
+  for (int i = 0; i < texte.length(); i++) {
+    char newtab = texte[i] + key;
+    if (newtab > 'z') {
+      newtab = 'a' + (newtab - 'z' - 1);
+    }
+    Serial.print(newtab); 
+  }
+  Serial.println(); 
+}
+
+void dechiffrement(int key, String texte) {
+  Serial.print("Dechiffrement: ");
+  for (int i = 0; i < texte.length(); i++) {
+    char newtab = texte[i] - key;
+    if (newtab < 'a') {
+      newtab = 'z' - ('a' - newtab + 1);
+    }
+    Serial.print(newtab); 
+  }
+  Serial.println(); 
+}
