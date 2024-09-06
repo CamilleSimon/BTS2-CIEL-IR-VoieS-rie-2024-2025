@@ -22,4 +22,4 @@ void loop() {
         buff = Serial.available(); //remet la valeur de depart
     }
 }
-```C++
+```
