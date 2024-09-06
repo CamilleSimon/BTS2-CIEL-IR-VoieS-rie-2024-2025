@@ -1,3 +1,6 @@
+int key = 6;
+
+
 void setup()
 {
     Serial.begin(9600);
@@ -8,7 +11,6 @@ void loop()
     char readChar = 0; // caractère à lire
 
     int buff = Serial.available();
-	int key = 6;
   
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
