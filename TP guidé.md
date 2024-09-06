@@ -99,6 +99,17 @@ void setup()
       	Serial.print(c);
     }
 }
+void loop()
+{
+  int readchar = 0;
+  
+  int buff = serial.available();
+  
+  while(buff >0)
+  {
+    readchar = serial.read()+ key;
+    char result = readchar
+}
     }
 ```
 
