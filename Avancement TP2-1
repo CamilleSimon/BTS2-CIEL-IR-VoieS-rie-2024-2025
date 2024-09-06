@@ -1,0 +1,8 @@
+void setup()
+{
+	Serial.begin(9600);
+  	int var = 'A';
+  	int key = 6;
+    char character = var + key;
+  Serial.print(character);
+}
