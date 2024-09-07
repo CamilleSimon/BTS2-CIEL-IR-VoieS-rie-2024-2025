@@ -84,14 +84,13 @@ AaBbCc...Zz
 
 ```C++
 MON CODE ICI
-  for(int variable = 'A'; variable <= 90 ; variable++){
-  	char caractere = variable;
+*code modifier avec une seule boucle for *
+for(int variable = 'A'; variable <= 122 ; variable++) {
+  if (varible <= 90 || variable >= 97){
+    char caractere = variable;
   	Serial.print(caractere);
   }
-  for(int variable = 'a'; variable <= 122 ; variable++){
-  	char caractere = variable;
-  	Serial.print(caractere);
-  }
+}
 ```
 
 ## 4. Réception de données
