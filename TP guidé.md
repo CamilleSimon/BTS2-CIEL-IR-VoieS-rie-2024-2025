@@ -84,6 +84,30 @@ AaBbCc...Zz
 
 ```C++
 MON CODE ICI
+*code modifier avec une seule boucle for *
+
+int variable1 = 'A';
+int variable2 = 'a';
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  
+  for(int i = 0; i <= 25 ; i++){
+  	char caractere1 = variable1 + i;
+  	Serial.print(caractere1);
+    char caractere2 = variable2 + i;
+    Serial.print(caractere2);
+  }
+}
+
+void loop()
+{
+
+	
+}
+
 ```
 
 ## 4. Réception de données
