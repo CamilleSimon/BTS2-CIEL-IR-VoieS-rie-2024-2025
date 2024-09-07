@@ -70,6 +70,8 @@ Pour rappel, les caractères sont stockés sous forme de nombre dans la mémoire
 int variable = 'A';
 char caractere = variable + 1;
 Serial.println(caractere);
+
+Il devrait afficher le caractère B.
 ```
 
 ## 3. Exercice envoi de données
@@ -83,7 +85,19 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+void setup()
+{
+  Serial.begin(9600);
+  int variable = 'A';
+  char caractere = variable + 1;
+  for (int i = 'A'; i <= 'Z'; i++)
+  { 
+    char c = i;
+    Serial.print(c);
+    char u = i + 32;
+    Serial.print(u);
+  }
+}
 ```
 
 ## 4. Réception de données
