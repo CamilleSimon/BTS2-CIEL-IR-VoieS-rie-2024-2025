@@ -88,20 +88,20 @@ AaBbCc...Zz
 void setup()
 {
   // ouverture de la liaison à une vitesse de 9600 bits par seconde.
-  	Serial.begin(9600);
+  Serial.begin(9600);
 
   // Variable de base
-	int variable = 'A';
+  int variable = 'A';
   
-  	// Pour chaque incrémentation:
-	// Ont print deux caractère un initial et un modifier pour faire une minuscule.
-	// Auxquels ont ajoute l'incrémentation.
+  // Pour chaque incrémentation:
+  // Ont print deux caractère un initial et un modifier pour faire une minuscule.
+  // Auxquels ont ajoute l'incrémentation.
 
-      for (int i = 0 ; i<26;i++){
-        char caractere = variable + i , caractere2 = variable + i +32;
-      	Serial.print(caractere);
-        Serial.print(caractere2);
-    }
+  for (int i = 0 ; i<26;i++){
+    char caractere = variable + i , caractere2 = variable + i +32;
+    Serial.print(caractere);
+    Serial.print(caractere2);
+  }
 }
 ```
 
