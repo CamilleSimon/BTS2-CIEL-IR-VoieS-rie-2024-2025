@@ -85,17 +85,17 @@ AaBbCc...Zz
 void setup()
 {
   // ouverture de la liaison à une vitesse de 9600 bits par seconde.
-    Serial.begin(9600);
+  Serial.begin(9600);
   
-  	char number1 = 65;
-  	char number2 = 97;
+  char number1 = 65;
+  char number2 = 97;
   		
   for(int i = 0; i <26; ++i){
-      	char j= number1 +i;
-      	char p= number2 +i;
-  		Serial.print(j);
-      	Serial.print(p);
-  	}
+    char j= number1 +i;
+    char p= number2 +i;
+    Serial.print(j);
+    Serial.print(p);
+  }
 }
 ```
 ## 4. Réception de données
