@@ -64,7 +64,7 @@ Pour rappel, les caractères sont stockés sous forme de nombre dans la mémoire
 
 </center>
 
-> Ainsi, pour le caractère 'A' c'est la valeur 65 qui est enregistré. Que va afficher l'extrait de code suivant ?
+> Ainsi, pour le caractère 'A' c'est la valeur 65 qui est enregistré. Que va afficher l'extrait de code suivant ? Il va afficher le caractère 'B'.
 
 ```C++
 int variable = 'A';
@@ -83,7 +83,21 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+void setup()
+{
+    // ouverture de la liaison à une vitesse de 9600 bits par seconde.
+    Serial.begin(9600);
+    int variable1 = 'A', variable2 = 'a';
+    for(int i = 0; i < 26; i++)
+    {
+        char caractere1 = variable1;
+        Serial.print(caractere1);
+        variable1 = variable1 + 1;
+        char caractere2 = variable2;
+        Serial.print(caractere2);
+        variable2 = variable2 + 1;
+    }
+}
 ```
 
 ## 4. Réception de données
