@@ -89,9 +89,9 @@ void setup() {
   int charInt = 65;
   for (int i =0; i < 26; i++) {
     char charIntLetter = charInt;
-  	char letter = charIntLetter + 32;
-  	Serial.print(charIntLetter);
-  	Serial.print(letter);
+    char letter = charIntLetter + 32;
+    Serial.print(charIntLetter);
+    Serial.print(letter);
     charInt++;
   }
 }
