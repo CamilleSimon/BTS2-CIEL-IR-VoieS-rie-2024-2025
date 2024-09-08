@@ -18,7 +18,6 @@ void loop()
       	if (readChar > 'z')
       	{
           	result = readChar - 26; // permet de revenir à a
-        	Serial.print(result); // envoi du caractère
 
       	}
         Serial.print(result); // envoi du caractère   
