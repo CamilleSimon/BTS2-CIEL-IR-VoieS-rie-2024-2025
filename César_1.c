@@ -1,3 +1,5 @@
+int cle = 6;
+
 void setup()
 {
     Serial.begin(9600);
@@ -8,7 +10,6 @@ void loop()
     char password = 0;
     int charInt;
     int buff = 0;
-    int cle = 6;
 
     buff = Serial.available();
 
