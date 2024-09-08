@@ -37,6 +37,8 @@ Pour déchiffrer un message, on opère de façon inverse, chaque caractère du m
     3. Affichez le résultat.
     4. Pour l'exemple `hello` vous devez obtenir `nkrru`.
 4. Que se passe-t-il si le message est `bonjour` ? Proposez une amélioration de votre code permettant d'obtenir un message chiffré correctement.
+   
+
 
 ## Partie 2
 
