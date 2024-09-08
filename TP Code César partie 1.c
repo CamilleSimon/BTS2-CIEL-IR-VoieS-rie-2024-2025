@@ -1,4 +1,5 @@
-
+// Variable globale d'encryptage
+int key = 6;
 
 // C++ code
 //
@@ -15,7 +16,6 @@ void loop()
   	char cesarChar; // caractère codé en char
     String message = "";
     String messageCoder = "";
-    int key = 6;
 
     while (Serial.available() > 0) // Tant qu'il reste des caractères dans le buffer
     {
@@ -31,7 +31,7 @@ void loop()
             cesarInt = (cesarInt - 123) + 97; // 123 est 'z' + 1, 97 est 'a'
         }
       	cesarChar = cesarInt; // Convertir la valeur encodée en int en char
-		message += readChar; // Ajouter le caractère au message
+		    message += readChar; // Ajouter le caractère au message
         messageCoder += cesarChar; // Ajouter le caractère codé au message codé
     }
 
