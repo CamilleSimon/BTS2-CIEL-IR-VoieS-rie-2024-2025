@@ -115,7 +115,10 @@ void loop()
     int buffer = Serial.available();
     if(buffer > 0) // si le buffer n'est pas vide
     {
-        // Traitement
+        Serial.println(buffer);
+    }
+    else{
+        Serial.println(-1);
     }
 }
 ```
@@ -131,11 +134,12 @@ void loop()
 
     if(buff != -1)
     {
-        // traitement lorsque le buffer n'est pas vide
+        Serial.println(buff);
     }
+
     else
     {
-        // traitement lorsque le buffer est vide
+        Serial.println(-1);
     }
 }
 ```
@@ -153,15 +157,14 @@ void setup()
 void loop()
 {
     char readChar = 0; // caractère à lire
-    int buff = 0;
 
-    buffSize = Serial.available();
+    int buff = Serial.available();
 
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
         Serial.print(readChar); // envoi du caractère
-        buffSize = Serial.available(); // mise à jour du nombre de caratères restant
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 }
 ```

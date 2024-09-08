@@ -36,3 +36,24 @@ Lorsque la réserve est pleine, elle contient de quoi préparer 10 boissons de c
 
 -   Vous devrez utiliser des chaînes de caractères, (String). Vous trouverez [ici](https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/) la documentation de la classe String pour Arduino.
 -   Pour faciliter la lecture de votre code, n'hésitez pas à le découper en fonctions.
+-   Pour debugger votre code et afficher des messages complexes sur le moniteur de série, vous pouvez utiliser cette fonction :
+
+```C
+void print(const char* format, ...)
+{
+  char buffer[512];
+
+  va_list args;
+  va_start(args, format);
+  vsprintf(buffer, format, args);
+  va_end(args);
+
+  Serial.println(buffer);
+}
+```
+
+La signature de la fonction `void print(const char* format, ...);` doit être placée avant la fonction `setup()`. Elle s'utilise de façon similaire à [printf](https://www.geeksforgeeks.org/printf-in-c/) :
+
+```C
+print("Mon message contenant un entier %d et une chaîne de caratère %s", var_entiere, var_string.c_str())
+```
