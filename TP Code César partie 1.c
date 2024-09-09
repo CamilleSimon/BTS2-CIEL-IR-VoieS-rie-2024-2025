@@ -11,17 +11,20 @@ void loop()
 {
     char readChar = 0; // caractère à lire
     int buff = 0;
+  	int readInt;
 
     buff = Serial.available();
   
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
-      	readChar = readChar+key;
+      	readInt = readChar+key;
         // Si le caractère dépasse 'z', recommencer a 'a'
-        if (readChar > 'z') {
-            readChar = readChar - 26; // Retourner a 'a' après 'z'
+        if (readInt > 'z') {
+            readInt = readInt - 26; // Retourner a 'a' après 'z'
         }
+     	readChar = readInt;
+      
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
