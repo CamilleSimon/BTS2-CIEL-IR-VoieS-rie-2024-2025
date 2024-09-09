@@ -60,16 +60,19 @@ void loop() {
     if (digitalRead(pinBtnCafe) ==  LOW) {
         stockCafe = 10;
         Serial.println("[Boisson] Cafe RESTOCK");
+        checkStockCafe();
     }
 
     if (digitalRead(pinBtnChocolat) ==  LOW) {
         stockChocolat = 10;
         Serial.println("[Boisson] Chocolat RESTOCK");
+        checkStockChocolat();
     }
 
     if (digitalRead(pinBtnThe) ==  LOW) {
         stockThe = 10;
         Serial.println("[Boisson] The RESTOCK");
+        checkStockThe();
     }
     
     if (tramFull != "") {
