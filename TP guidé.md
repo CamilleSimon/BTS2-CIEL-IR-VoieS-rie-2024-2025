@@ -47,6 +47,7 @@ void setup()
 Pour envoyer des données, on va utiliser les fonctions `print()` et `println()`. Normalement, elles doivent vous rappeler quelque chose car ce sont les mêmes fonctions qu'en C++ ! Un petit exemple de leur utilisation :
 
 ```C++
+
 void setup()
 {
     // ...
@@ -82,18 +83,29 @@ AaBbCc...Zz
 
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
-```C++
-void setup(){
-    // ...
-    Serial.begin(9600);
-  	int variable = 'A';
-  	for (int i=0; i<26; i++){
-      	char majuscule = variable + i;
-        char minuscule = variable + i + 32;
-  		Serial.print(majuscule);
-        Serial.print(minuscule);
-      
-  	}
+```c++
+// C++ code YAZID KARALI
+
+void setup() {
+  Serial.begin(9600);
+
+  char number1 = 65; //Correspond a A sur la table ASCII
+  char number2 =97;	//Correspond a a sur la table ASCII
+  
+  for (int i=0; i<26; i++){
+  char z=number1 + i;
+  char a=number2+ i;
+	
+   Serial.print(z);
+   Serial.print(a);
+  }
+
+  }
+
+    
+
+void loop() {
+
 }
 ```
 
@@ -146,15 +158,14 @@ void setup()
 void loop()
 {
     char readChar = 0; // caractère à lire
-    int buff = 0;
 
-    buffSize = Serial.available();
+    int buff = Serial.available();
 
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
         Serial.print(readChar); // envoi du caractère
-        buffSize = Serial.available(); // mise à jour du nombre de caratères restant
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 }
 ```
