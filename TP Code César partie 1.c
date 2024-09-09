@@ -1,5 +1,5 @@
 // Définir la clé globale pour le chiffrement
-const int key = 6;
+int key = 6;
 
 void setup() {
   // Initialiser la communication série
@@ -7,26 +7,27 @@ void setup() {
 }
 
 void loop() {
-  // Vérifier si des données sont disponibles dans le buffer série
-  if (Serial.available() > 0) {
-    // Lire le premier caractère disponible
-    char inputChar = Serial.read();
-    
-    // Vérifier si le caractère est une lettre minuscule
-    if (inputChar >= 'a' && inputChar <= 'z') {
-      // Ajouter la valeur de la clé au caractère
-      char charint = inputChar + key;
+  int buff =Serial.available();
+  char readChar;
+
+  while(buff > 0)
+  {
+      readChar =Serial.read();
+      int intChar = readChar + key;
       
       // Si le décalage dépasse 'z', le faire revenir au début de l'alphabet
-      if (charint > 'z') {
-        charint = charint - 26;
+      if (intchar > 122) {
+        intchar -= 26;
       }
       
       // Afficher le caractère chiffré
-       inputChar = charint;
-      Serial.print(inputChar);
-    }
+       readChar = intchar;
+      Serial.print(readChar);
   }
+
+    
+    
+  
 }
 
 
