@@ -8,7 +8,7 @@ void setup(){
 String recupsansv(String text) {
     String readchar;
     int i = 0;
-    while (text[i] != ',' && text[i] != '\0') {
+    while (text[i] != ',' && sizeof(text) != 0) {
         readchar += text[i];
         i++;
     }
@@ -33,8 +33,8 @@ void chiffrement(String text, int key) {
             cesarkey -= 26;
         }
         char chiffrer = cesarkey;
-        Serial.print(chiffrer));
-      	Serial.print("\n")
+        Serial.print(chiffrer);
+      	Serial.print("\n");
     }
 }
 
@@ -61,6 +61,7 @@ void loop() {
         text += lettre;
         buff--;
     }
+  	Serial.print(text);
     readchar = recupsansv(text);
     text = delrecup(text, readchar.length());
 
