@@ -24,5 +24,6 @@ void loop()
       
       readChar = intChar;
       Serial.print(readChar);
+      buff = Serial.available();
     }
 }
