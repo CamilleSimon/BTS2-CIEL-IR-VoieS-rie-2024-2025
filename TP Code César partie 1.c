@@ -1,4 +1,3 @@
-```
 //Voici mon code du TP César partie 1
 
 int key = 6;
@@ -25,8 +24,5 @@ void loop()
       
       readChar = intChar;
       Serial.print(readChar);
-      
-      buff = Serial.available();
     }
 }
-```
