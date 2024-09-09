@@ -7,27 +7,23 @@ void setup() {
 }
 
 void loop() {
-  int buff =Serial.available();
+  int buff = Serial.available();
   char readChar;
 
-  while(buff > 0)
-  {
-      readChar =Serial.read();
-      int intChar = readChar + key;
-      
-      // Si le décalage dépasse 'z', le faire revenir au début de l'alphabet
-      if (intchar > 122) {
-        intchar -= 26;
-      }
-      
-      // Afficher le caractère chiffré
-       readChar = intchar;
-      Serial.print(readChar);
+  while (buff > 0) {
+    readChar = Serial.read();
+    int intChar = readChar + key; // Correction de la casse ici
+
+    // Si le décalage dépasse 'z', le faire revenir au début de l'alphabet
+    if (intChar > 122) { // Correction ici (casse)
+      intChar -= 26;
+    }
+
+    // Afficher le caractère chiffré
+    readChar = intChar;
+    Serial.print(readChar);
+
+    // Mettre à jour le buffer pour éviter une boucle infinie
+    buff = Serial.available();
   }
-
-    
-    
-  
 }
-
-
