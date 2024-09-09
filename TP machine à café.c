@@ -11,6 +11,10 @@ const int LUMIERE[PIN] = {13, 12, 11};
 const int BOUTON[PIN] = {7, 6, 5};
 bool messagedemande = false;
 
+//const regex MOTIFCAFE("^[cç]*[aáàâäãå]*[f]*[eéèêë]*s?$");
+//const regex MOTIFCHOCOLATCHAUD("^[cç]*h*[oóòôöõø]*[cç]*[oóòôöõø]*l*[aáàâäãå]*t* *[cç]*h*[aáàâäãå]*[uúùûü]*d*s?$");
+//const regex MOTIFTHE("^t*h*[eéèêë]*s?$");
+
 void setup(){
   	Serial.begin(9600);
   	for (int i = 0; i <= PIN; i++){
@@ -66,7 +70,16 @@ void loop(){
       	delay(10);
   		choix += lettre;
       	buff = Serial.available();
-  	}
+  	/*}
+  	if (regex_match(choix, MOTIFCAFE)) {
+    	choix = "cafe"
+    }
+  	else if (regex_match(choix, MOTIFCHOCOLATCHAUD)) {
+    	choix = "chocolat chaud"
+    }
+  	else if (regex_match(choix, MOTIFTHE)) {
+    	choix = "the"
+    }*/
     if (choix == "cafe"){
       	Serial.print("Vous avez selectionner un cafe \n");
       	if (cafe > 0){
