@@ -5,73 +5,72 @@ void setup(){
 	
 }
 
-String recupsansv(String text){
-	String readchar;
-	int i = 0;
-	while(text[i] <> ","){
-        	readchar += text[i];
-		i++;
-	}
-	return readchar;
+String recupsansv(String text) {
+    String readchar;
+    int i = 0;
+    while (text[i] != ',' && text[i] != '\0') {
+        readchar += text[i];
+        i++;
+    }
+    return readchar;
 }
 
-String delrecup(String text, int iteration){
-	for (int i = 0; i<iteration+1; i++){
-		text[0].remove;
-	}
+String delrecup(String text, int iteration) {
+    for (int i = 0; i < iteration; i++) {
+        if (text.length() > 0) {
+            text.remove(0, 1);
+        }
+    }
+    return text;
 }
 
-void chiffrement(String text, int key){
-	while(len(text) >= 0){
-        	readchar = text[0];
-      		int cesar = readchar;
-      		int cesarkey = cesar + key;
-      		while (cesarkey > 122){
-      			cesarkey -= 26;
-      		}
-      		char chiffrer = cesarkey;
-        	print(chiffrer);
-	}
+void chiffrement(String text, int key) {
+    for (int i = 0; i < text.length(); i++) {
+        char readchar = text[i];
+        int cesar = readchar;
+        int cesarkey = cesar + key;
+        while (cesarkey > 122) {
+            cesarkey -= 26;
+        }
+        char chiffrer = cesarkey;
+        Serial.print(chiffrer + "\n");
+    }
 }
 
-void dechiffrement(String text, int key){
-	while(len(text) >= 0){
-        	readchar = text[0];
-      		int cesar = readchar;
-      		int cesarkey = cesar - key;
-      		while (cesarkey < 97){
-      			cesarkey += 26;
-      		}
-      		char chiffrer = cesarkey;
-        	print(chiffrer);
-	}
+void dechiffrement(String text, int key) {
+    for (int i = 0; i < text.length(); i++) {
+        char readchar = text[i];
+        int cesar = readchar;
+        int cesarkey = cesar - key;
+        while (cesarkey < 97) {
+            cesarkey += 26;
+        }
+        char chiffrer = cesarkey;
+        Serial.print(chiffrer + "\n");
+    }
 }
 
-void loop(){
-	String text = "";
-  	String readchar = "";
-    int buff = 0;
-  	buff = Serial.available();
-	while(buff > 0){
+void loop() {
+    String text = "";
+    String readchar = "";
+    int buff = Serial.available();
+    while (buff > 0) {
         char lettre = Serial.read();
         text += lettre;
-	}
-	buff = Serial.available();
-	readchar = recupsansv(text);
-	delrecup(text, len(readchar));
-  	if (readchar == "0"){
-  		char readchar = "";
-      	readchar = recupsansv(text);
-		delrecup(text, len(readchar));
-      	int key = readchar - 48;
-		chiffrement(text, key);
-	else if (readchar == "1"){
-		char readchar = "";
-      	readchar = recupsansv(text);
-		delrecup(text, len(readchar));
-      	int key = readchar - 48;
-		dechiffrement(text, key);
-	}
-	else{
-	}
+        buff--;
+    }
+    readchar = recupsansv(text);
+    text = delrecup(text, readchar.length());
+
+    if (readchar == "0") {
+        readchar = recupsansv(text);
+        text = delrecup(text, readchar.length());
+        int key = readchar[0] - '0';
+        chiffrement(text, key);
+    } else if (readchar == "1") {
+        readchar = recupsansv(text);
+        text = delrecup(text, readchar.length());
+        int key = readchar[0] - '0';
+        dechiffrement(text, key);
+    }
 }
