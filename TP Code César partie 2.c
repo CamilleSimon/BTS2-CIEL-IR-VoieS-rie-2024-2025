@@ -33,7 +33,8 @@ void chiffrement(String text, int key) {
             cesarkey -= 26;
         }
         char chiffrer = cesarkey;
-        Serial.print(chiffrer + "\n");
+        Serial.print(chiffrer));
+      	Serial.print("\n")
     }
 }
 
@@ -46,7 +47,8 @@ void dechiffrement(String text, int key) {
             cesarkey += 26;
         }
         char chiffrer = cesarkey;
-        Serial.print(chiffrer + "\n");
+        Serial.print(chiffrer);
+      	Serial.print("\n");
     }
 }
 
