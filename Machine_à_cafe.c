@@ -7,7 +7,6 @@ const String PRODUITS[COUNT] = {"cafe", "chocolat chaud", "the"};
 int produit = -1;
 
 bool boisson_servi=false;
-bool BTN_appuye = false;
 
 
 
