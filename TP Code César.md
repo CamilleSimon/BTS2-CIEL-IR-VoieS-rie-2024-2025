@@ -17,7 +17,7 @@ Pour chiffrer un message, chaque lettre est remplacée par la n-ième lettre qui
 
 <center>
 
-![Exemple d'outil pour le chiffrement de César](/Voie%20série/assets/letters-wheel.png)
+![Exemple d'outil pour le chiffrement de César](./assets/letters-wheel.png)
 
 </center>
 
