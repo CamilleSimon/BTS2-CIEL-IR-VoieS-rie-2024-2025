@@ -52,7 +52,6 @@ void loop() {
 //FONCTION
 
 
-
    // FONCTION QUI REMPLI LE STOCK DE PRODUIT A 10 LORSQU'ON APPUIE SUR LE BOUTON POUSSOIR
 
 void remplir(int type_boisson){
