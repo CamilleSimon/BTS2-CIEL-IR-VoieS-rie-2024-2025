@@ -1,0 +1,31 @@
+// C++ code
+//
+void setup()//obligatoire
+{
+    Serial.begin(9600);
+  int variable = 'A';
+char caractere = variable + 1;
+
+  for (int i=65;i <= 90; i++)
+  { 
+ char caractere = i ;
+ char caracteree = i+32;  
+    Serial.print(caractere);
+     Serial.print(caracteree);
+  }
+}
+
+void loop()//
+{
+    /**char readChar = 0; // caractère à lire
+      
+    int buff = Serial.available();
+
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+        readChar = Serial.read();// lecture du caractère
+        readchar + 6
+        Serial.print(readChar); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }*/
+}
