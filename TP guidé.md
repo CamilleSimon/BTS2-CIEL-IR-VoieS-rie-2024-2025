@@ -83,9 +83,6 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-// C++ code
-//
-
 void setup()
 {
 Serial.begin(9600);
