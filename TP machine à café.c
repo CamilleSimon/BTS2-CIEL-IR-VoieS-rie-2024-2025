@@ -59,6 +59,17 @@ void loop()
       		print("Commande non valide");
     	}
   	}
+  
+  for (int i = 0; i < COUNT; i++) 
+    {
+        if (digitalRead(BTNS[i]) == LOW) // Si le bouton correspondant est pressé
+        {
+            stock[i] = 10; // Réinitialise le stock à 10
+            checkLumiere(i); // Vérifie l'état de la LED après réinitialisation
+            print("Reserve de %s reinitialisee a 10", PRODUITS[i].c_str());
+            delay(500); // Délai pour éviter des rebonds lors de l'appui du bouton
+        }
+    }
 }
 
 
