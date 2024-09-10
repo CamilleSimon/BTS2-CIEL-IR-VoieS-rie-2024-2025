@@ -83,7 +83,14 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+    // ouverture de la liaison à une vitesse de 9600 bits par seconde.
+    Serial.begin(9600);
+  	char variable = 'A';
+    char minuscule = 'a';
+   for(int i=10; i<=35; i++){
+   Serial.print(i, variable);
+   Serial.print(i+32, minuscule);
+   }
 ```
 
 ## 4. Réception de données
