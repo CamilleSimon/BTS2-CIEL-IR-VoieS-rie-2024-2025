@@ -101,10 +101,6 @@ char caractere = variable + 1;
     Serial.print(caractere1); 
     }
   }
-
-void loop()
-{
-}
 ```
 
 ## 4. Réception de données
