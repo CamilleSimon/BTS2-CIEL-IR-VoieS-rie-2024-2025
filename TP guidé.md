@@ -86,7 +86,6 @@ AaBbCc...Zz
   Serial.begin(9600);
   int variable = 'A';
 char caractere = variable + 1;
-Serial.println(caractere);
   for (int i=65;i <= 90; i++)
   { 
  char caractere = i ;
