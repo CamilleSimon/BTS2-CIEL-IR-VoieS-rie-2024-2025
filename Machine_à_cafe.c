@@ -5,7 +5,6 @@ const int BTNS[COUNT] = {4, 3, 2};
 int stock[COUNT]={10,10,10};
 const String PRODUITS[COUNT] = {"cafe", "chocolat chaud", "the"};
 int produit = -1;
-
 bool boisson_servi=false;
 
 
@@ -31,7 +30,7 @@ void setup() {
     pinMode(LED[i], OUTPUT); 
     pinMode(BTNS[i], INPUT);  
     digitalWrite(LED[i], HIGH); 
- 	digitalWrite(BTNS[i], HIGH);
+  	digitalWrite(BTNS[i], HIGH);
   }
 }
 
