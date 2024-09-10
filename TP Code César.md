@@ -21,7 +21,7 @@ Pour chiffrer un message, chaque lettre est remplacée par la n-ième lettre qui
 
 </center>
 
-Le message `bonjour` avec une clé de `6` devient alors le message chiffré : `hurpuax`
+Le message `bonjour` avec une clé de `6` devient alors le message chiffré : `hutpuax`
 
 Pour déchiffrer un message, on opère de façon inverse, chaque caractère du message est remplacé par le nième caractère précédent dans l'alphabet. Par exemple, avec une clé de 8 et le message chiffré suivant : `qtvmqom` après déchiffrage on obtient `ilneige`.
 
@@ -59,14 +59,14 @@ Exemple :
 2. Créez deux fonctions : `chiffrement()` et `dechiffrement()`.
     1. Ces fonctions ont-elles besoin d'arguments ? Quelles informations doit-on leur fournir pour qu'elles réalisent leur tâche ?
     2. Faut-il ajouter un type de retour ?
-3. Dans la fonction `setup()`
-    1. Proposez une façon d'enregistrer les informations reçues par l'Arduino.
+3. Dans la fonction `loop()`
+    1. Proposez une façon d'enregistrer les informations reçues par l'Arduino dans une structure de données complexe (tableau ou chaîne de caractères par exemple).
     2. Segmentez les données reçues et affectez leurs valeurs à `key` et `operation`.
     3. Appelez `chiffrement()` et `dechiffrement()` dans les situations qui conviennent.
 4. Testez votre code.
 
 ## Bonus
 
-Sécurisez votre code afin qu'il ne s'execute que dans des situations valides. Exemple : valeur d'oparation invalide, valeur de clé invalide, message contenant des caractères interdits.
+Sécurisez votre code afin qu'il ne s'exécute que dans des situations valides. Exemple : valeur d'opération invalide, valeur de clé invalide, message contenant des caractères interdits.=
 
 Une fois ce TP terminé, vous pouvez passer au suivant : [TP - Niveaux de la machine à café](/Voie%20série/TP%20machine%20à%20café.md)

@@ -153,15 +153,14 @@ void setup()
 void loop()
 {
     char readChar = 0; // caractère à lire
-    int buff = 0;
 
-    buffSize = Serial.available();
+    int buff = Serial.available();
 
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
         Serial.print(readChar); // envoi du caractère
-        buffSize = Serial.available(); // mise à jour du nombre de caratères restant
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 }
 ```
