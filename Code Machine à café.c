@@ -1,98 +1,18 @@
-const int COUNT = 3; // Définit le nombre de boissons, LEDs et boutons
-const int LEDS[COUNT] = { 13, 12, 11 }; // Tableau contenant les pins des LEDs correspondantes aux boissons
-const int BTNS[COUNT] = { 4, 3, 2 }; // Tableau contenant les pins des boutons correspondants aux boissons
-String nomBoissons[COUNT] = { "cafe", "chocolat", "the" }; // Noms des boissons disponibles
-int stockboissons[COUNT] = { 0, 0, 0 }; // Tableau contenant les stocks initiaux de chaque boisson
 
-void print(const char* format, ...); // Déclaration de la fonction print pour afficher des messages sur le moniteur série
-void stock(int* stockboissons, ...); // Déclaration de la fonction stock (non utilisée dans le code actuel)
+////////////////////////////////////////
+// Déclaration des variables globales //
+////////////////////////////////////////
 
-void setup()
-{
-    Serial.begin(9600); // Initialise la communication série à 9600 bauds
+const int COUNT = 3;
+const int LEDS[COUNT] = { 13, 12, 11 };
+const int BTNS[COUNT] = { 4, 3, 2 };
+int stockboissons[COUNT] = { 0, 0, 0 };
+String nomBoissons[COUNT] = { "cafe", "chocolat", "the" };
+String s = "";
 
-    for (int i = 0; i < COUNT; i++) // Boucle pour initialiser les LEDs et les boutons
-    {
-        pinMode(LEDS[i], OUTPUT); // Définit les pins des LEDs comme sorties
-        pinMode(BTNS[i], INPUT_PULLUP); 
-        digitalWrite(LEDS[i], HIGH); // Éteint toutes les LEDs au démarrage
-    }
-}
-
-void loop()
-{
-    int buff = 0; // Variable pour stocker le nombre de caractères disponibles dans le buffer série
-    char readChar; // Variable pour stocker le caractère lu depuis le port série
-    String s = ""; // Chaîne pour accumuler les caractères reçus
-    buff = Serial.available(); // Vérifie combien de caractères sont disponibles dans le buffer
-
-    while (buff > 0) // Tant qu'il y a des caractères disponibles
-    {
-        readChar = Serial.read(); // Lit un caractère du port série
-        delay(10); // Petit délai pour éviter les lectures incorrectes
-        s = s + readChar; // Ajoute le caractère lu à la chaîne
-        buff = Serial.available(); // Met à jour le nombre de caractères disponibles
-    }
-
-    if (s != "") // Si une commande a été reçue
-    {
-        bool v = false; // Indicateur pour vérifier si une commande valide a été trouvée
-        int i = 0; // Index pour parcourir les tableaux de boissons et stocks
-
-        while (!v && i < COUNT) // Boucle jusqu'à trouver une commande valide ou parcourir toutes les boissons
-        {
-            if (s == nomBoissons[i]) // Vérifie si la commande reçue correspond à une boisson
-            {
-                if (stockboissons[i] > 0) // Vérifie si le stock de la boisson est disponible
-                {
-                    stockboissons[i]--; // Décrémente le stock de la boisson
-                    print("Commande valide: %s. Stock restant: %d\n", nomBoissons[i].c_str(), stockboissons[i]); // Affiche la commande valide et le stock restant
-                }
-                else
-                {
-                    print("Stock epuise pour %s\n", nomBoissons[i].c_str()); // Affiche un message indiquant que le stock est épuisé pour cette boisson
-                }
-                v = true; // Indique que la commande a été trouvée et traitée
-            }
-            i++; // Passe à la boisson suivante
-        }
-
-        if (!v) // Si aucune commande valide n'a été trouvée après avoir parcouru toutes les boissons
-        {
-            print("Commande non valide\n"); // Affiche un message indiquant que la commande est invalide
-        }
-    }
-  
-for (int i = 0; i < COUNT; i++) 
-{
-    if (stockboissons[i] > 3) 
-    {
-        digitalWrite(LEDS[i], HIGH); // LED allumée, stock faible
-    } 
-    else 
-    {
-        digitalWrite(LEDS[i], LOW); // LED éteinte, stock suffisant
-    }
-}
-for (int i = 0; i < COUNT; i++) 
-  {
-    if (digitalRead(BTNS[i]) == LOW )
-    {
-      if (stockboissons[i] != 10)
-      {
-      stockboissons[i] = 10;
-      delay(100);
-      print("%s remplis\n", nomBoissons[i].c_str());
-      }
-      else
-      {
-        print("%s deja remplis\n", nomBoissons[i].c_str());
-        delay(200);
-      }
-    }
-  
-  }
-}
+//////////////////////
+// Fonction fournie //
+//////////////////////
 
 /**
  * Affiche sur le moniteur série
@@ -102,12 +22,159 @@ for (int i = 0; i < COUNT; i++)
  */
 void print(const char* format, ...)
 {
-    char buffer[512]; // Buffer pour stocker le message formaté
+    char buffer[512];
 
-    va_list args; // Liste des arguments supplémentaires
-    va_start(args, format); // Initialise la liste des arguments supplémentaires
-    vsprintf(buffer, format, args); // Formate le message et le stocke dans le buffer
-    va_end(args); // Termine la liste des arguments supplémentaires
+    va_list args;
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
 
-    Serial.print(buffer); // Affiche le message formaté sur le moniteur série
+    Serial.print(buffer);
+}
+
+
+
+//////////////////////////////
+// Fonctions faites maisons //
+//////////////////////////////
+
+// Initialisation des composants
+void initializingComponents()
+{
+    Serial.begin(9600);
+
+    for (int i = 0; i < COUNT; i++)
+    {
+        pinMode(LEDS[i], OUTPUT);
+        pinMode(BTNS[i], INPUT_PULLUP);
+        digitalWrite(LEDS[i], HIGH);
+    }
+}
+
+// Transforme ce qu'il y as dans le buffer en commande
+void processingBuffer()
+{
+    int buff = 0;
+    char readChar;
+    buff = Serial.available();
+
+    while (buff > 0)
+    {
+        readChar = Serial.read();
+        delay(10);
+        s = s + readChar;
+        buff = Serial.available();
+    }
+}
+
+// Traite la commande en fonction du stock
+void processingOrder()
+{
+    if (s != "")
+    {
+        bool v = false;
+        int i = 0;
+
+        while (!v && i < COUNT)
+        {
+            if (s == nomBoissons[i])
+            {
+                if (stockboissons[i] > 0)
+                {
+                    stockboissons[i]--;
+                    print("Commande valide: %s. Stock restant: %d\n", nomBoissons[i].c_str(), stockboissons[i]);
+                }
+                else
+                {
+                    print("Stock epuise pour %s\n", nomBoissons[i].c_str());
+                }
+                v = true;
+            }
+            i++;
+        }
+
+        if (!v)
+        {
+            print("Commande non valide\n");
+        }
+        s = ""; // Vide S aprés traitement pour éviter que la fonction soit rejouée à chaques loops
+    }
+}
+
+// Allume la led associée à un produit en fonction de sont stock (-25%)
+void checkLowstock()
+{
+    for (int i = 0; i < COUNT; i++)
+    {
+        if (stockboissons[i] > 3)
+        {
+            digitalWrite(LEDS[i], HIGH);
+        }
+        else
+        {
+            digitalWrite(LEDS[i], LOW);
+        }
+    }
+}
+
+// Allume la led associée à un produit en fonction de sont stock (entre 50% et 25%)
+void checkMediumstock()
+{
+    for (int i = 0; i < COUNT; i++) {
+        if (stockboissons[i] >= 3 && stockboissons[i] <= 5)
+        {
+            digitalWrite(LEDS[i], HIGH);
+            delay(250);
+            digitalWrite(LEDS[i], LOW);
+            delay(250);
+        }
+    }
+}
+
+// Regroupe les fonctions de vérification du stock
+void checkStock()
+{
+    checkLowstock();
+    checkMediumstock();
+}
+
+// Recharge le stock d'un produit si pression sur le bouton qui lui est associé
+void rechargeStock() 
+{
+    for (int i = 0; i < COUNT; i++)
+    {
+        if (digitalRead(BTNS[i]) == LOW)
+        {
+            if (stockboissons[i] != 10)
+            {
+                stockboissons[i] = 10;
+                delay(100);
+                print("%s remplis\n", nomBoissons[i].c_str());
+            }
+            else
+            {
+                print("%s deja remplis\n", nomBoissons[i].c_str());
+                delay(200);
+            }
+        }
+    }
+}
+
+
+///////////////////////
+// Fonctions Arduino //
+///////////////////////
+
+void setup()
+{
+    initializingComponents();
+}
+
+void loop()
+{
+    processingBuffer();
+    processingOrder();
+    checkStock();
+    rechargeStock();
+    delay (100);
 }
