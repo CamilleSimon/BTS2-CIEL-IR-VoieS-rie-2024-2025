@@ -1,12 +1,11 @@
 // C++ code
 //
 const int TOTALCHARGE = 10;
-const int POURCENTAGE = TOTALCHARGE / 4;
-int cafe = TOTALCHARGE;
-int chocolatchaud = TOTALCHARGE;
-int the = TOTALCHARGE;
+const int POURCENTAGE = TOTALCHARGE / 2;
 String choix = "";
 const int PIN = 3;
+const String BOISSON[PIN] = {"cafe", "chocolat chaud", "the"};
+int stocks[PIN] = {10, 10, 10};
 const int LUMIERE[PIN] = {13, 12, 11};
 const int BOUTON[PIN] = {7, 6, 5};
 bool messagedemande = false;
@@ -24,52 +23,34 @@ void setup(){
       	digitalWrite(BOUTON[i], HIGH);
     }
   	Serial.print("Choisissez : cafe, chocolat chaud, the \n");
-    Serial.print("Quantite :    " + String(cafe) + "        " + String(chocolatchaud) + "         " + String(the) + "\n");
+    Serial.print("Quantite :    " + String(stocks[0]) + "        " + String(stocks[1]) + "         " + String(stocks[2]) + "\n");
     messagedemande = true;
 }
 
-void Allumer(int Led){
-    digitalWrite(Led, LOW);
+void Allumer(int indice){
+  	if(stocks[indice] <= POURCENTAGE / 2){
+  		digitalWrite(LUMIERE[indice], LOW);
+    }
+  	else if (stocks[indice] <= POURCENTAGE){
+      	if (digitalRead(LUMIERE[indice]) == LOW){
+        	(digitalWrite(LUMIERE[indice], HIGH));
+          	delay(200);
+        }
+      	else {
+      		(digitalWrite(LUMIERE[indice], LOW));
+        	delay(200);
+        }
+    }
 }
 
-void Recharge(int Btnpasc){
-  	if (Btnpasc == BOUTON[0]){
-  		cafe = 10;
-      	Serial.print("Le cafe a ete recharger \n");
-      	digitalWrite(LUMIERE[0], HIGH);
-      	messagedemande = false;
-  	}
-  	else if (Btnpasc == BOUTON[1]){
-  		chocolatchaud = 10;
-      	Serial.print("Le chocolat chaud a ete recharger \n");
-      	digitalWrite(LUMIERE[1], HIGH);
-      	messagedemande = false;
-    }
-  	else {
-    	the = 10;
-      	Serial.print("Le the a ete recharger \n");
-      	digitalWrite(LUMIERE[2], HIGH);
-      	messagedemande = false;
-    }
-	digitalWrite(Btnpasc, HIGH);
-}
-
-void loop(){
+int receptionCommande(int buff){
   	choix = "";
-  	int buff = 0;
-  	if (messagedemande == false){
-  		Serial.print("\nChoisissez : cafe, chocolat chaud, the \n");
-      	Serial.print("Quantite :    " + String(cafe) + "        " + String(chocolatchaud) + "         " + String(the) + "\n");
-      	messagedemande = true;
-  	}
-  	else{
-    }
-  	buff = Serial.available();
   	while(buff > 0){
       	char lettre = Serial.read();
       	delay(10);
   		choix += lettre;
       	buff = Serial.available();
+  	}
   	/*}
   	if (regex_match(choix, MOTIFCAFE)) {
     	choix = "cafe"
@@ -80,52 +61,54 @@ void loop(){
   	else if (regex_match(choix, MOTIFTHE)) {
     	choix = "the"
     }*/
-    if (choix == "cafe"){
-      	Serial.print("Vous avez selectionner un cafe \n");
-      	if (cafe > 0){
-      		cafe -= 1;
+  	for (int i = 0; i < PIN; i++){
+      	if (choix == BOISSON[i]){
+      		return i;
         }
-      	else{
-      		Serial.print("Il n'y a plus de cafe ! \n");
-        }
-      	messagedemande = false;
     }
-    else if (choix == "chocolat chaud"){
-      	Serial.print("Vous avez selectionner un chocolat chaud \n");
-      	if (chocolatchaud > 0 ){
-    		chocolatchaud -= 1;
-        }
-      	else{
-      		Serial.print("Il n'y a plus de chocolat chaud ! \n");
-        }
-      	messagedemande = false;
-    }	
-    else if (choix == "the"){
-      	Serial.print("Vous avez selectionner un the \n");
-      	if (the > 0){
-    		the -= 1;
-        }
-      	else{
-      		Serial.print("Il n'y a plus de the ! \n");
-        }
-      	messagedemande = false;
-    }	
-  	else if (choix != ""){
-    	Serial.print("Mauvaise selection veuillez recommencer \n");
-        messagedemande = false;
+  	Serial.print("Mauvaise selection veuillez recommencer \n");
+    messagedemande = false;
+  	return -1;
+}
+
+void servirBoisson(int indice){
+	Serial.print("Vous avez selectionner un " + String(BOISSON[indice]) + " \n");
+	if (stocks[indice] > 0){
+      	stocks[indice] -= 1;
     }
-  	if(cafe <= POURCENTAGE){
-    	Allumer(LUMIERE[0]);
+    else{
+      	Serial.print("Il n'y a plus de " + String(BOISSON[indice]) + " ! \n");
     }
-    if(chocolatchaud <= POURCENTAGE){
-    	Allumer(LUMIERE[1]);
-    }
-    if(the <= POURCENTAGE){
-    	Allumer(LUMIERE[2]);
+    messagedemande = false;
+}
+
+void Remplir(int indice){
+  	stocks[indice] = 10;
+    Serial.print("Le " + String(BOISSON[indice]) +" a ete recharger \n");
+    digitalWrite(LUMIERE[indice], HIGH);
+    messagedemande = false;
+}
+
+void loop(){
+  	int buff = 0;
+  	if (messagedemande == false){
+  		Serial.print("\nChoisissez : cafe, chocolat chaud, the \n");
+      	Serial.print("Quantite :    " + String(stocks[0]) + "        " + String(stocks[1]) + "          " + String(stocks[2]) + "\n");
+    	messagedemande = true;
+  	}
+  	buff = Serial.available();
+  	if (buff > 0){
+  		int indice = receptionCommande(buff);
+      	if (indice != -1){
+      		servirBoisson(indice);
+      	}
     }
   	for (int i = 0; i < PIN; i++){
+      	if (stocks[i] <= POURCENTAGE){
+        	Allumer(i);
+        }
       	if (digitalRead(BOUTON[i]) == LOW){
-      		Recharge(BOUTON[i]);
+      		Remplir(i);
         }
     }
 }
