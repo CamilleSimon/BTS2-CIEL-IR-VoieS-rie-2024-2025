@@ -83,13 +83,15 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
+void setup()
+{
 Serial.begin(9600);
-int variable = 'A';
+int variable;
 char caractere = variable + 1;
- int variable1 = 'a';
+ int variable1;
  char caractere1 = variable1 + 1;
 
-Serial.println(caractere,caractere1);
+Serial.println(caractere);
   for(int i=65;i<=90; i++)
 	{
 	caractere = i;
