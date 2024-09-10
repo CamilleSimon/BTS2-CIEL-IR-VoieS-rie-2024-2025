@@ -47,7 +47,6 @@ void initializingComponents()
     {
         pinMode(LEDS[i], OUTPUT);
         pinMode(BTNS[i], INPUT_PULLUP);
-        digitalWrite(LEDS[i], HIGH);
     }
 }
 
