@@ -1,0 +1,44 @@
+int key ;
+int operation ;
+
+int chiffrement ()
+{
+
+}
+
+int dechiffrement ()
+{
+
+}
+
+void setup()
+{
+    Serial.begin(9600);
+ 
+}
+
+void loop()
+{
+    char readChar = 0; // caractère à lire
+	int charInt;
+    int buff = Serial.available();
+ 	
+  	int tab = [256];
+  	
+    
+    
+      
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+     
+        readChar = Serial.read()+ key; // lecture du caractère
+    
+      if (readChar > 122)
+    {
+    	readChar = readChar - 26 ;
+    }
+   		Serial.print(readChar); // envoi du caractère
+      buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }
+  
+}
