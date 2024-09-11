@@ -96,9 +96,9 @@ AaBbCc...Zz
 for (n = 0 ; n < 26 ; n++ )
 {
  char caractere = variable + n;
- Serial.println(caractere);
+ Serial.print(caractere);
  char caractere1 = variable1 + n;
- Serial.println(caractere1);
+ Serial.print(caractere1);
   
 }
 ```
