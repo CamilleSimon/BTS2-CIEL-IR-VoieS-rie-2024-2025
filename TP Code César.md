@@ -39,6 +39,44 @@ Pour déchiffrer un message, on opère de façon inverse, chaque caractère du m
 4. Que se passe-t-il si le message est `bonjour` ? Proposez une amélioration de votre code permettant d'obtenir un message chiffré correctement.
 
 ## Partie 2
+// c++ Mathis Mota
+int operation, cle = 6;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()) {
+    String messageEntree = Serial.readStringUntil('\n').trim();
+    int premiereVirgule = messageEntree.indexOf(',');
+    int deuxiemeVirgule = messageEntree.indexOf(',', premiereVirgule + 1);
+    operation = messageEntree.substring(0, premiereVirgule).toInt();
+    cle = messageEntree.substring(premiereVirgule + 1, deuxiemeVirgule).toInt();
+    String message = messageEntree.substring(deuxiemeVirgule + 1);
+    Serial.println(operation == 0 ? chiffrement(message, cle) : dechiffrement(message, cle));
+  }
+}
+
+String chiffrement(String message, int cle) {
+  String resultat = "";
+  for (int i = 0; i < message.length(); i++) {
+    char c = message[i] + cle;
+    if (c > 'z') c -= 26;
+    resultat += c;
+  }
+  return resultat;
+}
+
+String dechiffrement(String message, int cle) {
+  String resultat = "";
+  for (int i = 0; i < message.length(); i++) {
+    char c = message[i] - cle;
+    if (c < 'a') c += 26;
+    resultat += c;
+  }
+  return resultat;
+}
 
 Notre code ne permet pas de choisir si l'on veut chiffrer ou déchiffrer un message ni de paramétrer la valeur de la clé. Rendons les choses un peu plus complexes pour que notre Arduino puisse prendre en compte ces deux aspects.
 
