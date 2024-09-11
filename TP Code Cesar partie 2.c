@@ -24,7 +24,7 @@ void processInput(String input)
   if (firstCommaIndex == -1 || secondCommaIndex == -1) 
   {
     Serial.println("Erreur: Format invalide.");  // securiter de format valide
-  
+  }
   operation = input.substring(0, firstCommaIndex).toInt();  // recuperer l'opération
   key = input.substring(firstCommaIndex + 1, secondCommaIndex).toInt();  // recuperer la clé
   String message = input.substring(secondCommaIndex + 1);  // recuperer le message
@@ -61,7 +61,7 @@ void processInput(String input)
 }
 
 //  chiffrement
-void chiffrement(String message) 
+void chiffrement(String message)
 {
   String result = "";
   for (int i = 0; i < message.length(); i++) 
