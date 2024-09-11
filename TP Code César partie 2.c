@@ -1,51 +1,71 @@
-int operation = 0;
-int key = 0;
-char limiter = ',';
-String tramFull = "";
+int operation;     
+int key;           
+String message;    
 
-void setup() {
-    Serial.begin(9600);
+String chiffrement(int key, String message) 
+{
+  String resultat = "";  
+
+  for (int i = 0; i < message.length(); i++) 
+  {
+    char c = message[i];  
+    char charChiffre = (c - 'a' + key) % 26 + 'a'; 
+    resultat += charChiffre;  
+  }
+  return resultat;  
 }
 
-void loop() {
-    char readChar = 0; 
-    int buff = 0;
-    buff = Serial.available();
 
-    if(buff) {
-        readTram();
-    }
+String dechiffrement(int key, String message) 
+{
+  String resultat = "";  
+
+  for (int i = 0; i < message.length(); i++) 
+  {
+    char c = message[i];  
+    char charDechiffre = (c - 'a' - key + 26) % 26 + 'a'; 
+    resultat += charDechiffre;  
+  }
+  return resultat;  
 }
 
-void chiffrement(char readChar, int buff) {
-    readChar = Serial.read(); 
-    readChar = readChar + key;
-    Serial.print(readChar); 
-    buff = Serial.available(); 
+void traiterMessage(String data) 
+{
+  int firstComma = data.indexOf(',');  
+  int secondComma = data.indexOf(',', firstComma + 1);  
+
+  operation = data.substring(0, firstComma).toInt();  
+  key = data.substring(firstComma + 1, secondComma).toInt();  
+  message = data.substring(secondComma + 1);  
+
+  if (operation == 0) 
+  {
+    
+    String messageChiffre = chiffrement(key, message);
+    Serial.println("Message chiffre : " + messageChiffre);  
+  } 
+  else if (operation == 1) 
+  {
+    String messageDechiffre = dechiffrement(key, message);
+    Serial.println("Message dechiffre : " + messageDechiffre); 
+  } 
+  else 
+  {
+    Serial.println("Operation invalide !");    
+  }
 }
 
-void dechiffrement(char readChar, int buff) {
-    readChar = Serial.read(); 
-    readChar = readChar - key;
-    Serial.print(readChar); 
-    buff = Serial.available();
+void setup() 
+{
+  Serial.begin(9600);
 }
 
-void readTram() {
-    while(Serial.available()) 
-    {
-        char readChar;
-        int buff;
-        readChar = Serial.read(); 
-        Serial.println(readChar); 
-        tramFull += readChar;
-        buff = Serial.available(); 
-        Serial.print("TramFull : ");
-        Serial.println(tramFull);
-        Serial.println("---");
-    }
-    Serial.println("******** TRAM FINI ********");
-
-    int test = tramFull.find(",");
-    Serial.println(test);
+void loop() 
+{
+  if (Serial.available() > 0) 
+  {
+    String data = Serial.readStringUntil('\n');
+    
+    traiterMessage(data);
+  }
 }
