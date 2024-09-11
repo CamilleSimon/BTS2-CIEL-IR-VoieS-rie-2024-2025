@@ -14,14 +14,18 @@ void loop()
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {	
       	char buff2 = Serial.read(); // caractère à lire
-      	int buff3 = buff2 + key;
-      
+		
+		int buff3 = buff2 + key; 
+
       if (buff3 > 122){
-        	buff3 = buff3 - 26;
-        	buff2 = buff3;
+		buff3 = buff3 - 26;
+		buff2 = buff3;
+      }
+      else 
+      {
+        buff2 = buff2 + key;
       }
         Serial.print(buff2); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 }
-      	
