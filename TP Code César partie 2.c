@@ -39,7 +39,7 @@ void loop()
         operation = string1[0];
       	Serial.print(operation);
       
-      	
+      	//jen suis ici hehhe
         key2 = string1.substring(2,diff_virg);
 
       	Serial.print(key2);
