@@ -4,6 +4,7 @@ char operation = -1;
 int key;
 String key2;
 char res;
+int depassement;
 
 void print(const char* format, ...);
 
@@ -37,23 +38,25 @@ void loop()
         int diff_virg = virg2 - virg1 + 1;
 
         operation = string1[0];
-      	Serial.print(operation);
+      	//Serial.print(operation);//Type d'Operation (chiffrer 0 ou dechiffrer 1)
       
-      	//jen suis ici hehhe
+      	
         key2 = string1.substring(2,diff_virg);
-
-      	Serial.print(key2);
-        int longueur = string1.length()- virg2 +1;
-      
-        String mot;
+		
+      	key = key2.toInt();
+      	//Serial.print(key);//Valeur du décalage
+        int longueur = string1.length()- virg2 ;
+      	//Serial.print(longueur); // Nombre de caractères du mot
+      	String mot;
       
         for(int l = 1; l < longueur; l++)
         {
           	delay(10);
             mot = mot + string1[virg2+l]; 
         } 
+      	//Serial.print(mot);
 
-        if (operation == 0)
+        if (operation == '0')
         {
             chiffrement(mot);
         }
@@ -69,11 +72,20 @@ void loop()
 String chiffrement(String mot)
 {
   	int longueur2 = mot.length();
-	for(int j = 0; j < 1; j++)
+	for(int j = 0; j < longueur2; j++)
     {
-      	//Serial.print(mot[j]);
-    	res = mot[j] + key;
-      	//Serial.print(res);
+      	if (mot[j] + key > 122)
+        {
+			depassement = mot[j] + key - 26;
+			res = depassement;
+          	Serial.print(res);
+      	}
+     	else 
+      	{
+      		res = mot[j] + key;
+      		Serial.print(res);
+      	}
+      	
 	}
   	
 }
@@ -81,17 +93,31 @@ String chiffrement(String mot)
 String dechiffrement(String mot)
 {
   	int longueur3 = mot.length();
+  	//Serial.print(longueur3);
+  	
+  
 	for(int k = 0; k < longueur3; k++)
     {
-    	res = mot[k] - key;
-        //Serial.print(res);
+      	//Serial.print(mot[k]+key);
+      	if (mot[k] - key < 97)
+        {
+			depassement = mot[k] - key + 26;
+			res = depassement;
+          	Serial.print(res);
+      	}
+     	else 
+      	{
+      		res = mot[k] - key;
+      		Serial.print(res);
+      	}
+    	
 	}
   	
 }
   
 
 
-void print(const char* format, ...)
+void print(const char* format, ...)// Fonction pour print donner par le Prof
 {
   char buffer[512];
 
