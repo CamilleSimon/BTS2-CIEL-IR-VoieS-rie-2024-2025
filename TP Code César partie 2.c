@@ -90,7 +90,7 @@ String chiffrement(String mot)
   	
 }
 
-String dechiffrement(String mot)
+void dechiffrement(String mot)
 {
   	int longueur3 = mot.length();
   	//Serial.print(longueur3);
