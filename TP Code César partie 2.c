@@ -2,53 +2,69 @@ int operation = 0;
 int key = 0;
 char limiter = ',';
 String tramFull = "";
+String message = "";
+String finalMessage = "";
 
 void setup() {
     Serial.begin(9600);
 }
 
 void loop() {
-    char readChar = 0; // caractère à lire
+    char readChar; // caractère à lire
     int buff = 0;
+    tramFull = "";
+    operation = 0;
+    key = 0;
+    message = "";
+    finalMessage = "";
 
     buff = Serial.available();
 
-    if(buff) {
-        readTram();
-    }
-}
-
-void chiffrement(char readChar, int buff) {
-    readChar = Serial.read(); // lecture du caractère
-    readChar = readChar + key;
-    Serial.print(readChar); // envoi du caractère
-    buff = Serial.available(); // mise à jour du nombre de caratères restant
-}
-
-void dechiffrement(char readChar, int buff) {
-    readChar = Serial.read(); // lecture du caractère
-    readChar = readChar - key;
-    Serial.print(readChar); // envoi du caractère
-    buff = Serial.available(); // mise à jour du nombre de caratères restant
-}
-
-void readTram() {
-    while(Serial.available()) // tant qu'il reste des caractères dans le buffer
-    {
-        char readChar;
-        int buff;
-        readChar = Serial.read(); // lecture du caractère
-        Serial.println(readChar); // envoi du caractère
+    while (buff > 0) {
+        readChar = Serial.read();
         tramFull += readChar;
+        delay(10);
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-
-        Serial.print("TramFull : ");
-        Serial.println(tramFull);
-
-        Serial.println("---");
     }
-    Serial.println("******** TRAM FINI ********");
+    
+    if (tramFull != "") {
+        int firstlimite = tramFull.indexOf(',');
+        int secondelimite = tramFull.indexOf(',', firstlimite + 1);
 
-    int test = tramFull.find(",");
-    Serial.println(test);
+        operation = tramFull.substring(0, firstlimite).toInt();
+        key = tramFull.substring(firstlimite + 1, secondelimite).toInt();
+        message = tramFull.substring(secondelimite + 1);
+
+        if (operation == 0) {
+            chiffrement();
+        } else if (operation == 1) {
+            dechiffrement();
+        }
+    }
+}
+
+void chiffrement() {
+    char charFinal;
+    for (int i = 0; i < message.length(); i++) {
+        char charTemp = message[i];
+        charFinal = message[i] + key; // Ajout de la cle au caractère
+        if (charFinal > 'z') {
+            charFinal = (charFinal - 'z' - 1) + 'a';
+        }
+        finalMessage += charFinal;
+    }
+    Serial.println("Message chiffré : " + finalMessage);
+}
+
+void dechiffrement() {
+    char charFinal;
+    for (int i = 0; i < message.length(); i++) {
+        char charTemp = message[i];
+        charFinal = message[i] - key; // Ajout de la cle au caractère
+        if (charFinal < 'a') {
+            charFinal = (charFinal + 'z' + 1) - 'a';
+        }
+        finalMessage += charFinal;
+    }
+    Serial.println("Message dechiffré : " + finalMessage);
 }
