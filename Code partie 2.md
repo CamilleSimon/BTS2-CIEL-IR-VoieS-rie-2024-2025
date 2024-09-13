@@ -1,43 +1,73 @@
 ```C++
-int key = 0;
-String message = "";
+int key;
+int comparaison;
 
 void setup() {
-  Serial.begin(9600);  // Démarrer la communication série
+  Serial.begin(9600);
 }
 
 void loop() {
-  if (Serial.available()) {  // Si un message est disponible
-    String input = Serial.readStringUntil('\n');  // Lire le message
+  String inputMessage = "";
+  while (Serial.available() > 0) {
+    char receivedChar = Serial.read();
+    inputMessage += receivedChar;
+    delay(10);
+  }
+
+  if (inputMessage.length() > 1) {	 // Trouver la position des virgules
+   
+    int virgule1 = inputMessage.indexOf(',');
+    int virgule2 = inputMessage.indexOf(',', virgule1 + 1);
+
+    if (virgule2 == -1) {
+      Serial.println("Erreur : format de message invalide.");
+      return;
+    }
+
+  
+    String keyString = inputMessage.substring(virgule1 + 1, virgule2);	  // Extraire la clé
+    key = keyString.toInt();
+
+   
+    String caractere = inputMessage.substring(virgule2 + 1);	 // Extraire le texte à crypter ou décrypter
 
     
-    int operation = input.substring(0, 1).toInt();  // 0 pour chiffrer, 1 pour déchiffrer
-    key = input.substring(2, 3).toInt();  // La clé est le deuxième nombre
-    message = input.substring(4);  // Le reste est le message
+    comparaison = inputMessage[0] - '0';	// Déterminer l'action (0 pour chiffrement, 1 pour déchiffrement)
 
-    if (operation == 0) {
-      chiffrement();  // Chiffrement
+   
+    if (comparaison == 0) {	 // Exécuter l'action
+      chiffrement(key, caractere);
+    } else if (comparaison == 1) {
+      dechiffrement(key, caractere);
     } else {
-      dechiffrement();  // Déchiffrement
+      Serial.println("Erreur : action invalide.");
     }
   }
 }
 
-void chiffrement() {
-  for (int i = 0; i < message.length(); i++) {
-    char c = message[i];
-    c = c + key;  // Ajouter la clé à la lettre
-    Serial.print(c);  // Afficher la lettre chiffrée
+void chiffrement(int key, String caractere) {
+ 
+  for (int i = 0; i < caractere.length(); i++) {
+    char chiffrementcar = caractere[i] + key;
+
+    if (chiffrementcar > 'z') {
+      chiffrementcar = 'a' + (chiffrementcar - 'z' - 1);
+    }
+    Serial.print(chiffrementcar);
   }
-  Serial.println();  // Passer à la ligne suivante
+  Serial.println();
 }
 
-void dechiffrement() {
-  for (int i = 0; i < message.length(); i++) {
-    char c = message[i];
-    c = c - key;  // Soustraire la clé à la lettre
-    Serial.print(c);  // Afficher la lettre déchiffrée
+void dechiffrement(int key, String caractere) {
+  for (int i = 0; i < caractere.length(); i++) {
+    char dechiffrementcar = caractere[i] - key;
+
+    if (dechiffrementcar < 'a') {
+      dechiffrementcar = 'z' - ('a' - dechiffrementcar - 1);
+    }
+    Serial.print(dechiffrementcar);
   }
-  Serial.println();  // Passer à la ligne suivante
+  Serial.println();
 }
+
 ```
