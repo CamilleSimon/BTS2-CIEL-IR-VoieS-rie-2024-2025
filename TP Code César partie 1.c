@@ -1,4 +1,4 @@
-const int key = 6; //declaration de la constante key 
+int key = 6; //declaration de la constante key 
 
 void setup()
 {
