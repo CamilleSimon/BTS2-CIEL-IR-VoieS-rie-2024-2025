@@ -83,7 +83,33 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+void setup()
+{
+  // On ouvre la liaison avec une vitesse de 9600 bits/sec
+  
+  Serial.begin(9600);
+  
+  // Initialisation des variables
+  
+  char majuscule = 'A';
+  char minuscule= majuscule + 32;
+  
+  // On boucle jusqu'à avoir le z, 26 fois pour les 26 lettres de l'alphabet
+  
+  for(int i = 0; i < 26; i++)
+  {
+    Serial.print(majuscule); // Affichage de la majuscule
+    Serial.print(minuscule); // Affichage de ma minuscule
+    majuscule = majuscule + 1; // On passe de la majuscule actuelle à la majuscule suivante
+    minuscule = majuscule + 32; // On transforme la majuscule actuelle en minuscule
+  }
+  
+}
+
+void loop()
+{
+
+}
 ```
 
 ## 4. Réception de données
