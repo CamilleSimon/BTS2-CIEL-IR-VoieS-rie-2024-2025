@@ -21,7 +21,6 @@ void loop() {
 
     if (virgule2 == -1) {
       Serial.println("Erreur : format de message invalide.");
-      return;
     }
 
   
