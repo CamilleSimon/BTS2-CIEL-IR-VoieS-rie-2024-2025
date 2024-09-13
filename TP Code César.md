@@ -38,39 +38,6 @@ Pour déchiffrer un message, on opère de façon inverse, chaque caractère du m
     4. Pour l'exemple `hello` vous devez obtenir `nkrru`.
 4. Que se passe-t-il si le message est `bonjour` ? Proposez une amélioration de votre code permettant d'obtenir un message chiffré correctement.
 
-'''// C++ code
-//
-
-int key = 6;  // Clé de chiffrement 
-
-void setup()
-{
-    Serial.begin(9600);
-}
-
-
-void loop()
-   
-{
- char readChar = 0;  // Caractère à lire
-    int buff = Serial.available();  // Nombre de caractères disponibles dans le buffer
-
-    while (buff > 0) {  // Tant qu'il y a des caractères dans le buffer
-        readChar = Serial.read();  // Lire un caractère du buffer
-
-            readChar += key;  // Appliquer le décalage
-
-            
-            // Si le décalage dépasse 'z', revenir au début de l'alphabet
-                if (readChar > 'z') {
-                    readChar -= 26;
-            }
-        }
-
-        Serial.print(readChar);  // Affiche le caractère chiffré ou non
-        buff = Serial.available();  // Met à jour le nombre de caractères restants
-    }
-}
 
 ## Partie 2
 
