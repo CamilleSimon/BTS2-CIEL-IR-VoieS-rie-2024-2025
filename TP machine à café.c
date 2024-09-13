@@ -14,14 +14,15 @@ void setup() {
     pinMode(LEDS[i], OUTPUT); 
   }
   for (int i = 0; i < 3; i++) {
-    pinMode(BOUTTON[i], INPUT); 
+    pinMode(BOUTTON[i], INPUT);
+    digitalWrite(BOUTTON[i],HIGH);
   }
   Serial.begin(9600);
 }
 
 void loop() {
   for (int i = 0; i < 3; i++) {
-    if (digitalRead(BOUTTON[i]) == HIGH) {
+    if (digitalRead(BOUTTON[i]) == LOW) {
       remplir(i);
       delay(200);
     }
@@ -35,8 +36,6 @@ void loop() {
 void remplir(int index) {
   if (boissons[index] < MAX_BOISSON) {
     boissons[index] = MAX_BOISSON;
-    Serial.print("Remplissage de la boisson ");
-    Serial.println(index);
   }
 }
 
@@ -66,16 +65,16 @@ void servirBoisson(int boisson) {
 void checkLumiere() {
   for (int i = 0; i < 3; i++) {
     if (boissons[i] < 3) {
-      digitalWrite(LEDS[i], HIGH);
+      digitalWrite(LEDS[i], LOW);
     } 
     else if (boissons[i] >= 3 && boissons[i] <= 5) {
-      digitalWrite(LEDS[i], LOW);
-      delay(500); 
       digitalWrite(LEDS[i], HIGH);
+      delay(500); 
+      digitalWrite(LEDS[i], LOW);
       delay(500); 
     } 
     else {
-      digitalWrite(LEDS[i], LOW);
+      digitalWrite(LEDS[i], HIGH);
     }
   }
 }
