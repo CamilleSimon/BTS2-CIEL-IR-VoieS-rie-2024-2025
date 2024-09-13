@@ -57,14 +57,159 @@ Exemple :
 
 1. Définissez une variable globale `operation` qui stockera le premier nombre du message.
 2. Créez deux fonctions : `chiffrement()` et `dechiffrement()`.
-    1. Ces fonctions ont-elles besoin d'arguments ? Quelles informations doit-on leur fournir pour qu'elles réalisent leur tâche ?
-    2. Faut-il ajouter un type de retour ?
+    1. Ces fonctions ont-elles besoin d'arguments ? Quelles informations doit-on leur fournir pour qu'elles réalisent leur tâche ? ---> Oui, la variable key.
+    2. Faut-il ajouter un type de retour ? ---> Non car le résultat est un affichage.
 3. Dans la fonction `loop()`
     1. Proposez une façon d'enregistrer les informations reçues par l'Arduino dans une structure de données complexe (tableau ou chaîne de caractères par exemple).
     2. Segmentez les données reçues et affectez leurs valeurs à `key` et `operation`.
     3. Appelez `chiffrement()` et `dechiffrement()` dans les situations qui conviennent.
 4. Testez votre code.
 
+
+/// C++ code
+int operation, key, buff, start, tailleSeg;
+void chiffrement(int key, int start);
+void dechiffrement(int key, int start);
+String segment;
+String tab;
+
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+
+void loop()
+{
+  int buff = Serial.available();
+  while(buff!=-1)
+  {
+  delay(20);
+  tab[buff];
+  for(int i=0;i<buff;i++)
+  {
+    tab[i]=Serial.read();
+    buff=Serial.available();
+  }
+  operation = tab[0];
+  if(tab[3]=='44')
+  {
+    key=tab[2];
+    start=4;
+  }
+  else
+  {
+    key=tab[2]*10+tab[3];
+    start=5;
+  }
+    tailleSeg = buff-start;
+    segment[tailleSeg];
+    for (int i=0; i<tailleSeg;i++)
+    {
+      segment[i]=tab[start+i];
+    }
+  	switch (operation)
+    {
+      case 0 :
+      	chiffrement(key, start);
+      	break;
+      case 1:
+      	dechiffrement(key, start);
+      	break;
+      default:
+      	Serial.print("probleme de format");
+    }
+  }
+}
+  
+
+
+void chiffrement (int key, int start)
+{
+  char resultat;
+  int somme;
+  for (int i =start;i<=buff;i++)
+  {
+    somme=segment[i]+key;
+    if (((somme>90)&&(somme<97))||(somme>122))
+        {
+          somme = somme-26;
+      	resultat =somme;
+        }
+      	else 
+        {
+          resultat=somme;
+        }
+        Serial.print(resultat);
+  }
+}
+  
+  void dechiffrement (int key, int start)
+{
+  char resultat;
+  int somme;
+  for (int i =start;i<=buff;i++)
+  {
+    somme=segment[i]-key;
+    if (((somme>90)&&(somme<97))||(somme>122))
+        {
+          somme = somme+26;
+      	resultat =somme;
+        }
+      	else 
+        {
+          resultat=somme;
+        }
+        Serial.print(resultat);
+  }
+ }
+///
+
+
+
+
+
+
+  /*int buff = Serial.available();
+  char readChar = 0;
+  while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+        readChar = Serial.read(); // lecture du caractère
+     	readChar = readChar+key;
+      	if (((readChar+key>90)&&(readChar+key<97))||(readChar+key>122))
+        {
+          readChar = readChar+key-26;
+        }
+      	else 
+        {
+          readChar=readChar+key;
+        }
+        Serial.print(readChar); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }
+}
+void dechiffrement (int key, int start)
+{
+  int buff = Serial.available();
+  char readChar = 0;
+  while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+        readChar = Serial.read(); // lecture du caractère
+     	readChar = readChar-key;
+      	if (((readChar+key>90)&&(readChar+key<97))||(readChar+key<65))
+        {
+          readChar = readChar-key+26;
+        }
+      	else 
+        {
+          readChar=readChar-key;
+        }
+        Serial.print(readChar); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }
+}*/
+///
 ## Bonus
 
 Sécurisez votre code afin qu'il ne s'exécute que dans des situations valides. Exemple : valeur d'opération invalide, valeur de clé invalide, message contenant des caractères interdits.
