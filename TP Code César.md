@@ -37,42 +37,7 @@ Pour déchiffrer un message, on opère de façon inverse, chaque caractère du m
     3. Affichez le résultat.
     4. Pour l'exemple `hello` vous devez obtenir `nkrru`.
 4. Que se passe-t-il si le message est `bonjour` ? Proposez une amélioration de votre code permettant d'obtenir un message chiffré correctement.
-```c++
-int key = 6;
 
-void setup()
-{
-  Serial.begin(9600);
-}
-
-void loop()
-{
-  char readChar = 0; // caractère à lire
-
-  int buff = Serial.available();
-
-  int charcesar;
-
-  while (buff > 0)
-  {
-    readChar = Serial.read(); // lecture du caractère
-
-    charcesar = key + readChar;
-
-    // Gestion du dépassement pour les lettres en fin d'alphabet
-    if (charcesar > 'z') {
-      charcesar = 'a' + (charcesar - 'z' - 1);
-      
-    }
-    
-	char result = charcesar;
-   // Serial.print(charcesar); // envoi du caractère
-    int test = charcesar;
-    Serial.print(test);
-    buff = Serial.available();
-  }
-}
-```
 ## Partie 2
 
 Notre code ne permet pas de choisir si l'on veut chiffrer ou déchiffrer un message ni de paramétrer la valeur de la clé. Rendons les choses un peu plus complexes pour que notre Arduino puisse prendre en compte ces deux aspects.
