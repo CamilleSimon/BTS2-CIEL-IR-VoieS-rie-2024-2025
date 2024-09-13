@@ -20,15 +20,19 @@ void loop() {
     String keyString = texte.substring(2, secondCommaIndex);
     key = keyString.toInt();
 
-    Serial.print("Message: ");  
-    Serial.println(texte);
-
-    if (operation == 0) {
-      chiffrement(key, texte.substring(secondCommaIndex + 1));
-    } else if (operation == 1) {
-      dechiffrement(key, texte.substring(secondCommaIndex + 1));
-    } else {  
-      Serial.println("Rentrez un message valide  ");
+    if (texte.length() > 5) { 
+      Serial.print("Message: ");  
+      Serial.println(texte);
+      
+      if (operation == 0) {
+        chiffrement(key, texte.substring(secondCommaIndex + 1));
+      } else if (operation == 1) {
+        dechiffrement(key, texte.substring(secondCommaIndex + 1));
+      } else {  
+        Serial.println("Rentrez un message valide  ");
+      }
+    } else {
+      Serial.println("La demande doit être plus grande que 5 caractères");
     }
   }
 }
