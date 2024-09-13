@@ -83,7 +83,12 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+  Serial.begin(9600);
+  for(int i=0;i<26;i++){
+    char caractere = 'A'+ i;
+    char caracteremin = 'a' + i;
+    Serial.print(caractere);
+    Serial.print(caracteremin);}
 ```
 
 ## 4. Réception de données
