@@ -58,13 +58,12 @@ void loop()
     while (buff > 0) {  // Tant qu'il y a des caractères dans le buffer
         readChar = Serial.read();  // Lire un caractère du buffer
 
-        
-        if (readChar >= 'a' && readChar <= 'z') { // Vérifie si le caractère est une lettre minuscule
             readChar += key;  // Appliquer le décalage
 
             
-            while (readChar > 'z') { // Ajuste le caractère si le décalage dépasse 'z'
-                readChar -= 26;  // Revenir au début de l'alphabet
+            // Si le décalage dépasse 'z', revenir au début de l'alphabet
+                if (readChar > 'z') {
+                    readChar -= 26;
             }
         }
 
