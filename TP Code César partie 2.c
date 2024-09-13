@@ -17,7 +17,7 @@ void loop() {
     //Vérifier si l'opération est valide (0 ou 1)
     if (message[0] != '0' && message[0] != '1') {
       Serial.println("Erreur : valeur d'opération invalide. Utilisez 0 pour chiffrement ou 1 pour déchiffrement.");
-      return;
+      
     }
 
     operation = message[0] - '0';
@@ -26,7 +26,7 @@ void loop() {
     int positionDeuxiemeVirgule = message.indexOf(',', message.indexOf(',') + 1);
     if (positionDeuxiemeVirgule == -1) {
       Serial.println("Erreur : format de message invalide.");
-      return;
+     
     }
 
     // Extraire la clé du message
@@ -36,7 +36,7 @@ void loop() {
     // Vérifier si la clé est valide (entre 1 et 25)
     if (key < 1 || key > 25) {
       Serial.println("Erreur : valeur de clé invalide. La clé doit être entre 1 et 25.");
-      return;
+      
     }
 
     // Extraire le message à crypter ou à décrypter
@@ -45,7 +45,7 @@ void loop() {
     // Valider que le message ne contient que des lettres minuscules
     if (!MessageValide(text)) {
       Serial.println("Erreur : le message contient des caractères interdits. Utilisez uniquement des lettres minuscules (a-z).");
-      return;
+
     }
 
     Serial.print("Message: ");
