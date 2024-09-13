@@ -85,10 +85,6 @@ AaBbCc...Zz
 ```C++
 void setup()
 {
-  Serial.begin(9600);
-  Serial.print("Ceci est un message sur une ligne. ");
-  Serial.println("Ceci est un message sur la meme ligne.");
-  Serial.println("Ceci est un message sur une deuxieme ligne.");
   for (int i=0 ; i<26 ; i++) {
     char alp = 'A' + i;
     char alp2 = 'a'+ i;
