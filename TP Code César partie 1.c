@@ -25,10 +25,8 @@ void loop()
       
     }
     
-	char result = charcesar;
-   // Serial.print(charcesar); // envoi du caractère
-    int test = charcesar;
-    Serial.print(result);
+    char result = charcesar;
+    Serial.print(charcesar); // envoi du caractère
     buff = Serial.available();
   }
 }
