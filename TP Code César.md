@@ -62,7 +62,7 @@ void loop()
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
-}'''
+}
 
 ## Partie 2
 
