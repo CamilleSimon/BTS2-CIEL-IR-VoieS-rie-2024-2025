@@ -54,20 +54,16 @@ void loop()
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
-     	readChar = readChar+key;
-      	if (((readChar+key>90)&&(readChar+key<97))||(readChar+key>122))
+      	int somme = readChar+key;
+      	if (((somme>90)&&(somme<97))||(somme>122))
         {
-          readChar = readChar+key-26;
+          somme = somme-26;
         }
-      	else 
-        {
-          readChar=readChar+key;
-        }
+      	readChar = somme;
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
     }
 }
-///
 ## Partie 2
 
 Notre code ne permet pas de choisir si l'on veut chiffrer ou déchiffrer un message ni de paramétrer la valeur de la clé. Rendons les choses un peu plus complexes pour que notre Arduino puisse prendre en compte ces deux aspects.
