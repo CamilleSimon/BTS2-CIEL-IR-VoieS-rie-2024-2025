@@ -16,7 +16,7 @@ void loop() {
         caractere = Serial.read(); // lecture du caractère
       	caractere = caractere + key; // ajout de la cle au caractère
         if(caractere>122)
-          caractere= caractere - 24;
+          caractere= caractere - 26;
       	char test = caractere;
       	Serial.print(test); // ecris le caractere
         buff = Serial.available(); //remet la valeur de depart
