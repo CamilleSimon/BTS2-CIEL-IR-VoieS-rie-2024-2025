@@ -23,14 +23,14 @@ void loop() {
     operation = message[0] - '0';
 
     // Trouver la position de la deuxième virgule
-    int PosotionDeuxiemeVirgule = message.indexOf(',', message.indexOf(',') + 1);
-    if (PosotionDeuxiemeVirgule == -1) {
+    int positionDeuxiemeVirgule = message.indexOf(',', message.indexOf(',') + 1);
+    if (positionDeuxiemeVirgule == -1) {
       Serial.println("Erreur : format de message invalide.");
       return;
     }
 
     // Extraire la clé du message
-    String keyString = message.substring(2, PosotionDeuxiemeVirgule);
+    String keyString = message.substring(2, positionDeuxiemeVirgule);
     key = keyString.toInt();
 
     // Vérifier si la clé est valide (entre 1 et 25)
@@ -40,7 +40,7 @@ void loop() {
     }
 
     // Extraire le message à crypter ou à décrypter
-    String text = message.substring(PosotionDeuxiemeVirgule + 1);
+    String text = message.substring(positionDeuxiemeVirgule + 1);
 
     // Valider que le message ne contient que des lettres minuscules
     if (!MessageValide(text)) {
