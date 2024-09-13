@@ -12,7 +12,11 @@ void loop() {
     message += readChar;
     delay(10);
   }
-
+  
+   if (message.length() < 5) {
+    Serial.println("Erreur : le message doit contenir au moins 5 caractères.");
+    return;  // Arrêter l'exécution si le message est trop court
+  }
   if (message.length() > 1) {
     //Vérifier si l'opération est valide (0 ou 1)
     if (message[0] != '0' && message[0] != '1') {
