@@ -6,23 +6,31 @@ void setup() {
 }
 
 void loop() {
-  String message = "";  
-  while (Serial.available() > 0) {  
-    char readChar = Serial.read();  
-    message += readChar;  
-    delay(10);  
+  String message = "";
+  while (Serial.available() > 0) {
+    char readChar = Serial.read();
+    message += readChar;
+
   }
 
-  if (message.length() > 1) {  
-    operation = message[0] - '0';  
-    key = message[2] - '0';  
+  if (message.length() > 1) {
+    operation = message[0] - '0';
+
+    // Trouver la position de la deuxième virgule
+    // Cette fonction est utilisé pour trouver la position de la deuxième virgule dans le message de la chaîne.
+	int PosotionDeuxiemeVirgule = message.indexOf(',', message.indexOf(',') + 1);
+
+    // Extraire la clé du message
+    String keyString = message.substring(2, PosotionDeuxiemeVirgule);
+    key = keyString.toInt();
+
     Serial.print("Message: ");
-    Serial.println(message);  
+    Serial.println(message);
 
     if (operation == 0) {
-      chiffrement(key, message.substring(4));  
+      chiffrement(key, message.substring(PosotionDeuxiemeVirgule + 1));
     } else if (operation == 1) {
-      dechiffrement(key, message.substring(4));  
+      dechiffrement(key, message.substring(PosotionDeuxiemeVirgule + 1));
     } else {
       Serial.println("Rentrez un message valide  ");
     }
