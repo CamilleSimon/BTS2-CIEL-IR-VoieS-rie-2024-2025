@@ -7,14 +7,16 @@ String commandes[] = {"cafe", "chocolat", "the"};
 void setup() {
   Serial.begin(9600); 
   
-  for(int i = 0;i<3; i++){
-  	pinMode(buttonPins[i], INPUT);
-    pinMode(ledPins[i], OUTPUT);
+for(int i = 0; i < 3; i++){
+    pinMode(buttonPins[i], INPUT_PULLUP); 
+  	pinMode(ledPins[i], OUTPUT);
+  	digitalWrite(ledPins[i], HIGH);
   }
 }
 
 void remplir(int type_boisson){
   stockBoissons[type_boisson] = 10;
+  checkLumiere(type_boisson);
 }
 
 void receptionCommande() {
@@ -48,12 +50,31 @@ void servirBoisson(int type_boisson){
   } else {   
     stockBoissons[type_boisson]--;
     Serial.println("Boisson servie");
+    checkLumiere(type_boisson);
   }
 }
 
+void checkLumiere(int type_boisson){
+  if (stockBoissons[type_boisson]>5){
+    digitalWrite(ledPins[type_boisson], HIGH);
+  }
+  else if (stockBoissons[type_boisson]>2){
+    digitalWrite(ledPins[type_boisson], LOW);
+    delay(500);
+    digitalWrite(ledPins[type_boisson], HIGH);
+    delay(500); 
+    
+  }
+  else {
+     digitalWrite(ledPins[type_boisson], LOW);
+    }
+} 
+                 
+                 
+                 
 void loop() {
   receptionCommande();
-   for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++) {
     if (digitalRead(buttonPins[i]) == LOW) { 
       remplir(i);
       Serial.println("Stock de " + commandes[i] + " remis à 10.");
@@ -61,4 +82,5 @@ void loop() {
     }
   }
 }
+
 ```
