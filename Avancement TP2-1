@@ -1,8 +1,19 @@
+```C++
+int key = 6;
+
 void setup()
 {
 	Serial.begin(9600);
-  	int var = 'A';
-  	int key = 6;
-    char character = var + key;
-  Serial.print(character);
+	int variable = 'A';
+	char caractere = variable + key;
+	//Serial.print(caractere);
+	char var[255]={bonjour};
+	char buffer = 0;
+	//string var;
+	Serial.print(var);
 }
+//
+void loop()
+{
+}
+```
