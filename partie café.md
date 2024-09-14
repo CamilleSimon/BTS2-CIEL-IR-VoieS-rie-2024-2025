@@ -63,7 +63,7 @@ void checkLumiere(int type_boisson){
     delay(500);
     digitalWrite(ledPins[type_boisson], HIGH);
     delay(500); 
-    
+
   }
   else {
      digitalWrite(ledPins[type_boisson], LOW);
@@ -80,6 +80,7 @@ void loop() {
       Serial.println("Stock de " + commandes[i] + " remis à 10.");
       delay(500);
     }
+    checkLumiere(i);
   }
 }
 
