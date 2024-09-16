@@ -90,10 +90,10 @@ void setup()
   for ( int i = 0; i < 26; i++)
   {int variable = 'A';
 char caractere = variable + i;
-Serial.println(caractere);
+Serial.print(caractere);
    int variable1 = 'a';
  char caractere1 = variable1 + i;
-   Serial.println(caractere1);
+   Serial.print(caractere1);
   }  
 }
 
