@@ -6,7 +6,7 @@ void setup()
   Serial.begin(9600);
   String variable = "";
 }
-//
+
 void loop()
 {
     char readChar = 0;
