@@ -1,0 +1,29 @@
+// C++ code
+//
+void setup()
+{
+    // ouverture de la liaison à une vitesse de 9600 bits par seconde.
+    Serial.begin(9600);
+    
+}
+int key = 6;
+void loop()
+
+{
+    char readChar = 0; // caractère à lire
+
+    int buff = Serial.available();
+
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+      readChar = Serial.read();// lecture du caractère
+      int total = readChar + key;
+      if(total > 'z')
+      {
+        total = total - 26;
+      }
+      readChar = total;
+        Serial.print(readChar); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }
+}
