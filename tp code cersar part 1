@@ -28,14 +28,19 @@ void loop()
   
     char readChar = 0; // caractère à lire
     int buff = Serial.available();
-
+    
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
        readChar = Serial.read(); //
-      char i = readChar + key ;
-        buff = Serial.available(); // mise à jour du nombre de caratères restant
-        Serial.print(i);
+      int i = readChar + key ;
+      if (i > 122)
+      {
+      i=i - 26;
+      
+      }
+       buff = Serial.available(); // mise à jour du nombre de caratères restant
+        readChar = i;
+      Serial.print(readChar);
     }
-}
-    */
+}*/
 }
