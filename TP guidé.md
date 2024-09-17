@@ -84,13 +84,14 @@ AaBbCc...Zz
 
 ```C++
  // ouverture de la liaison à une vitesse de 9600 bits par seconde.
-    Serial.begin(9600);
+   Serial.begin(9600);
     int variable = 'A';
 	char caractere = variable ;
   for(int i=0; i<=25;i++){
     Serial.print(caractere);
     Serial.print(caractere +=32);
     caractere -= 31;
+  } 
 ```
 
 ## 4. Réception de données
