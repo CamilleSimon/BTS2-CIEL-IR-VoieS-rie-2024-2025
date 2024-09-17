@@ -1,4 +1,5 @@
 int key = 6;
+
 void setup()
 {
     Serial.begin(9600);
@@ -8,6 +9,7 @@ void setup()
 void loop()
 { 
   char readChar = 0; // caractère à lire
+  
 
     int buff = Serial.available();
 
@@ -15,16 +17,20 @@ void loop()
     {
        
         readChar = Serial.read(); // lecture du caractère
-        readChar +=key;
-        if(readChar>122)
-       {
-         readChar -=26;
-       }
-        Serial.print(readChar); // envoi du caractère
-        buff = Serial.available();// mise à jour du nombre de caratères restant
-      
+      if(readChar==122)
+      {
+        readChar= 96 + key ;
+      }
+      else
+      {
+      	readChar += key;
+       	if(readChar>122)
+      {
+          readChar -=26;
+      }
+        }
+       Serial.print(readChar); // envoi du caractère
+       buff = Serial.available();// mise à jour du nombre de caratères restant
+        
     }
-   
-    
 }
-    
