@@ -88,13 +88,13 @@ void setup()
   Serial.begin(9600);
   int variable = 'A';
   int var2 = 'a';
-  char caractere, char2;
+  char maj, min;
   for(int i = 0; i <= 25; i++)
   {
-  	caractere = variable + i;
-    char2 = var2 +i;
-  	Serial.print(caractere);
-    Serial.print(char2);
+  	maj = variable + i;
+    min = var2 +i;
+  	Serial.print(maj);
+    Serial.print(min);
   }
 }
 ```
