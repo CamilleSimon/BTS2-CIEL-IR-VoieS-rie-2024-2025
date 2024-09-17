@@ -88,6 +88,7 @@ AaBbCc...Zz
   for (int i = 0; i <=25 ; i++){
       Serial.print((char)(65 + i));
     Serial.print((char)(97 + i));
+}
 ```
 
 ## 4. Réception de données
