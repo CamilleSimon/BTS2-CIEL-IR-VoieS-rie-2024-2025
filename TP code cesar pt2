@@ -1,183 +1,90 @@
-  	char readChar = 0; // caractère à lire
-    int buff = Serial.available();
-	int key = 00;
-	char operation;
-
-void setup()
-{
-    Serial.begin(9600);
-}
-
-
-void chiffrement()
-      	{
-        
-        	while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-      
-      		readChar = readChar + key; // Pour chiffrer un message
-      
-      
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar - 26 ; 
-        	}
-      
-      
-        	Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
-      	}
-
-
-void dechiffrement()
-      	{
-        
-          	while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-      
-      		readChar = readChar - key; // Pour chiffrer un message
-      
-      
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar + 26 ; 
-        	}
-      
-      
-        	Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
-        }
-
-void loop()
-{     
-  		buff = Serial.available();
-  		String s = "";
-  		
-  		
-  		while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    	{
-        s = Serial.read(); // lecture du caractère
-        buff = Serial.available(); // mise à jour du nombre de caratères restant
-    	}
-  
-  		operation = s[0];
- 		key = s[2];
-  
-  		if(operation = '0')
-  	  	{
-        chiffrement();
-    	}
-  
-   	 	else if (operation = '1')
-    	{
-        dechiffrement();
-    	}
- } 
-
-
-//s2 = s.substring(s, ',');
-//s2 = s.indexOf(',');
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-char readChar = 0; // caractère à lire
+char readChar = 0;
 int key;
-int o;
+int i;
+int operation;
+String s = "";
+String message;
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 void setup()
 {
     Serial.begin(9600);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////
 
 void chiffrement()
       	{
-        
-  			int buff = Serial.available(); // mise à jour du nombre de caratères restant
-        	while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-      
-      		readChar = readChar + key; // Pour chiffrer un message
-      
-      
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar - 26 ; 
-        	}
-      
-      
-        	Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
+			for(i = 0; i < message.length(); i++)
+			{	
+				if(message[i] == 122)
+				{
+					message[i] = 96 + key;
+				}
+				else
+				{
+					message[i] = message[i] + key;
+					if(message[i] > 122)
+					{
+						message[i] = message[i] - 26 ; 
+					}
+				}
+				Serial.print(message[i]);
+			}
       	}
 
 
 void dechiffrement()
       	{
-        
-  			int buff = Serial.available(); // mise à jour du nombre de caratères restant
-          	while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-      
-      		readChar = readChar - key; // Pour chiffrer un message
-      
-      
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar + 26 ; 
-        	}
-      
-      
-        	Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
-        }
+			for(i = 0; i < message.length(); i++)
+			{	
+				if(message[i] == 97)
+				{
+					message[i] = 123 - key;
+				}
+				else
+				{
+					message[i] = message[i] - key;
+					if(message[i] > 122)
+					{
+						message[i] = message[i] + 26 ; 
+					}
+				}
+				Serial.print(message[i]);
+			}
+      	}
 
+////////////////////////////////////////////////////////////////////////////////////////
 
 void loop()
 {     
-  		int buff = Serial.available(); // mise à jour du nombre de caratères restant
+  	char readChar;
+  	int buff = Serial.available(); // mise à jour du nombre de caratères restant
+  	if(buff > 0)
+    {
+    	while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    	{
+       		readChar = Serial.read(); // lecture du caractère
+          	delay(10);
+          	s += readChar;
+          	buff = Serial.available(); // mise à jour du nombre de caratères restant
+    	}
+        operation = s[0]-'0'; 
+      	Serial.println(operation);
+  		key = s.substring(2, s.indexOf(',', 2)).toInt();
+      	Serial.println(key);
+  		message = s.substring(s.indexOf(',', 2)+1, s.length());
+    }
   
-  		if(buff > 0)
-        {
-  			o = Serial.read();
-  			Serial.println(o);
-  
-  			//buff = Serial.available(); // mise à jour du nombre de caratères restant
-  			Serial.read(); // lecture du caractère
-  
-  			//buff = Serial.available(); // mise à jour du nombre de caratères restant
-  			key = Serial.read(); // lecture du caractère
-  			Serial.println(key);
-  /**
-  			buff = Serial.available(); // mise à jour du nombre de caratères restant
-  			Serial.read(); // lecture du caractère
-          
-          	if(o == 48)
-  	  		{
-        		chiffrement();
-    		}
-  
-   	 		else if (o == 49)
-    		{
-        		dechiffrement();
-    		}**/
-         
-        } 
-  
- } 
-
-
-//s2 = s.substring(s, ',');
-//s2 = s.indexOf(',');
+  	if(operation == 0)
+  	{
+        chiffrement();
+      	operation = operation - 1;
+    }
+  	else if (operation == 1)
+    {
+        dechiffrement();
+      	operation = operation - 1;
+    }
+ }
