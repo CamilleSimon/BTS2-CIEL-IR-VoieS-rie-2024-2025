@@ -17,7 +17,7 @@ void loop()
 
 		if(readChar == 122)
 		{
-		readChar = 96 = key;
+		readChar = 96 + key;
 		}
 		else
 		{
