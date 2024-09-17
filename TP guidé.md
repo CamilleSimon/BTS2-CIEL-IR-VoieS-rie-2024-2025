@@ -83,8 +83,6 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-void setup()
-{
   Serial.begin(9600);
   int variable = 'A';
   int var2 = 'a';
@@ -96,7 +94,6 @@ void setup()
   	Serial.print(maj);
     Serial.print(min);
   }
-}
 ```
 
 ## 4. Réception de données
