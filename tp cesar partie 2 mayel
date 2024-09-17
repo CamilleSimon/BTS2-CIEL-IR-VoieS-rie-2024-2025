@@ -1,0 +1,44 @@
+int key = 6;
+int operation = 0;
+void setup()
+{
+    Serial.begin(9600);
+}
+void chiffrement(String message)
+{
+for(int i=0;i < image.length();i++)
+{
+message[i]=message[i]+key;
+}
+serial.println(message)
+}
+
+
+void dechifrement ()
+
+
+
+
+
+void loop()
+{
+  
+    char readChar = 0; // caractère à lire
+    int buff = Serial.available();
+    
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+       readChar = Serial.read(); //
+      int i = readChar + key ;
+      if (i > 122)
+      {
+      i=i - 26;
+      
+      }
+       buff = Serial.available(); // mise à jour du nombre de caratères restant
+        readChar = i;
+      Serial.print(readChar);
+    }
+}
+    
+
