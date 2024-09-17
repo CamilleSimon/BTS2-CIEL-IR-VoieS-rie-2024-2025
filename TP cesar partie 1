@@ -1,10 +1,8 @@
 int key = 6;
+char resultat;
 void setup()
 {
     Serial.begin(9600);
-  	char message = ('h','e','l','l','o');
-  	char resultat = message + key;
-    Serial.print(resultat);
 }
 
 void loop()
@@ -14,8 +12,8 @@ void loop()
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
         readChar = Serial.read(); // lecture du caractère
-        Serial.print(readChar); // envoi du caractère
-		readChar + key;     
+		resultat = readChar + key;  
         buff = Serial.available(); // mise à jour du nombre de caratères restant
+        Serial.print(resultat);
     }
 }
