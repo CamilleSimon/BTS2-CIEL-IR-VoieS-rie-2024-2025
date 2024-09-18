@@ -1,5 +1,5 @@
 int key;
-int operation; /// 0 : le mssage doit etre chiffre , 1 : le message doit etre dechiffre
+int operation; /// 0 : le message doit etre chiffre , 1 : le message doit etre dechiffre
 
 void setup()
 {
@@ -20,34 +20,41 @@ void loop(){
   i++;
   }
 
-
 }
 
 String chiffrement(String message)
 {
-  int intChar = readChar + key;
-  if(intChar > 122)
+  String messageChiffre;
+  for (int i=0;i<message.length(); i++)
   {
-    intChar += 26;
+    int readChar = message[i]+key;
+      if(readChar > 122)
+      {
+      readChar -= 26;
+      }
+    char cChar = readChar;
+    messageChiffre += cChar;
   }
-  
-  readChar = intChar;
-  Serial.print(readChar);
-  
-  buff = Serial.available();
+  Serial.print(messageChiffre);
+  return messageChiffre;
 }
 
 
-String dechiffrement(int buff)
+String dechiffrement(String message)
 {
-  int intChar = readChar - key;
-  if(intChar <= 96)
+  String messageDechiffre;
+  for (int i=0;i<message.length(); i++)
   {
-    intChar -= 26;
+    int readChar = message[i]-key;
+      if(readChar < 96)
+      {
+      readChar += 26;
+      }
+    char cChar = readChar;
+    messageDechiffre += cChar;
   }
-  
-  readChar = intChar;
-  Serial.print(readChar);
-  
-  buff = Serial.available();
+  Serial.print(messageDechiffre);
+  return messageDechiffre;
 }
+
+//substring() indexOf(,)  pour "0,6,bonjour"
