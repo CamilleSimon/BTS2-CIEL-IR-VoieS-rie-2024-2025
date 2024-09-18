@@ -25,6 +25,7 @@ void loop()
     {	
       	delay(10);
     	readChar = Serial.read();
+      	
     	string1 = string1 +readChar;
       	//print("%s", string1);
       	buff = Serial.available(); // mise à jour du nombre de caratères restant
@@ -44,7 +45,7 @@ void loop()
         key2 = string1.substring(2,diff_virg);
 		
       	key = key2.toInt();
-      	if (key > 0 && key < 25 )
+      	if (key > 0 && key < 26 )
         {
           	//Serial.print(key);//Valeur du décalage
             int longueur = string1.length()- virg2 ;
@@ -54,7 +55,16 @@ void loop()
             for(int l = 1; l < longueur; l++)
             {
                 delay(10);
-                mot = mot + string1[virg2+l]; 
+           
+              	if (int(string1[virg2+l]) > 96 && int(string1[virg2+l]) < 123 )
+        		{
+        			mot = mot + string1[virg2+l]; 
+        		}
+                else
+                {
+                	Serial.print("Mauvais caractere dans : ");
+                  	
+                }
             } 
             //Serial.print(mot);
 
