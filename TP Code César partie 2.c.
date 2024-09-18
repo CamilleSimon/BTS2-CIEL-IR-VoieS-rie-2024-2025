@@ -1,6 +1,6 @@
 // C++ code
 //
-int key;
+int key = 6;
 int operation;
 String message;
 
