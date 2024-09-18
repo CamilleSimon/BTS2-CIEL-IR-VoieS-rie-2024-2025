@@ -5,6 +5,9 @@ int operation;
 void setup()
 {
     Serial.begin(9600);
+  	String s ="hello";
+    key = 6;
+    chiffrement(s);
 }
 
 void loop()
@@ -24,18 +27,28 @@ void loop()
 
 void chiffrement(String message)
 {
-  message = Serial.read();
   for(int i=0;i<message.length();i++)
   {
-    message[i]= message[i]+key;
-    message[i] = message[i] - 26;
+	message[i] = 0; // caractère à lire
+    int buff = Serial.available();
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+        message[i] = Serial.read(); // lecture du caractère
+      	if(message[i]>=117)
+        {
+          message[i] = message[i] - 26;
+        }
+      	message[i] = message[i] + key;
+        Serial.print(message[i]); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+    }
   }
- 	Serial.println(message);
-}
+ }
+
 
 void dechiffrement(String message)
 {
-  message = Serial.read();
+
   for(int i=0;i>message.length();i--)
   {
     message[i]= message[i]-key;
