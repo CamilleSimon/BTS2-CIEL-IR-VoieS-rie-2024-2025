@@ -15,9 +15,9 @@ void loop()
         readChar = readChar +6; // caractère à lire
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-      if (readchar>122);
+      if (readChar>122)
       {
-       readchar = readchar -26; 
+       readChar = readChar -26; 
       }
     }
 }
