@@ -44,30 +44,41 @@ void loop()
         key2 = string1.substring(2,diff_virg);
 		
       	key = key2.toInt();
-      	//Serial.print(key);//Valeur du décalage
-        int longueur = string1.length()- virg2 ;
-      	//Serial.print(longueur); // Nombre de caractères du mot
-      	String mot;
-      
-        for(int l = 1; l < longueur; l++)
+      	if (key > 0 && key < 25 )
         {
-          	delay(10);
-            mot = mot + string1[virg2+l]; 
-        } 
-      	//Serial.print(mot);
+          	//Serial.print(key);//Valeur du décalage
+            int longueur = string1.length()- virg2 ;
+            //Serial.print(longueur); // Nombre de caractères du mot
+            String mot;
 
-        if (operation == '0')
-        {
-            chiffrement(mot);
+            for(int l = 1; l < longueur; l++)
+            {
+                delay(10);
+                mot = mot + string1[virg2+l]; 
+            } 
+            //Serial.print(mot);
+
+            if (operation == '0')
+            {
+                chiffrement(mot);
+            }
+            else if (operation == '1')
+            {
+                dechiffrement(mot);
+            }
+            else 
+            {
+                Serial.print("Erreur detectee dans l'operation");
+            }
+          
         }
-    	else if (operation == '1')
-      	{
-          	dechiffrement(mot);
-    	}
-      	else 
+      
+     	else 
         {
-          	Serial.print("Erreur detectee dans l'operation");
+          	Serial.print("Mauvaise cle");
         }
+        
+      	
 	
     }
   	
