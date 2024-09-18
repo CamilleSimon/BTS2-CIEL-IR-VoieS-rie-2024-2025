@@ -25,34 +25,29 @@ void loop(){
 
 String chiffrement(String message)
 {
-  String messageChiffre;
-  for (int i=0;i<message.length(); i++)
+  int intChar = readChar + key;
+  if(intChar > 122)
   {
-    char readChar = message[i]+key;
-    messageChiffre += readChar;
-    if( messageChiffre > 122)
-  {
-     messageChiffre -= 26;
+    intChar += 26;
   }
-  }
-  return messageChiffre;
-  Serial.print(messageChiffre);
-    }
+  
+  readChar = intChar;
+  Serial.print(readChar);
+  
+  buff = Serial.available();
 }
 
-String dechiffrement(String message)
+
+String dechiffrement(int buff)
 {
-  String messageDechiffre;
-  for (int i=0;i<message.length(); i++)
+  int intChar = readChar - key;
+  if(intChar <= 96)
   {
-    char readChar = message[i]+key;
-    messageDechiffre += readChar;
-    if(messageDechiffre < 96 )
-  {
-    messageDechiffre += 26;
+    intChar -= 26;
   }
-  }
-  return messageDechiffre;
-  Serial.print(messageDechiffre);
-    }
+  
+  readChar = intChar;
+  Serial.print(readChar);
+  
+  buff = Serial.available();
 }
