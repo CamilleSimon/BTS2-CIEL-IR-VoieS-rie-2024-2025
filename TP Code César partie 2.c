@@ -13,6 +13,7 @@ void loop(){
   char readChar;
   int tab[256];
   int i=0;
+
   while(buff > 0) {
   readChar = Serial.read();
   tab[i]= readChar;
@@ -22,32 +23,36 @@ void loop(){
 
 }
 
-String chiffrement(key)
+String chiffrement(String message)
 {
-  int intChar = readChar + key;
-  if(intChar > 122)
+  String messageChiffre;
+  for (int i=0;i<message.length(); i++)
   {
-    intChar -= 26;
+    char readChar = message[i]+key;
+    messageChiffre += readChar;
+    if( messageChiffre > 122)
+  {
+     messageChiffre -= 26;
   }
-  
-  readChar = intChar;
-  Serial.print(readChar);
-  
-  buff = Serial.available();
+  }
+  return messageChiffre;
+  Serial.print(messageChiffre);
     }
 }
 
-String dechiffrement(key)
+String dechiffrement(String message)
 {
-  int intChar = readChar - key;
-  if(intChar > 122)
+  String messageDechiffre;
+  for (int i=0;i<message.length(); i++)
   {
-    intChar -= 26;
+    char readChar = message[i]+key;
+    messageDechiffre += readChar;
+    if(messageDechiffre < 96 )
+  {
+    messageDechiffre += 26;
   }
-  
-  readChar = intChar;
-  Serial.print(readChar);
-  
-  buff = Serial.available();
+  }
+  return messageDechiffre;
+  Serial.print(messageDechiffre);
     }
 }
