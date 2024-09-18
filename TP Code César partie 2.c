@@ -6,6 +6,9 @@ int key;
 void setup()
 {
   Serial.begin(9600);
+  String s="nkrru";
+  key=6;
+    dechiffrement(s);
 
 }
   
@@ -25,23 +28,31 @@ void loop()
   buff = Serial.available();
   }
   Serial.print(s);
+
 }
 
 void chiffrement (String message)
 {
-  for (int i=0; i<message.lenght(; i++)
-       }
-       message[i]=message[i]+key;
-       }
- Serial.print(message)
-       }
+  for (int i=0; i<message.length(); i++)
+  {
+	message[i]=message[i]+key;
+    if (message[i]>122)
+    {
+    	message[i]=message[i]-26;
+    }
+  }
+  Serial.println(message);
+}
        
        
        void dechiffrement (String message)
 {
-  for (int i=0; i<message.lenght(; i++)
-       }
+  for (int i=0; i<message.length(); i++)
+  {
        message[i]=message[i]-key;
-       }
- Serial.print(message)
+    if (message[i]<97){
+      message[i]=message[i]+26;
+    }
+  }
+ Serial.print(message);
        }
