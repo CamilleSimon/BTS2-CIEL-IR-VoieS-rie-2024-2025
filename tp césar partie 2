@@ -1,12 +1,15 @@
 // C++ code
 //
-int key = 6;
-int operation = 0;
- 
+int key;
+int operation;
+
 void setup()
 {
     Serial.begin(9600);
-    
+    String s = "hello";
+    key = 6;
+    chiffrement(s);
+    dechiffrement(s);
 }
 
 void loop()
@@ -37,10 +40,34 @@ void loop()
         
     }
 }
-void chiffrement(string message)
+void chiffrement(String message)
 {
-  for (int i=0;i<message.lenth();i++)
+  for (int i=0;i<message.length();i++)
   {
     message[i] = message[i] + key;
   }
   Serial.println(message);
+  
+} 
+
+void dechiffrement(String message)
+{
+  for (int i=0;i<message.length();i++)
+  {
+    message[i] = message[i] - key;
+  }
+  Serial.println(message);
+  
+} 
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
