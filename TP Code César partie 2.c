@@ -60,16 +60,20 @@ void loop()
         {
             chiffrement(mot);
         }
-    	else
+    	else if (operation == '1')
       	{
           	dechiffrement(mot);
     	}
+      	else 
+        {
+          	Serial.print("Erreur detectee dans l'operation");
+        }
 	
     }
   	
 }
 
-String chiffrement(String mot)
+void chiffrement(String mot)
 {
   	int longueur2 = mot.length();
 	for(int j = 0; j < longueur2; j++)
