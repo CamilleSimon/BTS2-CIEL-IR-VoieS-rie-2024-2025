@@ -19,22 +19,23 @@ void loop()
   	int buff = Serial.available();
   	
   	while(buff > 0) // tant qu'il reste un caractere
-    {
-    	int intChar = Serial.read() + key ;//lecture du caractere
-      	if(intChar < 123)
-        {
-        	readChar = intChar;
-        	Serial.print(readChar);
-        }
-        else
-        {
-        	int i = intChar - 122;
-        	intChar = 96 + i;
-          	readChar = intChar;
-          	Serial.print(readChar);
-      	}
+    	{
+    		int intChar = Serial.read() + key ;//lecture du caractere
+		
+      		if(intChar < 123)
+        	{
+        		readChar = intChar;
+        		Serial.print(readChar);
+        	}
+        	else
+        	{
+        		int i = intChar - 122;
+        		intChar = 96 + i;
+          		readChar = intChar;
+          		Serial.print(readChar);
+      		}
       
-     buff = Serial.available(); // mise à jour du nombre de caratères restant
+    		 buff = Serial.available(); // mise à jour du nombre de caratères restant
      
-    }
+    	}
 }
