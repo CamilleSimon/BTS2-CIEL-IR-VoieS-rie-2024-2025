@@ -3,80 +3,38 @@
 int key;
 int operation;
 String message;
+
 void setup()
 {
    // ouverture de la liaison à une vitesse de 9600 bits par seconde.
     Serial.begin(9600);
-    
+  
+  }  
+
+
+String chiffrement(String message, int key) {
+  String result = "" ;
+  for (i = 0, i < message.length, i++ ) {
+    char c = message[i];
+    char chiffreChar = c + key;
+
+
 }
 
-void loop() {
-  if (Serial.available() > 0){
-    String input = 
-Serial.readStringUntil('\n');
-    
-    int firstComma = input.indexOf(',');
-    int secondComma = input.indexOf(',', firstComma + 1);
-    
-    
-    if (firstComma == -1 || secondComma == -1){
-      Serial.println("Erreur: format du message incorrect.");
-      return;
-    }  
-    operation = input.substring(0,firstComma).toInt();
-    key = input.substring(firstComma + 1,secondComma).toInt();
-    
-    message = input.substring(secondComma + 1);
-    
-    Serial.print("Operation: ");
-    Serial.println(operation);
-    Serial.print("key: ");
-    Serial.println(key);
-    Serial.print("Message: ");
-    Serial.println(message);
-  
-    if (operation == 0) { 
-      String encryptedMessage = chiffrement(message, key);
-      Serial.print("Chiffre :");
-      Serial.println(encryptedMessage);
-      
-    } else if (operation == 1) {
-      String decryptedMessage = dechiffrement(message, key);
-      Serial.print("Dehiffre :");
-      Serial.println(decryptedMessage);      
-    } else {
-      Serial.println("operation non reconnu.");
-    }
-  }
-} 
-    
-String chiffrement(String message, int key) {
-  String result = "";
-  
-  for (int i = 0; i < message.length(); i++) {
-    char c = message[i];
-    char encryptedChar = c + key;
-    
-    if (encryptedChar > 'z') {
-      encryptedChar -= 26;
-    }
-    result += encryptedChar;
-  }
-  return result;
-}
 
 String dechiffrement(String message, int key) {
-  String result = "";
-  
-  for (int i = 0; i < message.length(); i++) {
+  String result = "" ;
+  for (i = 0, i < message.length, i++ )  {
     char c = message[i];
-    char decryptedChar = c - key;
-    
-    if (decryptedChar < 'a') {
-      decryptedChar += 26;
-    }
-    result += decryptedChar;
-  }
-  return result;
-}  
-     
+    char dechiffreChar = c - key;
+      
+
+
+
+}
+void loop()
+{
+ 
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+} 
