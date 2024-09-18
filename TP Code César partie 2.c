@@ -1,60 +1,61 @@
-int operation = Serial.read();
+// C++ code
+//
 
+int operation;
+int key;
 void setup()
 {
     Serial.begin(9600);
 }
 
-String chiffrement()
-{
-    if (operation == 0)
-    {
-        int key = serial.read()
-        char readChar = 0; // caractère à lire
-        int buff = Serial.available();
-            while(buff > 0)
-            {
-                readChar = Serial.read();
-                int intChar = readChar + key;
-                    if (intChar > 122)
-                    {
-                        intChar = intChar - 26;
-                    }
-                    int messagechiffre = intChar;
-                    return messagechiffre;
-            }
-    }
-}
-
-String dechiffrement()
-{
-    if (operation == 1)
-    {
-        int key = serial.read()
-        char readChar = 0; // caractère à lire
-        int buff = Serial.available();
-            while(buff > 0)
-            {
-                readChar = Serial.read();
-                int intChar = readChar - key;
-                    if (intChar > 122)
-                    {
-                        intChar = intChar - 26;
-                    }
-                    int messagedechiffre = intChar;
-                    return messagedechiffre;
-            }
-    }
-}
-
 void loop()
 {
-    int tab[10];
-    int i = 0
-    while (i < 10)
+  	operation = Serial.peek();
+  	int length = Serial.available();
+    int tab[length];
+    int i = 0;
+    while (i < length)
     {
-        tab[i] = 
+        tab[i] = Serial.read();
 
         i++;
+      
     }
+  	String s="";
+    int virgule = s.indexOf(',',2);
+    key = s.substring(2,virgule).toInt();
+    String readchar = s.substring(virgule);
+  
+  		if (operation == 0)
+		{
+          chiffrement(readchar);
+        }
+		else;
+		{
+          dechiffrement(readchar);
+		}
 }
+
+String chiffrement (String readchar)
+{
+  for (int i = 0; i < readchar.length(); i++)
+       {
+         readchar[i]+=key;
+         if(readchar.charAt(i)>'z')
+           readchar[i]-=26;
+       }
+       Serial.print(readchar);
+}
+
+String dechiffrement (String readchar)
+{
+  for (int i = 0; i < readchar.length(); i++)
+       {
+         readchar[i]-=key;
+         if(readchar.charAt(i)>'z')
+           readchar[i]-=26;
+       }
+       Serial.print(readchar);
+}
+
+
