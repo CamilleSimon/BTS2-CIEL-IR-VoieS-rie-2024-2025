@@ -1,15 +1,19 @@
 // C++ code
 //
     char key = 6;
+char operation;
+int tableau [10];
+
 void setup()
 {
     Serial.begin(9600);
-
+   	
 }
 
 void loop()
 {
-    char readChar = 0 ; // caractère à lire
+   	
+    int readChar = 0 ; // caractère à lire
 
     int buff = Serial.available();
 
@@ -17,14 +21,15 @@ void loop()
     {
       readChar = Serial.read()+key ; // lecture du caractère
       
-      if(readChar > 123 )
+             
+      
+      if(readChar > 122 )
       {
           readChar -= 26;
               
       }
-        
-        Serial.print(readChar); // envoi du caractère
+        char result = readChar;
+        Serial.print(result); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-      
-     }
+    }
 }
