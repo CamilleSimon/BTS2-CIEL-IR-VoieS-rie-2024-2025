@@ -28,17 +28,22 @@ Lorsque la réserve est pleine, elle contient de quoi préparer 10 boissons de c
 ## Exercice
 
 1. Sur Tinkercad, réalisez le montage représentant la machine à café.
-2. Vous utiliserez des tableaux pour stocker les informations suivantes :
+Pour initialiser les leds et les boutons, vous pouvez utiliser les fonctions suivantes :
+```ino
+pinMode(13, INPUT);
+digitalWrite(2, HIGH);
+```
+3. Vous utiliserez des tableaux pour stocker les informations suivantes :
     * les pins des LEDs,
     * les pins des boutons,
     * les stocks des boissons,
     * le dictionnaire des commandes valides
-3. Ecrivez les fonctions suivantes :
+4. Ecrivez les fonctions suivantes :
     1. `remplir(int type_boisson)` qui affecte `10` au stock de `type_boisson`.
     2. `receptionCommande()` qui récupère le contenu du buffer et compare avec les commandes possible.
     3. `servirBoisson()` qui décompte le stock si cela est possible.
     4. `checkLumiere(int type_boisson)` qui met à jour l'état de la led de la boisson passée en paramètre.
-4. Ecrivez les fonctions `setup()` et `loop()` en vous appuyant en utilisant les fonctions ci-dessus.
+5. Ecrivez les fonctions `setup()` et `loop()` en vous appuyant en utilisant les fonctions ci-dessus.
 
 ## Indications
 
