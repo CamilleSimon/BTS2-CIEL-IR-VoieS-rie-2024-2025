@@ -1,39 +1,48 @@
+#define true 1
+#define false 0
+
+
 int key = 6;
 int operation;
+char message;
 
 void setup()
 {
     Serial.begin(9600);
 }
-
-String chiffrement()
+  
+void chiffrement(String message)
 {
-
+    for (int i = 0; i < message.length();i++)
+    {
+      message [i]+=key;
+      if (message, charAt(i) > 'z') {
+        message[i]-=26;
+      Serial.print(message);
+      }
+      }
 }
 
-String dechiffrement()
+void dechiffrement(String message)
 {
-
+    for (int i = 0; i < message.length();i++)
+    {
+      message [i]-=key;
+      if (message, charAt(i) > 'z') {
+        message[i]-=26
+      Serial.print(message);
+      }
+    }
 }
+  
 void loop()
 {
-    char readChar = 0; // caractère à lire
-    int buff = Serial.available();
+  int tab[3][1] = {bool, key, readChar};
 
-    while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    {
-        readChar = Serial.read(); // lecture du caractère
-        
-        int intChar = readChar + key;
-      
-        if (intChar > 122) 
-         {
-           intChar -= 26;
-         }
-      
-      readChar = intChar;
-      Serial.print(readChar); // envoi du caractère
-      
-      buff = Serial.available(); // mise à jour du nombre de caratères restant
-    }
+  {
+    tab[i] = 
+    i++;
+    String s = "";
+  }
+  
 }
