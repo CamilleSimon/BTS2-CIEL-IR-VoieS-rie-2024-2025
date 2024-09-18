@@ -11,13 +11,15 @@ void loop()
 
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
+        
         readChar = Serial.read(); // lecture du caractère
-        readChar = readChar +6; // caractère à lire
-        Serial.print(readChar); // envoi du caractère
+        int intChar = readChar + 6; // caractère à lire
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-      if (readChar>122)
+      if (intChar > 122)
       {
-       readChar = readChar -26; 
+       intChar = intChar -26; 
       }
+      readChar = intChar;
+      Serial.print(readChar); // envoi du caractère
     }
 }
