@@ -1,6 +1,7 @@
 char readChar = 0;
 int key;
 int i;
+int j;
 int operation;
 String s = "";
 String message;
@@ -18,18 +19,15 @@ void chiffrement()
       	{
 			for(i = 0; i < message.length(); i++)
 			{	
-				if(message[i] == 122)
+				for(j = key; j > 0; j--)
 				{
-					message[i] = 96 + key;
-				}
-				else
-				{
-					message[i] = message[i] + key;
+					message[i] = message[i] + 1;
 					if(message[i] > 122)
 					{
-						message[i] = message[i] - 26 ; 
+						message[i] = message[i] - 26; 
 					}
 				}
+				
 				Serial.print(message[i]);
 			}
       	}
@@ -39,18 +37,15 @@ void dechiffrement()
       	{
 			for(i = 0; i < message.length(); i++)
 			{	
-				if(message[i] == 97)
+				for(j = key; j > 0; j--)
 				{
-					message[i] = 123 - key;
-				}
-				else
-				{
-					message[i] = message[i] - key;
-					if(message[i] > 122)
+					message[i] = message[i] - 1;
+					if(message[i] > 97)
 					{
-						message[i] = message[i] + 26 ; 
+						message[i] = message[i] + 26; 
 					}
 				}
+				
 				Serial.print(message[i]);
 			}
       	}
