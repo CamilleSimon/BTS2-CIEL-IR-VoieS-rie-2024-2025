@@ -1,1 +1,66 @@
+int key;
+int comparaison;
 
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String inputMessage = "";
+    while (Serial.available() > 0) {
+      char receivedChar = Serial.read();
+      inputMessage += receivedChar;
+      delay(10);
+    }
+    if (inputMessage.length() >= 5) {
+      if (inputMessage[0] != '0' && inputMessage[0] != '1') {
+        Serial.println("ERREUR : Vous devez utiliser ' 0 ' pour le chiffrement ou ' 1 ' pour  le déchiffrement !");
+        return;
+      }
+      int v1 = inputMessage.indexOf(',');
+      int v2 = inputMessage.indexOf(',', v1 + 1);
+      if (v2 == -1) {
+        Serial.println("ERREUR!");
+        return;
+      }
+
+      String keyString = inputMessage.substring(v1 + 1, v2);
+      key = keyString.toInt();
+      String caractere = inputMessage.substring(v2 + 1);
+      comparaison = inputMessage[0] - '0';
+
+      if (comparaison == 0) {
+        chiffrement(key, caractere);
+      } else if (comparaison == 1) {
+        dechiffrement(key, caractere);
+      } else {
+        Serial.println("ERREUR!.");
+      }
+    } else {
+      Serial.println("ERREUR!");
+    }
+  }
+}
+
+void chiffrement(int key, String caractere) {
+  for (int i = 0; i < caractere.length(); i++) {
+    char chiffrementcaract = caractere[i] + key;
+    if (chiffrementcaract > 'z') {
+      chiffrementcaract = 'a' + (chiffrementcaract - 'z' - 1);
+    }
+    Serial.print(chiffrementcaract);
+  }
+  Serial.println();
+}
+
+void dechiffrement(int key, String caractere) {
+  for (int i = 0; i < caractere.length(); i++) {
+    char dechiffrementcaract = caractere[i] - key;
+    if (dechiffrementcaract < 'a') {
+      dechiffrementcaract = 'z' - ('a' - dechiffrementcaract - 1);
+    }
+    Serial.print(dechiffrementcaract);
+  }
+  Serial.println();
+}
