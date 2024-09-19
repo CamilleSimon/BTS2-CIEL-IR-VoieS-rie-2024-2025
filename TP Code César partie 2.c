@@ -1,7 +1,4 @@
-#TP Code César partie 2.c
-##Non fini
-
-  int operation;//corespond a la première valeure
+int operation;//corespond a la première valeure
 int key = 0;
 
 
