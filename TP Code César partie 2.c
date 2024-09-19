@@ -1,3 +1,4 @@
+```C++
 int operation = 0; // declaration de la variable globale "operation" qui stock soit 1 soit 0
 int key = 0; // declaration de la variable globale "key" qui stock la clé du décalage
 String message = ""; // declaration de la variable globale "message" pour stocker le message à déchiffrer
@@ -66,3 +67,4 @@ void loop()
 	  }
   }
 }
+```
