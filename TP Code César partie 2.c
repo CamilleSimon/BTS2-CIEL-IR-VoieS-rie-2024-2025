@@ -1,4 +1,3 @@
-'''
 int key = 0; // déclaration de la clé globale
 int comparaison = 0; // déclaration de la clé globale de comparaison 
 
@@ -76,4 +75,4 @@ void dechiffrement(int key, String caractere) {
     }
     Serial.println(); 
 }
-'''
+
