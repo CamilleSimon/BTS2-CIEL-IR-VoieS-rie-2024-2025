@@ -28,6 +28,15 @@ Lorsque la réserve est pleine, elle contient de quoi préparer 10 boissons de c
 ## Exercice
 
 1. Sur Tinkercad, réalisez le montage représentant la machine à café.
+Pour initialiser les leds et les boutons, vous pouvez utiliser les fonctions suivantes :
+```ino
+// pour les boutons
+pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(2, HIGH); // met le pin 2 en état haut
+// pour les leds
+pinMode(13, INPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, HIGH); // met le pin 13 en état haut
+```
 2. Vous utiliserez des tableaux pour stocker les informations suivantes :
     * les pins des LEDs,
     * les pins des boutons,
