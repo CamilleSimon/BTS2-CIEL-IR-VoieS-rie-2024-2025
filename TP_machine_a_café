@@ -1,6 +1,6 @@
 int boutonPin[3]={7,6,5};
 int ledPin[3]={10,9,8};
-int stock[3]={10,10,10};
+int stock[3]={10,5,5};
 String commande[3]={"café","thé","chocolat chaud"};
 void setup()
 {
@@ -16,14 +16,14 @@ void loop()
 {
   digitalWrite(10,HIGH);
   digitalWrite(9,HIGH);
+  digitalWrite(8,HIGH);
   
-  
-  //const int bouton-cafe.pin =7;//définition des pins pour les différents boutons
-  //const int bouton-the.pin =-6;
-  //const int bouton-choco.pin =-5;
-  if(digitalRead(10)== LOW)
-  {
-    
+  for (int i=0;i<3;i++)
+  {  
+    if(stock[i]==5)
+    {
+      digitalWrite(ledPin[i],LOW);
+    }
   }
     
 }
