@@ -6,8 +6,8 @@ La RS-232 est une norme de communication série introduite dans les années 1960
 
 <center>
 
-![Connecteur femelle de type DE-9 en extrémité de câble.](/assets/RS-232.jpg "Connecteur femelle de type DE-9 en extrémité de câble.")
-![Un connecteur DE-9, improprement appelé DB-9, mâle utilisé comme port série sur un ordinateur personnel.](/assets/Serial_port.jpg "Un connecteur DE-9, improprement appelé DB-9, mâle utilisé comme port série sur un ordinateur personnel.")
+![Connecteur femelle de type DE-9 en extrémité de câble.](./assets/RS-232.jpg "Connecteur femelle de type DE-9 en extrémité de câble.")
+![Un connecteur DE-9, improprement appelé DB-9, mâle utilisé comme port série sur un ordinateur personnel.](./assets/Serial_port.jpg "Un connecteur DE-9, improprement appelé DB-9, mâle utilisé comme port série sur un ordinateur personnel.")
 
 </center>
 
@@ -30,7 +30,7 @@ La norme RS-232 utilise un système de communication série asynchrone, où les 
 
 <center>
 
-![Chronogramme d’un échange sur la voie série.](/assets/d49d77e5-5187-4d60-b762-d09425e21ed7.png.960x960_q85.jpg "Chronogramme d’un échange sur la voie série.")
+![Chronogramme d’un échange sur la voie série.](./assets/d49d77e5-5187-4d60-b762-d09425e21ed7.png.960x960_q85.jpg "Chronogramme d’un échange sur la voie série.")
 
 </center>
 
@@ -51,8 +51,8 @@ La norme RS-232 utilise un système de communication série asynchrone, où les 
 
 <center>
 
-![Chronogramme pair.](/assets/7597ca26-4e61-4707-9c8c-cf7f9684ff01.png.960x960_q85.jpg "Chronogramme pair.")
-![Chronogramme impair.](/assets/d14dbffb-b92a-45a7-8c7b-8bc94d717b2d.png.960x960_q85.jpg "Chronogramme impair.")
+![Chronogramme pair.](./assets/7597ca26-4e61-4707-9c8c-cf7f9684ff01.png.960x960_q85.jpg "Chronogramme pair.")
+![Chronogramme impair.](./assets/d14dbffb-b92a-45a7-8c7b-8bc94d717b2d.png.960x960_q85.jpg "Chronogramme impair.")
 
 </center>
 
@@ -68,8 +68,8 @@ Il est également possible d'interfacer deux Arduino via leurs ports `Serial`, m
 
 <center>
 
-![Connexion de deux cartes Arduino en utilisant le protocole série.](/assets/15e08601-6c85-49e6-964d-8c232b8b6cb1.png.960x960_q85.png "Connexion de deux cartes Arduino en utilisant le protocole série.")
+![Connexion de deux cartes Arduino en utilisant le protocole série.](./assets/15e08601-6c85-49e6-964d-8c232b8b6cb1.png.960x960_q85.png "Connexion de deux cartes Arduino en utilisant le protocole série.")
 
 </center>
 
-[Dans les TP suivants, nous allons émuler le port série sur PC pour faire communiquer un Arduino avec l'ordinateur.](TP%20guidé.md)
+[Dans les TP suivants, nous allons émuler le port série sur PC pour faire communiquer un Arduino avec l'ordinateur.](./TP%20guidé.md)
