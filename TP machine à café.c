@@ -2,13 +2,15 @@
 //
 
 String produit[3] = {"cafe","chocolat chaud","the"};
-short int stock[3] = { 10,10,10 };
+short int stock[3] = { 10,4,1 };
 short int pinLed[3] = { 13,12,11 };
 short int pinbouton[3] = { 4,3,2 };
 
 void remplir(int type_boisson) {
 	stock[type_boisson] = 10;
 }
+
+
 
 
 void setup()
@@ -69,16 +71,20 @@ void servirBoisson(int type_boisson){
   {
   Serial.print("Pas de stock disponible");
   }
-  
 }
-/* A FINIR
+  
+
 void checkLumiere(){
       for (int i = 0; i < 3; i++) {
-        short int nbstockpro = stock[i]
-        if (stock[i]){
-                remplir(i);
-        }else if (stock[i]){
-        	
+        short int nbstockpro = stock[i];
+        if (stock[i] >= 5){
+			digitalWrite(pinLed[i], HIGH);
+        }else if (stock[i] < 3){
+			digitalWrite(pinLed[i], LOW);
+        }else{
+        	digitalWrite(pinLed[i], HIGH);
+          	delay(450);
+          	digitalWrite(pinLed[i], LOW);
         }
-}
-*/
+      }
+  }
