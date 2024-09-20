@@ -1,0 +1,15 @@
+int key1 = 0;
+int key2 = 6;
+
+void setup()
+{
+  Serial.begin(9600);
+  int variable = '0';
+  char caractere = variable + key1;
+    Serial.print(caractere);
+  char u = variable + key2;
+  Serial.print(u);
+}
+void loop()
+{
+}
