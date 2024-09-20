@@ -4,7 +4,7 @@
 
 Pour ce TP, rendez-vous sur [Tinkercad](https://www.tinkercad.com/) et placer un Arduino UNO R3. Le volet dépliant "Moniteur série" va nous permettre d'envoyer des messages depuis notre PC en passant par le port série et de recevoir les messages de notre Arduino.
 
-![Setup Tinkercad TP liaison série guidé](/assets/Tinkercad.png)
+![Setup Tinkercad TP liaison série guidé](./assets/Tinkercad.png)
 
 Pour le moment, il n'est pas possible d'utiliser le moniteur de série, il faut d'abord initialiser la communication. Pour cela, on utilise l'objet `Serial`.
 
@@ -60,7 +60,7 @@ Pour rappel, les caractères sont stockés sous forme de nombre dans la mémoire
 
 <center>
 
-![Table ASCII](/assets/bf46888c-372d-4e10-8637-aac905290822.png.960x960_q85.jpg)
+![Table ASCII](./assets/ASCII-Table-wide.svg)
 
 </center>
 
@@ -83,7 +83,15 @@ AaBbCc...Zz
 > Inserez ici votre code, il doit être dans un codebloc (entre triple reverse quote ```) balisé avec le langage C++.
 
 ```C++
-MON CODE ICI
+void setup()
+{
+  for (int i=0 ; i<26 ; i++) {
+    char alp = 'A' + i;
+    char alp2 = 'a'+ i;
+    Serial.print(alp);
+    Serial.print(alp2);
+  }
+}
 ```
 
 ## 4. Réception de données
@@ -146,4 +154,4 @@ void loop()
 }
 ```
 
-Si cet exemple est clair, vous pouvez passer au [TP suivant](TP%20Code%20César.md).
+Si cet exemple est clair, vous pouvez passer au [TP suivant](./TP%20Code%20César.md).
