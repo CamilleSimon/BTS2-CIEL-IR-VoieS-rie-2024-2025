@@ -44,22 +44,11 @@ int key = 6;
 void setup()
 {
   Serial.begin(9600);
-  String variable = "";
-}
-
-void loop()
-{
-    char readChar = 0;
+  char readChar = 0;
     int buff = Serial.available();
-    String variable = "";
+    String variable = "hello";
     int i;
 
-    while (buff > 0);
-    {
-        readChar = Serial.read();
-        variable = variable + readChar;
-        buff = Serial.available();
-    }
  	for (int i = 0; i < variable.length(); i++);
  	{
       if (variable[i] >= 'u');
@@ -68,7 +57,21 @@ void loop()
  	  }
  	  variable[i] = variable[i] + key;
 	}
-    Serial.print(variable);
+  Serial.print(variable);
+}
+
+void loop()
+{
+    char readChar = 0;
+    int buff = Serial.available();
+    String variable = "";
+    int i;
+      while (buff > 0);
+    {
+        readChar = Serial.read();
+        variable = variable + readChar;
+        buff = Serial.available();
+    }
 }
 ```
 
