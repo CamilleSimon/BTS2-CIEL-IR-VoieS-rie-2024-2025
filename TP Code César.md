@@ -98,6 +98,23 @@ Exemple :
     2. Segmentez les données reçues et affectez leurs valeurs à `key` et `operation`.
     3. Appelez `chiffrement()` et `dechiffrement()` dans les situations qui conviennent.
 4. Testez votre code.
+```C++
+int key1 = 0;
+int key2 = 6;
+
+void setup()
+{
+  Serial.begin(9600);
+  int variable = '0';
+  char caractere = variable + key1;
+    Serial.print(caractere);
+  char u = variable + key2;
+  Serial.print(u);
+}
+void loop()
+{
+}
+```
 
 ## Bonus
 
