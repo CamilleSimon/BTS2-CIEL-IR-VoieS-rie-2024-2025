@@ -1,0 +1,20 @@
+// pour les boutons
+pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(2, HIGH); // met le pin 2 en état haut
+// pour les leds
+pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, HIGH); // met le pin 13 en état haut
+
+
+void setup()
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+}
