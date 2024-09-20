@@ -17,7 +17,7 @@ Pour chiffrer un message, chaque lettre est remplacée par la n-ième lettre qui
 
 <center>
 
-![Exemple d'outil pour le chiffrement de César](/Voie%20série/assets/letters-wheel.png)
+![Exemple d'outil pour le chiffrement de César](./assets/letters-wheel.png)
 
 </center>
 
@@ -67,6 +67,6 @@ Exemple :
 
 ## Bonus
 
-Sécurisez votre code afin qu'il ne s'exécute que dans des situations valides. Exemple : valeur d'opération invalide, valeur de clé invalide, message contenant des caractères interdits.=
+Sécurisez votre code afin qu'il ne s'exécute que dans des situations valides. Exemple : valeur d'opération invalide, valeur de clé invalide, message contenant des caractères interdits.
 
-Une fois ce TP terminé, vous pouvez passer au suivant : [TP - Niveaux de la machine à café](/Voie%20série/TP%20machine%20à%20café.md)
+Une fois ce TP terminé, vous pouvez passer au suivant : [TP - Niveaux de la machine à café](./TP%20machine%20à%20café.md)
