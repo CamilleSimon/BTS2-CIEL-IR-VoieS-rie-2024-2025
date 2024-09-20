@@ -1,0 +1,60 @@
+#include <stdarg.h>
+
+const int pinBoutons[] = {2, 3, 4};  
+const int pinLeds[] = {10, 11, 12};   
+int stockBoissons[3] = {10, 10, 10};  
+const char* commandesValidees[] = {"cafe", "chocolat chaud", "the"}; // Noms des boissons
+
+void print(const char* format, ...) {
+    char buffer[512];
+    va_list args;
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
+    Serial.println(buffer);
+}
+
+void etatLed(int type_boisson) {
+    if (stockBoissons[type_boisson] > 5) {
+        digitalWrite(pinLeds[type_boisson], LOW); 
+    } else if (stockBoissons[type_boisson] > 2) {
+        digitalWrite(pinLeds[type_boisson], HIGH);
+    } else {
+      
+        for (int i = 0; i < 3; i++) {
+            digitalWrite(pinLeds[type_boisson], HIGH);
+            delay(500);
+            digitalWrite(pinLeds[type_boisson], LOW);
+            delay(500);
+        }
+    }
+}
+
+void remplir(int type_boisson) {
+    stockBoissons[type_boisson] = 10; 
+    etatLed(type_boisson); 
+}
+
+void setup() {
+    Serial.begin(9600);
+    
+    for (int i = 0; i < 3; i++) {
+        pinMode(pinBoutons[i], INPUT_PULLUP); 
+        pinMode(pinLeds[i], OUTPUT); 
+        digitalWrite(pinLeds[i], LOW); 
+    }
+}
+
+void loop() {
+    for (int i = 0; i < 3; i++) {
+        if (digitalRead(pinBoutons[i]) == LOW) { 
+            print("Remplissage de %s", commandesValidees[i]);       
+            remplir(i); 
+            delay(500); 
+        }
+    }
+    
+    for (int i = 0; i < 3; i++) {
+        etatLed(i);
+    }
+}
