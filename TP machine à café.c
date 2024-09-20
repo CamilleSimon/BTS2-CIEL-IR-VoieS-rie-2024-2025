@@ -1,21 +1,16 @@
-// C++ code
-
 const int LEDS[] = {11, 12, 13};
 const int BOUTTON[] = {2, 3, 4};
-
-
-int boissons[3] = {0, 0, 0};
+const int BOISSONS[] = {0, 1, 2};  
+int niveauBoissons[] = {0, 0, 0};
 const int MAX_BOISSON = 10;
 
-const char* Commandes[] = {"the", "cafe", "chocolat"};
+const char* COMMANDES[] = {"the", "cafe", "chocolat"};
 
 void setup() {
   for (int i = 0; i < 3; i++) {
     pinMode(LEDS[i], OUTPUT); 
-  }
-  for (int i = 0; i < 3; i++) {
     pinMode(BOUTTON[i], INPUT);
-    digitalWrite(BOUTTON[i],HIGH);
+    digitalWrite(BOUTTON[i], HIGH);
   }
   Serial.begin(9600);
 }
@@ -34,40 +29,41 @@ void loop() {
 }
 
 void remplir(int index) {
-  if (boissons[index] < MAX_BOISSON) {
-    boissons[index] = MAX_BOISSON;
+  if (niveauBoissons[index] < MAX_BOISSON) {
+    niveauBoissons[index] = MAX_BOISSON;
   }
 }
 
 void receptionCommande() {
   String commande = Serial.readStringUntil('\n');  
-  if (commande == Commandes[0]) {
-    servirBoisson(0);
+  bool commandeValide = false;
+  for (int i = 0; i < 3; i++) {
+    if (commande.equals(COMMANDES[i])) {
+      servirBoisson(i);
+      commandeValide = true;
+      break;
+    }
   }
-  else if (commande == Commandes[1]) {
-    servirBoisson(1); 
-  }
-  else if (commande == Commandes[2]) {
-    servirBoisson(2);
-  }
-  else {
+  if (!commandeValide) {
     Serial.println("Commande non valide");
   }
   afficherStock(); 
 }
 
 void servirBoisson(int boisson) {
-  if (boissons[boisson] > 0) {
-    boissons[boisson]--;
+  if (niveauBoissons[boisson] > 0) {
+    niveauBoissons[boisson]--;
+  } else {
+    Serial.println("Stock épuisé pour cette boisson");
   }
 }
 
 void checkLumiere() {
   for (int i = 0; i < 3; i++) {
-    if (boissons[i] < 3) {
+    if (niveauBoissons[i] < 3) {
       digitalWrite(LEDS[i], LOW);
     } 
-    else if (boissons[i] >= 3 && boissons[i] <= 5) {
+    else if (niveauBoissons[i] >= 3 && niveauBoissons[i] <= 5) {
       digitalWrite(LEDS[i], HIGH);
       delay(500); 
       digitalWrite(LEDS[i], LOW);
@@ -82,9 +78,9 @@ void checkLumiere() {
 void afficherStock() {
   Serial.println("Etat du stock :");
   Serial.print("The : ");
-  Serial.println(boissons[0]);
+  Serial.println(niveauBoissons[0]);
   Serial.print("Cafe : ");
-  Serial.println(boissons[1]);
+  Serial.println(niveauBoissons[1]);
   Serial.print("Chocolat : ");
-  Serial.println(boissons[2]);
+  Serial.println(niveauBoissons[2]);
 }
