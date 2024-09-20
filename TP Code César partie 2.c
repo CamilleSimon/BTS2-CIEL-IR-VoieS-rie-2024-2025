@@ -47,7 +47,7 @@ void loop() {
     String text = message.substring(positionDeuxiemeVirgule + 1);
 
     // Valider que le message ne contient que des lettres minuscules
-    if (!MessageValide(text)) {
+    if (!messagevalide(text)) {
       Serial.println("Erreur : le message contient des caractères interdits. Utilisez uniquement des lettres minuscules (a-z).");
 
     }
@@ -92,7 +92,7 @@ void dechiffrement(int key, String message) {
 }
 
 // Fonction permettant de vérifier si le message ne contient que des lettres minuscules
-bool MessageValide(String text) {
+bool messagevalide(String text) {
   for (int i = 0; i < text.length(); i++) {
     if (text[i] < 'a' || text[i] > 'z') {
       return false;
