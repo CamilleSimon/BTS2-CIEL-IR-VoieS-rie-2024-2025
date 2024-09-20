@@ -1,0 +1,27 @@
+// C++ code
+//
+void setup()
+{
+ // pour les boutons
+pinMode(2, INPUT);
+digitalWrite(2, HIGH); 
+  pinMode(3, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(3, HIGH); // met le pin 2 en état haut
+  pinMode(4, INPUT);  
+digitalWrite(4, HIGH); 
+// pour les leds
+pinMode(11, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(11, HIGH); // met le pin 13 en état haut
+  pinMode(12, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(12, HIGH); // met le pin 13 en état haut
+  pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, HIGH); // met le pin 13 en état haut
+}
+
+void loop()
+{
+  int led[]={11,12,13};
+  int boutons[]={2,3,4};
+  int stockBoissons
+  
+}
