@@ -1,6 +1,6 @@
 int boutonPin[3]={7,6,5};
 int ledPin[3]={10,9,8};
-int stock[3]={10,5,5};
+int stock[3]={10,10,10};
 String commande[3]={"café","thé","chocolat chaud"};
 void setup()
 {
@@ -20,10 +20,19 @@ void loop()
   
   for (int i=0;i<3;i++)
   {  
-    if(stock[i]==5)
+    if(2<stock[i]<5)
+    {
+      digitalWrite(ledPin[i],LOW);
+   	  delay(1000);
+ 
+      digitalWrite(ledPin[i], HIGH);
+      delay(1000);
+    }
+    if(stock[i]>2)
     {
       digitalWrite(ledPin[i],LOW);
     }
+    
   }
     
 }
