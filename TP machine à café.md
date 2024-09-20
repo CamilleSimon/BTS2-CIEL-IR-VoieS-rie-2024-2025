@@ -49,6 +49,50 @@ digitalWrite(13, HIGH); // met le pin 13 en état haut
     4. `checkLumiere(int type_boisson)` qui met à jour l'état de la led de la boisson passée en paramètre.
 4. Ecrivez les fonctions `setup()` et `loop()` en vous appuyant en utilisant les fonctions ci-dessus.
 
+```C++
+void setup()
+{
+  Serial.begin(9600);
+	pinMode(13, OUTPUT); //LED 1
+	digitalWrite(13, LOW);
+	pinMode(2, INPUT); //Interrupteur 1
+	digitalWrite(2, HIGH);
+  	pinMode(12, OUTPUT); //LED 2
+	digitalWrite(12, LOW);
+	pinMode(3, INPUT); //Interrupteur 2
+	digitalWrite(3, HIGH);
+  	pinMode(11, OUTPUT); //LED 3
+	digitalWrite(11, LOW);
+	pinMode(4, INPUT); //Interrupteur 3
+	digitalWrite(4, HIGH);
+  
+//  	int pinLED[3]=[13,12,11];
+//  	int pinBUTTON[3]=[2,3,4];
+//  	int Stock[3]=[3];
+//    String value[3]=["Coffee","Chocolate","Tea"];
+}
+
+//int var[10] = ; 
+
+//void fill(int type_drink)
+//{
+//  type_drink = 10;
+//}
+//void receptioncommand()
+//{
+//}
+//void servedrink()
+//{
+//}
+//void checklights(int type_drink)
+//{
+//}
+
+void loop()
+{
+}
+```
+
 ## Indications
 
 -   Vous devrez utiliser des chaînes de caractères, (String). Vous trouverez [ici](https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/) la documentation de la classe String pour Arduino.
