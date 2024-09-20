@@ -57,7 +57,8 @@ void setup()
  	  }
  	  variable[i] = variable[i] + key;
 	}
-  Serial.print(variable);
+  Serial.println(variable);
+  Serial.print(variable[i]);
 }
 
 void loop()
@@ -102,17 +103,17 @@ Exemple :
     3. Appelez `chiffrement()` et `dechiffrement()` dans les situations qui conviennent.
 4. Testez votre code.
 ```C++
-int key1 = 0;
-int key2 = 6;
+int key = 6;
 
 void setup()
 {
   Serial.begin(9600);
   int variable = '0';
-  char caractere = variable + key1;
-    Serial.print(caractere);
-  char u = variable + key2;
-  Serial.print(u);
+  char caractere = variable + 0;
+  Serial.print(caractere);
+  char u = variable + key;
+  Serial.println(u);
+  Serial.print(variable);
 }
 void loop()
 {
@@ -127,7 +128,7 @@ void loop()
         variable = variable + readChar;
         buff = Serial.available();
     }
- 	for (int i = 0; i < variable.length(); i++);
+ 	for (int i = 0; i < 1; i++);
  	{
       if (variable[i] >= 'u');
  	  {
@@ -135,7 +136,6 @@ void loop()
  	  }
  	  variable[i] = variable[i] + key;
 	}
-    Serial.print(variable);
 }
 ```
 
