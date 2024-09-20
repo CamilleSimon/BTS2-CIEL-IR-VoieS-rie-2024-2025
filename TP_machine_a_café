@@ -1,0 +1,29 @@
+int boutonPin[3]={7,6,5};
+int ledPin[3]={10,9,8};
+int stock[3]={10,10,10};
+String commande[3]={"café","thé","chocolat chaud"};
+void setup()
+{
+  pinMode(7, INPUT);
+  pinMode(10, OUTPUT);
+  pinMode(6, INPUT);
+  pinMode(9, OUTPUT);
+  pinMode(5, INPUT);
+  pinMode(8, OUTPUT);
+}
+int remplir=1;
+void loop()
+{
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  
+  
+  //const int bouton-cafe.pin =7;//définition des pins pour les différents boutons
+  //const int bouton-the.pin =-6;
+  //const int bouton-choco.pin =-5;
+  if(digitalRead(10)== LOW)
+  {
+    
+  }
+    
+}
