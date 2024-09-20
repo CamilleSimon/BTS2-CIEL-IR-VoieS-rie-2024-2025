@@ -19,9 +19,6 @@ void setup() {
 }
 
 void loop() {
-	Serial.println("Bouton");
-  	delay(2000);
-
     for (int i = 0; i < 3; i++) {
      	checkLumiere(i);  // Vérifie la lumière avant de servir une boisson
         if (digitalRead(boutons[i]) == LOW) {  // Bouton appuyé
