@@ -1,0 +1,135 @@
+///C++ code
+
+void print(const char* format, ...);
+
+int LED[3] = {13,12,-11};
+int boutons[3] = {4,-3,2};
+int stock[3] = {10,10,10};
+String dictionnaire[3] = {"café", "chocolat chaud", "thé"};
+String commande;
+int type_boisson = 4;
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  // pour les boutons
+  pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+  pinMode(-3, INPUT);
+  pinMode(4, INPUT);
+  digitalWrite(2, HIGH); // met le pin 2 en état haut
+  digitalWrite(-3, HIGH);
+  digitalWrite(4, HIGH);
+  // pour les leds
+  pinMode(13, INPUT);// initialise le pin numéro 13 comme étant un output
+  pinMode(12, INPUT);
+  pinMode(-11, INPUT);
+  digitalWrite(13, HIGH); // met le pin 13 en état haut
+  digitalWrite(12, HIGH);
+  digitalWrite(-11, HIGH);
+}
+
+
+
+void loop()
+{
+  if (Serial.available()!=-1)
+  {
+    delay(20);
+    receptionCommande();
+    type_boisson = -1;
+    for (int i=0;i<3;i++)
+    {
+      if commande == dictionnaire[i];
+      {
+        type_boisson = i;
+      }
+    }
+    if (type_boisson == -1)
+    {
+      printf("La commande ne figure pas parmis les options :  thé, chocolat chaud, thé");
+    }
+    else
+    {
+    servirBoisson(type_boisson);  
+    }
+  }
+}
+
+
+
+void print(const char* format, ...)
+{
+  char buffer[512];
+
+  va_list args;
+  va_start(args, format);
+  vsprintf(buffer, format, args);
+  va_end(args);
+
+  Serial.println(buffer);
+}
+
+void remplir(int type_boisson)
+{
+  stock[type_boisson] =10;
+}
+
+void receptionCommande(String commande)
+{
+  int buff = Serial.available();
+  for(int i=0;i<buff;i++)
+  {
+    commande=+Serial.read();
+    buff=Serial.available();
+  }
+  
+}
+void servirBoisson(int type_boisson)
+{
+  if (stock[type_boisson]>0)
+  {
+    stock[type_boisson]=-1;
+  }
+  else
+  {
+    printf("Veuillez remplir le stock de cette boisson");
+  }
+}
+
+void checkLumiere(int type_boisson)
+{
+  int outlet;
+  switch (type_boisson)
+  {
+    case 0:
+    	outlet = 13;
+    	break;
+    case 1:
+    	outlet = 12;
+    	break;
+    case 2:
+    	outlet = 11;
+    	break;
+  }
+  
+  if (stock[type_boisson]>5)
+  {
+    digitalWrite(type_boisson,HIGH);
+  }
+  	else if (stock[type_boisson]>2)
+  	{
+      digitalWrite(type_boisson,DOWN);
+      delay(500);
+      digitalWrite(type_boisson,HIGH);
+      delay(500);
+    }
+      else
+      {
+        digitalWrite(type_boisson,DOWN);
+      }
+    
+}
+
+///
