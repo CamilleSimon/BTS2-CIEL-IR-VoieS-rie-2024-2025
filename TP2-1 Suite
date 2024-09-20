@@ -1,0 +1,25 @@
+int key = 6;
+
+
+void setup()
+{
+  Serial.begin(9600);
+  char readChar = 0;
+    int buff = Serial.available();
+    String variable = "hey";
+    int i;
+
+ 	for (int i = 4; i < variable.length(); i++);
+ 	{
+      if (variable[i] >= 'u');
+ 	  {
+    	 variable[i] = variable[i] - 26;
+ 	  }
+ 	  variable[i] = variable[i] + key;
+	}
+    Serial.print(variable);
+}
+
+void loop()
+{
+}
