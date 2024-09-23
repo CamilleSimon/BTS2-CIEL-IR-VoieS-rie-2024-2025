@@ -1,5 +1,3 @@
-// C++ code
-//
 int key;
 int operation;
 void setup()
