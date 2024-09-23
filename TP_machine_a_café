@@ -1,6 +1,8 @@
+// C++ code
+//
 int boutonPin[3]={7,6,5};
 int ledPin[3]={10,9,8};
-int stock[3]={10,10,10};
+int stock[3]={10,2,3};
 String commande[3]={"café","thé","chocolat chaud"};
 void setup()
 {
@@ -11,7 +13,6 @@ void setup()
   pinMode(5, INPUT);
   pinMode(8, OUTPUT);
 }
-int remplir=1;
 void loop()
 {
   digitalWrite(10,HIGH);
@@ -20,15 +21,18 @@ void loop()
   
   for (int i=0;i<3;i++)
   {  
-    if(2<stock[i]<5)
+    if(stock[i]<5)
     {
-      digitalWrite(ledPin[i],LOW);
-   	  delay(1000);
+      if(stock[i]>2)
+      {
+        digitalWrite(ledPin[i],LOW);
+   	    delay(1000);
  
-      digitalWrite(ledPin[i], HIGH);
-      delay(1000);
+        digitalWrite(ledPin[i], HIGH);
+        delay(1000);
+      }
     }
-    if(stock[i]>2)
+    if(stock[i]<=2)
     {
       digitalWrite(ledPin[i],LOW);
     }
