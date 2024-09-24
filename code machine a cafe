@@ -1,0 +1,61 @@
+int cafe= 13;
+int chocolat= 12;
+int the= 11;
+int bt1= 4;
+int bt2= 3;
+int bt3= 2;
+int pinled[3]={13,12,11};
+int pinbouton[3]={4,3,2};
+int pinstock[3]={10,10,10};
+String cmv[3]=("cafe","chocolat","the");
+
+
+void setup()
+{
+pinMode(bt3, INPUT);
+digitalWrite(2, HIGH)
+pinMode(bt2, INPUT);
+digitalWrite(3, HIGH)
+pinMode(bt1, INPUT);
+digitalWrite(4, HIGH)
+pinMode(the, OUTPUT);
+pinMode(chocolat, OUTPUT);
+pinMode(cafe, OUTPUT);
+int pinled[3]={13,12,11};
+int pinbouton[3]={4,3,2};
+int pinboisson[3]={10,10,10};
+String cmv[3]=("cafe","chocolat","the");
+}
+
+void loop()
+{
+  if(
+}
+
+
+
+void remplir(int type_boisson)
+{
+  pinstock[type_boisson]=10;
+}
+
+
+
+
+void receptionCommande()
+{
+  
+}
+
+
+void servirBoisson(int type_boisson)
+{
+  
+}
+
+
+
+void checkLumiere(int type_boisson)
+{
+  
+}
