@@ -54,19 +54,19 @@ void receptionCommande()
   if(s == tabDico[0])
   {
     servirBoisson(0);
-    if(tabStock[0] > 0)
+    if(tabStock[0] >= 0)
   		print("Voici votre cafe, il reste %d cafes", tabStock[0]);
   }
   if(s == tabDico[1])
   {
     servirBoisson(1);
-    if(tabStock[1] > 0)
+    if(tabStock[1] >= 0)
   		print("Voici votre chocolat, il reste %d chocolats", tabStock[1]);
   }
   if(s == tabDico[2])
   {
     servirBoisson(2);
-    if(tabStock[2] > 0)
+    if(tabStock[2] >= 0)
   		print("Voici votre the, il reste %d thes", tabStock[2]);
   }
 }
