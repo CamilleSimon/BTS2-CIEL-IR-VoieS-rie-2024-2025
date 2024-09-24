@@ -44,7 +44,6 @@ void loop()
   operation = s[0]-'0';
   key = s.substring(2,s.indexOf(',')).toInt();
   message = s.substring(s.indexOf(',',3)+1);
-  Serial.print(message);
   if(operation == 1)
     dechiffrement(message);
   if(operation == 0)
