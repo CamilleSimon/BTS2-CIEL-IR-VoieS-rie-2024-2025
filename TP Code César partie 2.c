@@ -45,7 +45,7 @@ void loop()
   if(s!= "")
   {
     operation = s[0]-'0';
-    key = s.substring(2,s.indexOf(',')).toInt();
+    key = s.substring(2,s.indexOf(2,',')).toInt();
     message = s.substring(s.indexOf(',',3)+1);
     if(operation == 1)
       dechiffrement(message);
