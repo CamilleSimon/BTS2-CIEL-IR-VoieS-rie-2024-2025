@@ -63,6 +63,65 @@ Exemple :
     1. Proposez une façon d'enregistrer les informations reçues par l'Arduino dans une structure de données complexe (tableau ou chaîne de caractères par exemple).
     2. Segmentez les données reçues et affectez leurs valeurs à `key` et `operation`.
     3. Appelez `chiffrement()` et `dechiffrement()` dans les situations qui conviennent.
+    4. Mon code
+    5.   (// Déclaration des variables globales
+int operation; // 0 pour chiffrement, 1 pour déchiffrement
+int key; // Clé de chiffrement/déchiffrement
+String message; // Message à traiter
+
+// Fonction de chiffrement
+String chiffrement(String msg, int k) {
+  String result = "";
+  for (int i = 0; i < msg.length(); i++) {
+    char c = msg[i];
+    result += char((c - 'a' + k) % 26 + 'a');
+  }
+  return result;
+}
+
+// Fonction de déchiffrement
+String dechiffrement(String msg, int k) {
+  String result = "";
+  for (int i = 0; i < msg.length(); i++) {
+    char c = msg[i];
+    result += char((c - 'a' - k + 26) % 26 + 'a');
+  }
+  return result;
+}
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Lecture de la ligne de commande
+    String input = Serial.readStringUntil('\n');
+    
+     // Segmentation des données
+    int firstComma = input.indexOf(',');
+    int secondComma = input.indexOf(',', firstComma + 1);
+    
+    // Extraction des segments
+    operation = input.substring(0, firstComma).toInt();
+    key = input.substring(firstComma + 1, secondComma).toInt();
+    message = input.substring(secondComma + 1);
+    
+    // Traitement selon l'opération
+    if (operation == 0) {
+      // Chiffrement
+      String encryptedMessage = chiffrement(message, key);
+      Serial.println(encryptedMessage);
+    } else if (operation == 1) {
+      // Déchiffrement
+      String decryptedMessage = dechiffrement(message, key);
+      Serial.println(decryptedMessage);
+    } else {
+      // Cas d'erreur
+      Serial.println("Erreur: opération non reconnue");
+    }
+  }
+})
 4. Testez votre code.
 
 ## Bonus
