@@ -1,0 +1,35 @@
+// C++ code
+//
+int Cafe=7;
+int Chocolat_chaud=4;
+int The=2;
+int Bp1=8;
+int Bp2=12;
+int Bp3=13;
+int pinLEDS[3]={2,4,7};
+int pinBP[3]={8,12,13};
+int stockBoisson[3]={10,10,10};
+String comValide[3]={"Thé","Chocolat chaud","Café"};
+
+void setup()
+{
+  pinMode(Bp1, INPUT_PULLUP);
+  pinMode(Bp2, INPUT_PULLUP);
+  pinMode(Bp3, INPUT_PULLUP);
+  pinMode(Cafe, OUTPUT);//rouge
+  digitalWrite(Cafe, HIGH);
+  pinMode(Chocolat_chaud, OUTPUT);//jaune
+  digitalWrite(Chocolat_chaud, HIGH);
+  pinMode(The, OUTPUT);//vert
+  digitalWrite(The, HIGH);
+}
+
+void loop()
+{
+ if(
+}
+
+void remplir(int type_boisson)
+{
+ stockBoisson[type_boisson]=10;
+}
