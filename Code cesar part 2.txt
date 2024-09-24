@@ -5,25 +5,46 @@ int operation;
 void setup()
 {
     Serial.begin(9600);
-  	String s ="hello";
-    key = 6;
-    chiffrement(s);
+
 }
 
 void loop()
 {
 
-  	char readChar = 0; // caractère à lire
-	String s ="";
-    int buff = Serial.available();
+if (Serial.available() > 0) {
+    String Message = "";
+    while (Serial.available() > 0) {
+      char Charactere = Serial.read();
+      Message += Charactere;
+      delay(10);
+ }
+  if (Message.length() > 5) {
+      if (Message[0] != '0' && Message[0] != '1') {
+        Serial.println("Ecrivez 0 pour chiffrement ou 1 pour dechiffrement");
+        	return 0;
+      }
 
-    while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    {
-      	readChar = Serial.read(); // lecture du caractère
-        s += readChar; // envoi du caractère
-        buff = Serial.available(); // mise à jour du nombre de caratères restant
-    }
+        int Arret = inputMessage.indexOf(',');
+        int Arret2 = inputMessage.indexOf(',', Arret + 1);
+
+    
+      }
+
+      String cleString = Message.substring(Arret + 1, Arret2);
+      key = cleString.toInt();
+
+      String Caractere = Message.substring(Arret2 + 1);
+
+      operation = Message[0] - '0';
+
+      if (operation == 0) {
+        	chiffrement(key, Caractere);
+      } else if (operation == 1) {
+        	dechiffrement(key, Caractere);
+      } 
+  	}
 }
+  
 
 void chiffrement(String message)
 {
