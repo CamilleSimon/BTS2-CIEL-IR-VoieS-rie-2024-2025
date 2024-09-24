@@ -39,13 +39,17 @@ void loop()
   {
     c = Serial.read();
     s += c;
+    delay(10);
     buffer = Serial.available();
   }
-  operation = s[0]-'0';
-  key = s.substring(2,s.indexOf(',')).toInt();
-  message = s.substring(s.indexOf(',',3)+1);
-  if(operation == 1)
-    dechiffrement(message);
-  if(operation == 0)
-    chiffrement(message);
+  if(s!= "")
+  {
+    operation = s[0]-'0';
+    key = s.substring(2,s.indexOf(',')).toInt();
+    message = s.substring(s.indexOf(',',3)+1);
+    if(operation == 1)
+      dechiffrement(message);
+    if(operation == 0)
+      chiffrement(message);
+  }
 }
