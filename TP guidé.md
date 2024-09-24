@@ -20,9 +20,9 @@ L'objet Serial dans l'IDE Arduino est essentiel pour la communication série ent
 
 -   `Serial.println(data)` : Envoie les données à la liaison série sous forme de texte suivi d'un saut de ligne, ce qui facilite la lecture de plusieurs lignes de données.
 
--   `Serial.read()` : Lit un octet de données de la liaison série. Retourne -1 si aucune donnée n'est disponible.
+-   `Serial.read()` : Lit un octet de données de la liaison série. Retourne `-1` si aucune donnée n'est disponible.
 
--   `Serial.available()` : Retourne le nombre de bytes disponibles pour la lecture dans le buffer série.
+-   `Serial.available()` : Retourne le nombre d'octet (byte) disponibles pour la lecture dans le buffer série. Si le buffer ne contient aucun octet, alors retourne `0`
 
 -   `Serial.peek()` : Lit le prochain byte disponible dans le buffer sans le retirer du buffer.
 
