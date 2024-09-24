@@ -1,10 +1,7 @@
-// C++ code
-//
 int key;
 int operation;
 
-void setup()
-{
+void setup() {
     Serial.begin(9600);
     String s = "hello";
     key = 6;
@@ -12,53 +9,57 @@ void setup()
     dechiffrement(s);
 }
 
-void loop()
-{ 
-  char readChar = 0; // caractère à lire
-  
+void loop() {
+    char readChar = 0; // caractère à lire
 
     int buff = Serial.available();
 
-    while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    {
-       
+    while (buff > 0) { // tant qu'il reste des caractères dans le buffer
         readChar = Serial.read(); // lecture du caractère
-      if(readChar==122)
-      {
-        readChar= 96 + key ;
-      }
-      else
-      {
-      	readChar += key;
-       	if(readChar>122)
-      {
-          readChar -=26;
-      }
+
+        // Vérifier si c'est une lettre (minuscule ou majuscule)
+        if ((readChar >= 'a' && readChar <= 'z') || (readChar >= 'A' && readChar <= 'Z')) {
+            // On calcule le point de départ ('a' ou 'A') en fonction du caractère
+            char base = (readChar >= 'a') ? 'a' : 'A';
+            // Appliquer la clé en utilisant l'arithmétique modulo pour rester dans les limites
+            readChar = (readChar - base + key) % 26 + base;
         }
-       Serial.print(readChar); // envoi du caractère
-       buff = Serial.available();// mise à jour du nombre de caratères restant
-        
+
+        Serial.print(readChar); // envoi du caractère
+        buff = Serial.available(); // mise à jour du nombre de caractères restant
     }
 }
-void chiffrement(String message)
-{
-  for (int i=0;i<message.length();i++)
-  {
-    message[i] = message[i] + key;
-  }
-  Serial.println(message);
-  
-} 
 
-void dechiffrement(String message)
-{
-  for (int i=0;i<message.length();i++)
-  {
-    message[i] = message[i] - key;
-  }
-  Serial.println(message);
-  
-} 
+void chiffrement(String message) {
+    for (int i = 0; i < message.length(); i++) {
+        char c = message[i];
+
+        // Si c'est une lettre (minuscule ou majuscule)
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+            char base = (c >= 'a') ? 'a' : 'A';
+            c = (c - base + key) % 26 + base;
+        }
+
+        message[i] = c;
+    }
+    Serial.println(message);
+}
+
+void dechiffrement(String message) {
+    for (int i = 0; i < message.length(); i++) {
+        char c = message[i];
+
+        // Si c'est une lettre (minuscule ou majuscule)
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+            char base = (c >= 'a') ? 'a' : 'A';
+            c = (c - base - key + 26) % 26 + base; // On ajoute 26 pour éviter les valeurs négatives
+        }
+
+        message[i] = c;
+    }
+    Serial.println(message);
+}
+
 
 
 
