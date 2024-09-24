@@ -1,0 +1,47 @@
+int pinLEDS[3]={13,12,11};
+int pinBoutons[3]={4,3,2};
+int stockBoissons[3]={10,10,10};
+String Dictionnaire =("cafe","chocolat chaud","the");
+int stock;
+
+
+
+void setup()
+{
+
+
+// pour les boutons
+pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(2, HIGH); // met le pin 2 en état haut
+
+// pour les leds
+pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, LOW); // met le pin 13 en état haut
+  
+}
+
+void loop()
+{
+  
+  
+}
+
+void remplir(int type_boisson)
+{
+  	stock[type_boisson]=10;
+}
+
+void receptionCommande()
+{
+    
+}
+
+void servirBoisson(int type_boisson)
+{
+    		
+}
+
+void checkLumiere(int type_boisson)
+{
+    		
+}
