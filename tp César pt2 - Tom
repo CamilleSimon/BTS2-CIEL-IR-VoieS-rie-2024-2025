@@ -3,8 +3,6 @@
 char readChar = 0;
 int key=6;
 int i;
-int operation;
-String s = "";
 String total;
 int buff;
 
@@ -24,7 +22,7 @@ void chiffrement()
 
       		if(readChar > 122)
        	 	{
-         	readChar = readChar - 26 ; 
+         	readChar = readChar + 26 ; 
         	}
     		Serial.print(readChar); // envoi du caractère
         	buff = Serial.available(); // mise à jour du nombre de caratères restant
@@ -42,7 +40,7 @@ void dechiffrement()
 
       		if(readChar > 122)
        	 	{
-         	readChar = readChar + 26 ; 
+         	readChar = readChar - 26 ; 
         	}
 
 
@@ -71,7 +69,11 @@ void loop()
       readChar = total;
         Serial.print(readChar); // envoi du caractère
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-    }
+       }
+  
+  
+}
+
   
 }
 
