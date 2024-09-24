@@ -1,0 +1,62 @@
+void setup()
+{
+  
+  int pinLEDS[3]={13,12,11}; 
+  int pinButton[3]={4,3,2};
+  String dictionnaireCommandeValide[3]={"cafe","chocolat_chaud","the_vert"};
+  int stockBoisson[3]={10,10,10};
+  
+  Serial.begin(9600);  //initialise la communication série a une vitesse 9600 bps
+  pin, mode(13,OUTPUT];
+  digitalWrite(13,HIGH);
+  pin,mode(12,OUTPUT];
+  digitalWrite(12,HIGH);   
+  pin,mode(11,OUTPUT];
+  digitalWrite(11,HIGH);
+            
+   pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+   digitalWrite(2, HIGH); // met le pin 2 en état haut
+   // pour les leds
+   pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+   digitalWrite(13, HIGH); // met le pin 13 en état haut
+   pinMode(3, INPUT); 
+   digitalWrite(3, HIGH);
+   pinMode(12, OUTPUT); 
+   digitalWrite(12, HIGH); 
+   pinMode(4, INPUT);
+   digitalWrite(4, HIGH); 
+   pinMode(11, OUTPUT); 
+  digitalWrite(11, HIGH); 
+           
+   
+
+ }
+           
+           
+           
+           
+void remplir(int type_boissson) //fonction remplir 
+           {
+             stockBoisson[type_boisson]=10; 
+           }
+           
+void receptionCommandande()
+           {
+            String s = Serial 
+           int buff = Serial.available();
+           }
+           
+void checkLumiere(int type_boisson)
+           {
+             
+           }
+           
+void servirBoisson(int type_boisson)
+           {
+             
+           }
+           
+       
+           
+           
+      
