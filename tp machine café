@@ -1,0 +1,101 @@
+
+const int pinLED[3]={13,12,11};
+const int tabBUTTON[3]={4,3,2};
+int stock[3]={10,10,10};
+String dico[3]={"cafe","chocolat","the"};
+
+ void print(const char* format, ...)
+{
+  char buffer[512];
+
+  va_list args;
+  va_start(args, format);
+  vsprintf(buffer, format, args);
+  va_end(args);
+
+   Serial.println(buffer);}
+void setup()
+{
+  Serial.begin(9600);
+  
+pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(2, HIGH); // met le pin 2 en état haut
+// pour les leds
+pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, HIGH); // met le pin 13 en état haut
+
+   
+   
+void loop()
+{
+
+    for (int i =0; i<3; i++)
+    {
+        if(digitalRead(pinBUTTON[i])==LOW)
+        remplir(i);
+
+    }
+  
+  
+}
+
+void remplir(int type_boisson)
+{
+    stock[type_boisson]=10;
+}
+
+void receptionCommande()
+{
+    char readChar = 0;
+  	int buff = Serial.available();
+    String commande="";
+    int i = 0;
+    while (i < buff)
+    {
+        readChar = Serial.read();
+        commande+=readChar;
+        
+    }
+       
+        for (int i =0; i<3; i++)
+        {
+        if(commande==dico[i])
+        Serial.print(commande);
+        }
+    
+}
+
+void servirBoisson(int type_boisson)
+{
+    stock[type_boisson]-=1;
+}
+
+void checkLumiere(int type_boisson)
+{
+    for(int i =0;i<3;i++)
+    if(stock[type_boisson]>=5)
+        digitalWrite(tabLED[i],HIGH);
+    else if (stock[type_boisson]<=2.5)
+        digitalWrite(tabLED[i],LOW);
+    else if(stock[type_boisson]<5 && >2.5)
+        digitalWrite(tabLED[i],LOW);
+        delay(1000);
+        digitalWrite(tabLED[i],HIGH);
+        delay(1000);
+        digitalWrite(tabLED[i],LOW);
+        delay(1000);
+        digitalWrite(tabLED[i],HIGH);
+        delay(1000);
+        digitalWrite(tabLED[i],LOW);
+
+}
+  void print(const char* format, ...);
+{
+  char buffer[512];
+
+  va_list args;
+  va_start(args, format);
+  vsprintf(buffer, format, args);
+  va_end(args);
+
+  Serial.println(buffer);
