@@ -19,7 +19,8 @@ Chaque LED correspond à une boisson :
 
 L'état de la LED indique le niveau de la réserve :
 
--   Éteinte : il reste plus de 75% dans la réserve.
+-   Éteinte : il reste plus de 50% dans la réserve.
+-   Glignotante : il reste entre 50% et 25% dans la réserve.
 -   Allumée : il reste moins de 25% dans la réserve.
 
 Lorsque la réserve est pleine, elle contient de quoi préparer 10 boissons de chaque. La machine possède également trois boutons, un pour chaque boisson. Lorsqu'une réserve est remplie, on appuie sur le bouton correspondant pour indiquer qu'elle' est de nouveau pleine.
@@ -27,10 +28,26 @@ Lorsque la réserve est pleine, elle contient de quoi préparer 10 boissons de c
 ## Exercice
 
 1. Sur Tinkercad, réalisez le montage représentant la machine à café.
-2. Ecrivez le code permettant de :
-    1. Commander une boisson.
-    2. Allumer les LEDs en fonction du niveau de la réserve de chaque boisson.
-    3. Réinitialisez l'état de la réserve lorsque l'on appuie sur le bouton correspondant.
+Pour initialiser les leds et les boutons, vous pouvez utiliser les fonctions suivantes :
+```ino
+// pour les boutons
+pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
+digitalWrite(2, HIGH); // met le pin 2 en état haut
+// pour les leds
+pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
+digitalWrite(13, HIGH); // met le pin 13 en état haut
+```
+2. Vous utiliserez des tableaux pour stocker les informations suivantes :
+    * les pins des LEDs,
+    * les pins des boutons,
+    * les stocks des boissons,
+    * le dictionnaire des commandes valides
+3. Ecrivez les fonctions suivantes :
+    1. `remplir(int type_boisson)` qui affecte `10` au stock de `type_boisson`.
+    2. `receptionCommande()` qui récupère le contenu du buffer et compare avec les commandes possible.
+    3. `servirBoisson(int type_boisson)` qui décompte le stock si cela est possible.
+    4. `checkLumiere(int type_boisson)` qui met à jour l'état de la led de la boisson passée en paramètre.
+4. Ecrivez les fonctions `setup()` et `loop()` en vous appuyant en utilisant les fonctions ci-dessus.
 
 ## Indications
 
