@@ -31,9 +31,10 @@ digitalWrite(11, HIGH); // met le pin 13 en état haut
 
 void loop()
 {
-  remplir(int type_boisson) 
+  for (int i = 0;i < 3; i++) 
   {
-   type_boisson = 10 
+   if (digitalRead(pinBouton[i])==LOW)
+   remplir (i)
   }
   
   receptionCommande() 
@@ -52,4 +53,8 @@ void loop()
     
   }
 
+}
+
+void remplir(int type_boisson) 
+{
 }
