@@ -5,7 +5,7 @@
 int pinLEDS[3]={13,12,11};
 int pinBouton[3]={16,19,21};
 String tableauCommande[3]={"cafe","chocolatChaud","the"};
-int stockBoisson[3]={10,10,10};
+int stockBoisson[3]={0,0,0};
 
 void setup()
 {
@@ -17,19 +17,24 @@ void setup()
   pinMode(2, INPUT);
   digitalWrite(2, HIGH);
   pinMode(13, OUTPUT);
-  digitalWrite(13, LOW);
+  digitalWrite(13, HIGH);
   pinMode(12, OUTPUT);
-  digitalWrite(12, LOW);
+  digitalWrite(12, HIGH);
   pinMode(11, OUTPUT);
-  digitalWrite(11, LOW);
+  digitalWrite(11, HIGH);
 }
 
-void remplir(int type_boisson)
+void remplir()
 {
- stockBoisson[type_boisson] = 10;
-    Serial.print("Il y a 10 boisson de disponnible");
-  	checkLumiere(type_boisson);
+ for(int i=0 ;i<=2; i++)
+ {
+   if(digitalRead(tableauCommande[i]==LOW))
+      {
+        stockBoisson[i]=10;
+      }
+   }
 }
+
 void receptionCommande()
 {
 	char readChar;
@@ -49,6 +54,7 @@ void receptionCommande()
       {
 
           servirBoisson(i);
+          checkLumiere(i);
       }
     }
 
@@ -85,7 +91,6 @@ void checkLumiere(int type_boisson)
           delay(100);  				  
           digitalWrite(pinLEDS[type_boisson], LOW);	  
           delay(100);
-          digitalWrite(pinLEDS[type_boisson], LOW);
       	}
       else
       {
@@ -102,6 +107,4 @@ void loop()
 {
   remplir();
   receptionCommande();
-  checkLumiere();
-}
-  
+  }
