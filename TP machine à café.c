@@ -30,10 +30,63 @@ void remplir(int type_boisson)
 	stock_boissons[type_boisson]=10;
 }
 
+void receptionCommande()
+{
+
+}
+
+void servirBoisson(int type_boisson)
+{
+  
+}
+
+void checkLumiere(int type_boisson)
+{
+if(stock_boissons[0]>5)
+  digitalWrite(cafe, HIGH);
+if(stock_boissons[0]>5 && stock_boissons[0]>2)
+  digitalWrite(cafe, LOW);
+  delay
+  digitalWrite(cafe, HIGH);
+  delay
+  digitalWrite(cafe, LOW);
+  delay
+if(stock_boissons[0]<3)
+  digitalWrite(cafe, LOW);
+    
+if(stock_boissons[1]>5)
+  digitalWrite(cafe, HIGH);
+if(stock_boissons[1]>5 && stock_boissons[0]>2)
+  digitalWrite(cafe, LOW);
+  delay
+  digitalWrite(cafe, HIGH);
+  delay
+  digitalWrite(cafe, LOW);
+  delay
+if(stock_boissons[1]<3)
+  digitalWrite(cafe, LOW);
+}
+
+if(stock_boissons[2]>5)
+  digitalWrite(cafe, HIGH);
+if(stock_boissons[2]>5 && stock_boissons[0]>2)
+  digitalWrite(cafe, LOW);
+  delay
+  digitalWrite(cafe, HIGH);
+  delay
+  digitalWrite(cafe, LOW);
+  delay
+if(stock_boissons[2]<3)
+  digitalWrite(cafe, LOW);
+
 void loop()
 {
   if(digitalRead(pinBouton[0])==LOW)
     remplir(0);
+  if(digitalRead(pinBouton[1])==LOW)
+    remplir(1);
+  if(digitalRead(pinBouton[2])==LOW)
+    remplir(2);
   
-  
+
 }
