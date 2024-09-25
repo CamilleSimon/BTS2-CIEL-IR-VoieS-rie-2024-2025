@@ -26,8 +26,46 @@ void setup()
 
 void loop()
 {
- if(
+ if(pinBP[0]==LOW)
+ {
+   remplir(0);
+ }
+  if(pinBP[1]==LOW)
+ {
+   remplir(1);
+ }
+  if(pinBP[2]==LOW)
+ {
+   remplir(2);
+ }
 }
+
+void receptionCommande()
+{
+ String Readchar;
+  
+  
+ 
+  if(Readchar = comValide[0])
+  {
+    servirBoisson(0);
+  }
+  if(Readchar = comValide[1])
+  {
+    servirBoisson(1);
+  }
+  if(Readchar = comValide[2])
+  {
+    servirBoisson(2);
+  }
+}
+
+  
+void servirBoisson(int type_boisson)
+{
+ stockBoisson[type_boisson]-1;
+}
+
 
 void remplir(int type_boisson)
 {
