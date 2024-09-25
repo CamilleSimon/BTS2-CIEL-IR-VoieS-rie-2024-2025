@@ -1,8 +1,10 @@
-int pinLEDS[3]={13,12,11};
-    int pinBOUTONS[3]={4,3,2};
-    int stockBOISSONS[3]={10,10,10};
+int pinLeds[3]={13,12,11};
+    int pinBoutons[3]={4,3,2};
+    int stockBoissons[3]={10,10,10};
     String DICTIONNAIRE[3]{"café","chocolat chaud","thé"};
 
+void print(const char* format, ...);
+  
   void setup()
   {
   
@@ -31,45 +33,72 @@ digitalWrite(13, HIGH); // met le pin 13 en état haut
 
 void loop()
 { 
-    remplir()
-    receptionCommande()
-    servirBoisson(int type_boisson)
-    checkLumiere(int type_boisson) 
+    //remplir();
+    receptionCommande();
+    //servirBoisson( );
+    //checkLumiere(); 
 }
 
 void remplir(int type_boisson) 
 {
-  stock[type_boisson]=10;
-  if(digitalRead
-     {
-        remplir(0);
-     }
+  stockBoissons[type_boisson]=10;
+  
 }
   
  
 void receptionCommande()
  {
-     
-   char readChar = 0; // caractère à lire
+     String s="";
 
     int buff = Serial.available();
 
-    while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    {
+   while(buff > 0) // tant qu'il reste des caractères dans le buffer
+   {
 
-    readChar = Serial.read(); // lecture du caractère
-     if( DICTIONNAIRE[
- }
-  
-  
+    
+     if( s ==DICTIONNAIRE[0])
+     {
+       if(stockBoissons[0]>0)
+       servirBoisson[0];
+       print("Voici votre cafe, il reste %d cafes", stockBoissons);
+ 
+     }
+   
+      
+     if( s ==DICTIONNAIRE[1])
+     {
+       if(stockBoissons[1]>0)
+       servirBoisson[1];
+       print("Voici votre chocolat chaud, il reste %d chocolat chaud", stockBoissons);
+     }
+      
+     if( s ==DICTIONNAIRE[2])
+     {
+       if(stockBoissons[2]>0)
+       servirBoisson[2];
+       print("Voici votre the, il reste %d the", stockBoissons);
+      }
+   } 
+}
 void servirBoisson(int type_boisson)  
   {
           
           
-   }
+   
   
   
   
   
   
+  }
+void print(const char* format, ...)
+{
+  char buffer[512];
+
+  va_list args;
+  va_start(args, format);
+  vsprintf(buffer, format, args);
+  va_end(args);
+
+  Serial.println(buffer);
 }
