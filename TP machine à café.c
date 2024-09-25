@@ -57,4 +57,20 @@ void loop()
 
 void remplir(int type_boisson) 
 {
+  stock [type_boisson]= 10;
+}
+
+void receptionCommande() 
+{
+    
+}
+  
+void servirBoisson(int type_boisson) 
+{
+    stock [type_boisson]-= 1;
+}
+  
+void checkLumiere(int type_boisson) 
+{
+    
 }
