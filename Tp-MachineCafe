@@ -1,5 +1,5 @@
-const int pinLEDS[] = {11, 12, 13};
-const int pinButton[] = {2, 3, 4};
+const int pinLEDS[] = {13, 12, 11};
+const int pinButton[] = {4, 3, 2};
 int stockboisson[] = {10, 10, 10};
 String commande[] = {"cafe", "chocolat", "the"};
 
@@ -17,9 +17,9 @@ void setup() {
 
 void loop() {
   receptionCommande();
-  checkLumiere(0);
-  checkLumiere(1);
-  checkLumiere(2);
+  for(int i = 0; i < 3; i++){
+  	checkLumiere(i);
+  }
   
   
   for(int i = 0; i < 3; i++){
@@ -41,19 +41,16 @@ void receptionCommande(){
     while (Serial.available() > 0) {
       char receivedChar = Serial.read();
       inputMessage += receivedChar;
-      delay(10);
+      delay(100);
     }
-    if (inputMessage == commande[0]){
-      servirBoisson(2);
-      Serial.print("Vous avez commande un Cafe!");
-    } else if (inputMessage == commande[1]) {
-      servirBoisson(1);
-      Serial.print("Vous avez commande un Chocolat chaud!");
-    } else if (inputMessage == commande[2]) {
-      servirBoisson(0);
-      Serial.print("Vous avez commande un The!");
-    } else {
-      Serial.print("ERREUR ! Vous devez choisir entre 'cafe',  'chocolat' ou 'the' !");
+    int i = 0;
+    while(i < 3){
+      if (commande[i] == inputMessage){
+        servirBoisson(i);
+        Serial.print(i);
+        Serial.print("Boisson Servie !");
+      }
+      i++;
     }
   }
 }
@@ -66,7 +63,6 @@ void checkLumiere(int type_boisson){
   if (stockboisson[type_boisson] <= 5){ 
     if (stockboisson[type_boisson] >= 2.5){
       while (stockboisson[type_boisson] >= 2.5){
-       	Serial.print(stockboisson[type_boisson]);
         digitalWrite(pinLEDS[type_boisson], LOW);
         delay(500);
         digitalWrite(pinLEDS[type_boisson], HIGH);
