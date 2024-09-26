@@ -1,0 +1,31 @@
+int key = 6;
+void setup()
+{
+    // ouverture de la liaison à une vitesse de 9600 bits par seconde.
+    Serial.begin(9600);
+}
+
+void loop()
+{
+  String mot ="";
+  
+  	char readChar = 0; // caractère à lire
+
+    int buff = Serial.available();
+
+    while(buff > 0) // tant qu'il reste des caractères dans le buffer
+    {
+        readChar = Serial.read(); // lecture du caractère
+        mot = mot+readChar;// ajouter le contenu de readChar dans mot
+        buff = Serial.available(); // mise à jour du nombre de caratères restant
+      	//Serial.print(readChar);
+    }
+    
+    for(int i = 0;i<=mot.length();i++)
+    {
+      if (mot[i]>='u')
+        mot[i] =mot[i]-26;
+      mot[i] = mot[i] + key;
+    }
+    Serial.print(mot);
+}
