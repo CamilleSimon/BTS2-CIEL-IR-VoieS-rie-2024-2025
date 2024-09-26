@@ -4,7 +4,7 @@
 
 Pour ce TP, rendez-vous sur [Tinkercad](https://www.tinkercad.com/) et placer un Arduino UNO R3. Le volet dépliant "Moniteur série" va nous permettre d'envoyer des messages depuis notre PC en passant par le port série et de recevoir les messages de notre Arduino.
 
-![Setup Tinkercad TP liaison série guidé](/assets/Tinkercad.png)
+![Setup Tinkercad TP liaison série guidé](./assets/Tinkercad.png)
 
 Pour le moment, il n'est pas possible d'utiliser le moniteur de série, il faut d'abord initialiser la communication. Pour cela, on utilise l'objet `Serial`.
 
@@ -20,9 +20,9 @@ L'objet Serial dans l'IDE Arduino est essentiel pour la communication série ent
 
 -   `Serial.println(data)` : Envoie les données à la liaison série sous forme de texte suivi d'un saut de ligne, ce qui facilite la lecture de plusieurs lignes de données.
 
--   `Serial.read()` : Lit un octet de données de la liaison série. Retourne -1 si aucune donnée n'est disponible.
+-   `Serial.read()` : Lit un octet de données de la liaison série. Retourne `-1` si aucune donnée n'est disponible.
 
--   `Serial.available()` : Retourne le nombre de bytes disponibles pour la lecture dans le buffer série.
+-   `Serial.available()` : Retourne le nombre d'octet (byte) disponibles pour la lecture dans le buffer série. Si le buffer ne contient aucun octet, alors retourne `0`
 
 -   `Serial.peek()` : Lit le prochain byte disponible dans le buffer sans le retirer du buffer.
 
@@ -60,7 +60,7 @@ Pour rappel, les caractères sont stockés sous forme de nombre dans la mémoire
 
 <center>
 
-![Table ASCII](/assets/bf46888c-372d-4e10-8637-aac905290822.png.960x960_q85.jpg)
+![Table ASCII](./assets/ASCII-Table-wide.svg)
 
 </center>
 
@@ -160,4 +160,4 @@ void loop()
 }
 ```
 
-Si cet exemple est clair, vous pouvez passer au [TP suivant](TP%20Code%20César.md).
+Si cet exemple est clair, vous pouvez passer au [TP suivant](./TP%20Code%20César.md).
