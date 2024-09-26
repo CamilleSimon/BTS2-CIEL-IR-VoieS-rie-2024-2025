@@ -1,10 +1,11 @@
 // C++ code
+// C++ code
 //
-char readChar = 0;
-int key=6;
-int i;
-String total;
-int buff;
+int key = 6;
+String total = "";
+int operation;
+int super;
+
 
 void setup()
 {
@@ -13,67 +14,56 @@ void setup()
 }
 void chiffrement()
 {
-  while( buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-
-      		readChar = readChar + key; // Pour chiffrer un message
-
-
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar + 26 ; 
-        	}
-    		Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
-} 
+  for (int i = 0; i<total.length(); i++)//i parcourt tout le message 
+  {
+    total[i] = total[i] + key;
+  }
+  Serial.println(total);
+}
 void dechiffrement()
       	{
+  for (int i = 0; i<total.length(); i++)//i parcourt tout le message 
+  {
+    total[i] = total[i] - key;
+  }
+  Serial.println(total);
+}
 
-          	while(buff > 0) // tant qu'il reste des caractères dans le buffer
-    		{
-       		readChar = Serial.read(); // lecture du caractère
-
-      		readChar = readChar - key; // Pour chiffrer un message
-
-
-      		if(readChar > 122)
-       	 	{
-         	readChar = readChar - 26 ; 
-        	}
-
-
-        	Serial.print(readChar); // envoi du caractère
-        	buff = Serial.available(); // mise à jour du nombre de caratères restant
-    		}
-        }
-      
- 
-  
 void loop()
-
 {
     char readChar = 0; // caractère à lire
+   
 
     int buff = Serial.available();
 
     while(buff > 0) // tant qu'il reste des caractères dans le buffer
     {
-      readChar = Serial.read();// lecture du caractère
-      int total = readChar + key;
-      if(total > 'z')
+        readChar = Serial.read(); // lecture du caractère
+      if (readChar >= 117)
       {
-        total = total - 26;
+        readChar = readChar - 26;
       }
-      readChar = total;
-        Serial.print(readChar); // envoi du caractère
+        readChar = readChar + key;
+        Serial.print(readChar);// envoi du caractère
+      	super = readChar;
         buff = Serial.available(); // mise à jour du nombre de caratères restant
-       }
-  
-  
+    }
 }
 
-  
-}
+//code de la prof 
+void chiffrement(String total)
+{
+  for (int i = 0; i<total.length(); i++)
+  {
+  operation = super;
+  key = super.substring(2, super.indexOf(',', 2));
+  total = super.substring(super.indexOf(',', 2)+1,);
+  }
+  if 
+  {
+    total[i] = total[i] + key;
+  }
+  serial println(total);
+    operation = 0
 
+}
