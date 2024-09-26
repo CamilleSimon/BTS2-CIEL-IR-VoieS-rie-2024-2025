@@ -79,5 +79,9 @@ void checkLumiere(int type_boisson){
         break;
       }
     }
-  }
+  }else {
+      digitalWrite(pinLEDS[type_boisson], HIGH);
+      
+    }
+  
 }
