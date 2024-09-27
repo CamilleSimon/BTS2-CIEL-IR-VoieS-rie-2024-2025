@@ -1,6 +1,6 @@
-const int pinLEDS[] = {11, 12, 13};
-const int pinBUTTONS[] = {2, 3, 4};
-int stock[] = {10, 10, 10};
+const int pinLEDS[3] = {11, 12, 13}; 
+const int pinBUTTONS[3] = {2, 3, 4}; 
+int stock[3] = {10, 10, 10};
 String commande[] = {"cafe", "chocolat", "the"};
 
 /*void print(const char* format, ...)
@@ -14,35 +14,22 @@ String commande[] = {"cafe", "chocolat", "the"};
 
   Serial.println(buffer);
 }*/
-int cafe=3;
 
 void setup()
 {
   Serial.begin(9600);
-  pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
-  digitalWrite(3, HIGH); // met le pin 2 en état haut
-  pinMode(3, INPUT); // initialise le pin numéro 3 comme étant un input
-  digitalWrite(3, HIGH); // met le pin 3 en état haut
-  pinMode(4, INPUT); // initialise le pin numéro 4 comme étant un input
-  digitalWrite(4, HIGH); // met le pin 4 en état haut
-  pinMode(11,OUTPUT);
-  pinMode(12,OUTPUT);
-  pinMode(13,OUTPUT);
+  for(int i = 0; i < 3; i++) {
+    pinMode(pinLEDS[i], OUTPUT);
+    pinMode(pinBUTTONS[i], INPUT_PULLUP);
+    digitalWrite(pinLEDS[i], LOW); 
+  }
 }
 
 void loop()
 {
-  if (cafe > 5){
-   digitalWrite(13,HIGH);
- }
-  else if ((cafe<5)&&(cafe>2)){
-    digitalWrite(13,HIGH);
-    delay(500);
-    digitalWrite(13,LOW);
-    delay(500);
-  }
-  else {
-    digitalWrite(13,HIGH);}
+  receptionCommande();
+  servirBoisson();
+  checkLumiere(type_boisson);
 }
 
 void remplir(int type_boisson)
@@ -50,15 +37,25 @@ void remplir(int type_boisson)
 	stock[type_boisson] = 10;
 }
 
-/*void receptionCommande()
+void receptionCommande()
 {
- commande=Serial.read();
+ commande_demande=Serial.read();
+  if (commande_demande!=commande) {
+    Serial.println("Choisir une boisson valable");
+  } else {
+    Serial.print("Vous avez choisi : ");
+    Serial.println(commande);
+  }
 }
 
-void servirBoisson()
+void servirBoisson(int type_boisson)
 {
+  if (stock[type_boisson] > 0) {
+    stock[type_boisson]--;
+  } else {
+    Serial.println("Plus en stock");
+  }
 }
-
 void checkLumiere(int type_boisson)
 {
  if (cafe > 5){
@@ -72,4 +69,26 @@ void checkLumiere(int type_boisson)
   }
   else {
     digitalWrite(13,HIGH);}
-}*/
+  if (chocolat > 5){
+   digitalWrite(12,HIGH);
+ }
+  else if ((chocolat<5)&&(chocolat>2)){
+    digitalWrite(12,HIGH);
+    delay(500);
+    digitalWrite(12,LOW);
+    delay(500);
+  }
+  else {
+    digitalWrite(12,HIGH);}
+ if (the > 5){
+   digitalWrite(11,HIGH);
+ }
+  else if ((the<5)&&(the>2)){
+    digitalWrite(11,HIGH);
+    delay(500);
+    digitalWrite(11,LOW);
+    delay(500);
+  }
+  else {
+    digitalWrite(11,HIGH);}
+}
