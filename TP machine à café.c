@@ -9,10 +9,12 @@ void remplir(int type_boisson) // Fonction pour remplir le stock de boisson
   if(stocks[type_boisson] == 10) // Si le stock est déjà de 10 boisson dans la boisson correspondante
   {
     Serial.println("Le stock de " + valide[type_boisson] + " est deja plein"); // On envoie à l'utilisateur que le stock est déjà plein
-    return; // Ce return permet de ne pas effectuer le reste de la fonction
   }
-  stocks[type_boisson] = 10; // Remettre le stock de la boisson en question à 10
-  Serial.println("Le stock de " + valide[type_boisson] + " a ete renouvele"); // On affiche que le stock de la boisson a été renouvelé 
+  if(stocks[type_boisson] < 10) // Si le stock est en dessous de 10 boissons dans la boisson correspondante
+  {
+    stocks[type_boisson] = 10; // Remettre le stock de la boisson en question à 10
+    Serial.println("Le stock de " + valide[type_boisson] + " a ete renouvele"); // On affiche que le stock de la boisson a été renouvelé
+  }
 }
 String receptionCommande() // Fonction pour la récéption de la commande
 {
@@ -48,7 +50,7 @@ void checkLumiere(int type_boisson) // Fonction du check des leds
       digitalWrite(pinsled[type_boisson], LOW);  // On allume la led correspondante à la boisson
       delay(500);								 // On attend 0.5 seconde
       digitalWrite(pinsled[type_boisson], HIGH); // On eteint la led correspondante à la boisson
-      delay(500); 								 // On attend 0.5 seconde
+      delay(500);								 // On attend 0.5 seconde
     }
   }
   else if(stocks[type_boisson] <= 3) // S'il y a moins de 3 boisson dans le stock avec 3 inclus
@@ -90,20 +92,39 @@ void loop()
       delay(1000); // Ajout d'un délai de 1 seconde pour ne pas recevoir trop de message de la fonction remplir()
     }
   }
-  if (Serial.available() > 0) // Si il y a un message dans le buffer
+  
+  
+  while(Serial.available() > 0)
   {
-    String message = receptionCommande(); // On donne a la variable message le message entré par l'utilisateur en appelant la fonction receptionCommande()
-    for (int i = 0; i < 3; i++) // Boucle des boissons (0,1,2) pour chaque boissons
+    String message = receptionCommande(); // On donne a la variable message le résultat de la receptionCommande() (le message de l'utilisateur)
+    if(message != valide[0] && message != valide[1] && message != valide[2]) // Condition pour savoir si le message entré est valide ou non
     {
-      if (message == valide[i]) // On verifie que le message entré fait bien partie de la liste des mots valides
+      Serial.println("Mauvais choix, les choix sont : cafe, chocolat, the"); // Si jamais le message entré ne correspond pas à la liste des mots valides, on envoie un message d'erreur à l'utilisateur
+    }
+    while(message == valide[0] || message == valide[1] || message == valide[2]) // Boucle while qui vérifie si le message est égal a valide[0](cafe) ou valide[1](chocolat) ou valide[2](the)
+    {
+      if(message == valide[0]) // Condition pour le café
       {
         Serial.println("Preparation de votre " + message); // On envoie que la préparation de la boisson est en cours
-        servirBoisson(i); // Appel de la fonction servirBoisson qui va enlever 1 au stock de la boisson choisie
-        checkLumiere(i); // On check la led de la boisson choisie (0,1 ou 2)
-        return; // Ce return permet de ne pas afficher le message d'erreur même si la boisson que l'utilisateur veut est correcte
+        servirBoisson(0); // Appel de la fonction servirBoisson qui va enlever 1 au stock de café
+        checkLumiere(0); // Appel de la fonction checkLumiere qui va actualiser l'état de la led du café
+        message = receptionCommande(); // On remet a la variable message le resultat de la fonction receptionCommande(). A ce moment là la variable ne contient plus rien
+      }
+      else if(message == valide[1]) // Condition pour le chocolat
+      {
+        Serial.println("Preparation de votre " + message); // On envoie que la préparation de la boisson est en cours
+        servirBoisson(1); // Appel de la fonction servirBoisson qui va enlever 1 au stock de chocolat chaud
+        checkLumiere(1); // Appel de la fonction checkLumiere qui va actualiser l'état de la led du chocolat chaud
+        message = receptionCommande(); // On remet a la variable message le resultat de la fonction receptionCommande(). A ce moment là la variable ne contient plus rien
+      }
+      else if(message == valide[2]) // Condition pour le thé
+      {
+        Serial.println("Preparation de votre " + message); // On envoie que la préparation de la boisson est en cours
+        servirBoisson(2); // Appel de la fonction servirBoisson qui va enlever 1 au stock de thé
+        checkLumiere(2); // Appel de la fonction checkLumiere qui va actualiser l'état de la led du thé
+        message = receptionCommande(); // On remet a la variable message le resultat de la fonction receptionCommande(). A ce moment là la variable ne contient plus rien
       }
     }
-    Serial.println("Mauvais choix, les choix sont : cafe, chocolat, the"); // Si jamais le message entré ne correspond pas à la liste des mots valides, on envoie un message d'erreur à l'utilisateur
-  }
+  }  
 }
 ```
