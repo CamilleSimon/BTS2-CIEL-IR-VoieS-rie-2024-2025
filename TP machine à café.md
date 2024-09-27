@@ -76,15 +76,17 @@ void setup()
   }
   void receptioncommand()
   {
-	int buffer = Serial.available();
+    int buffer = Serial.available();
+	//int buffer = Serial.available(String tab[3]);
+    //int buffer == String tab[3];
   }
-  void servedrink(type_drink)
+  void servedrink(int type_drink)
   {
 	stock[type_drink] = stock[type_drink]-1;
   }
   void checklight(int type_drink)
   {
-	stock[type_drink] = 1;
+    stock[type_drink] = pinButton[type_drink]+1;
   }
 }
 
@@ -93,25 +95,30 @@ void press(int type_Button); //To press one by drink for each button.
 {
   pinButton[type_button] = 3;
 }
+void light(int type_LED); //Indicator LED of each drink.
+{
+  pinLED[type_LED] = 3;
+}
+
 
 void loop()
 {
-  for (i = 10; i <= 99; i++); //Indicator LED of each drink.
+  for (i = 5; i <= 99; i++); //Indicator LED of each drink.
   {
   if(i = 5);
   {
-    pinLED[1] = HIGH;
+    pinLED[type_LED] = HIGH;
   }
   else if (i = 2);
   {
-    pinLED[1] = HIGH;
+    pinLED[type_LED] = HIGH;
     delay(2000);
-    pinLED[1] = 0;
+    pinLED[type_LED] = 0;
     delay(2000);
   }
   else
   {
-    pinLED[1] = LOW;
+    pinLED[type_LED] = LOW;
   }
   }
 }
