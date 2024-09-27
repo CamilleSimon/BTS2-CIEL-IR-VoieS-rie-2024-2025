@@ -34,7 +34,7 @@ Pour initialiser les leds et les boutons, vous pouvez utiliser les fonctions sui
 pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
 digitalWrite(2, HIGH); // met le pin 2 en état haut
 // pour les leds
-pinMode(13, INPUT); // initialise le pin numéro 13 comme étant un output
+pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
 digitalWrite(13, HIGH); // met le pin 13 en état haut
 ```
 2. Vous utiliserez des tableaux pour stocker les informations suivantes :
@@ -45,7 +45,7 @@ digitalWrite(13, HIGH); // met le pin 13 en état haut
 3. Ecrivez les fonctions suivantes :
     1. `remplir(int type_boisson)` qui affecte `10` au stock de `type_boisson`.
     2. `receptionCommande()` qui récupère le contenu du buffer et compare avec les commandes possible.
-    3. `servirBoisson()` qui décompte le stock si cela est possible.
+    3. `servirBoisson(int type_boisson)` qui décompte le stock si cela est possible.
     4. `checkLumiere(int type_boisson)` qui met à jour l'état de la led de la boisson passée en paramètre.
 4. Ecrivez les fonctions `setup()` et `loop()` en vous appuyant en utilisant les fonctions ci-dessus.
 
