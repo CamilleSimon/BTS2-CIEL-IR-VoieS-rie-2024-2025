@@ -128,11 +128,5 @@ void checkLumiere(int type_boisson)
 void loop()
 {
 	receptionCommande();
-	servirBoisson(receptionCommande());
-  	checkLumiere(receptionCommande());
-  	if((bp[0] == LOW) || (bp[1] == LOW) || (bp[2] == LOW))
-    {
-  		remplir(receptionCommande());
-    }
 }
 ```
