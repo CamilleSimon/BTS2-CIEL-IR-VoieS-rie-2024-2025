@@ -16,20 +16,13 @@ void remplir(int type_boisson) {
 void setup()
 {
 	Serial.begin(9600);
-	// pour les boutons
-	pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
-	pinMode(3, INPUT); 
-	pinMode(4, INPUT);
-	digitalWrite(2, HIGH);
-	digitalWrite(3, HIGH);
-	digitalWrite(4, HIGH);
-	// pour les leds
-	pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
-	pinMode(12, OUTPUT);
-	pinMode(11, OUTPUT);
-	digitalWrite(11, HIGH);
-	digitalWrite(12, HIGH);
-	digitalWrite(13, HIGH);
+
+	for (int i = 0; i < 3; i++) {
+		pinMode(pinLed[i], OUTPUT);
+		digitalWrite(pinLed[i], HIGH);
+		pinMode(pinbouton[i], INPUT);
+		digitalWrite(pinbouton[i], HIGH);
+	}
 }
 
 void loop()
@@ -85,7 +78,7 @@ void checkLumiere(){
         	digitalWrite(pinLed[i], HIGH);
           	delay(450);
           	digitalWrite(pinLed[i], LOW);
-		// on peux utiliser digitalWrite(pinLed[i], !digitalRead(pinLed[i])); pour enlever 1 ligne
+		// on peux utiliser digitalWrite(pinLed[i], !digitalRead(pinLed[i])); pour enlever 1 ligne  --> pour optimisé sans ce delat faudrait crée une interruption
         }
       }
   }
