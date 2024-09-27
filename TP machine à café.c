@@ -85,6 +85,7 @@ void checkLumiere(){
         	digitalWrite(pinLed[i], HIGH);
           	delay(450);
           	digitalWrite(pinLed[i], LOW);
+		// on peux utiliser digitalWrite(pinLed[i], !digitalRead(pinLed[i])); pour enlever 1 ligne
         }
       }
   }
