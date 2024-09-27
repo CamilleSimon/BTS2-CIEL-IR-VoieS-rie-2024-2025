@@ -1,6 +1,6 @@
 int tabPinLED[3]={13,12,11};
 int tabPinBouton[3]={4,3,2};
-int tabStockBoisson[3]={9,9,9};
+int tabStockBoisson[3]={0,2,1};
 String tabNomBoisson[3]={"cafe","chocolat","the"};
 int tabEtatLED[3]={0,1,2};
 
@@ -24,9 +24,14 @@ void loop()
     if (digitalRead(tabPinBouton[i]) == LOW) // Vérifie si le bouton est appuyé (LOW)
     {            
       remplir(i); // Appelle la fonction remplir() pour le type de boisson correspondant    
-      delay(500); // Ajoute un délai pour éviter les rebonds (debouncing)
+      delay(100);
     }
   }
+  receptionCommande();
+}
+
+void receptionCommande()
+{
   String choixString=Serial.readStringUntil('\n');
   int choixInt=-1;
   for(int y=0;y<3;y++)
@@ -40,15 +45,8 @@ void loop()
   {
     servirBoisson(choixInt);
   }
-  Serial.print("cafe: ");
-  Serial.print(tabStockBoisson[0]);
-  Serial.print(" chocolat: ");
-  Serial.print(tabStockBoisson[1]);
-  Serial.print(" thé: ");
-  Serial.print(tabStockBoisson[2]);              
-  Serial.println();
-  
 }
+
 
 void remplir(int type_boisson)//Remet le stock à 10
 {
@@ -84,6 +82,17 @@ int checkLumiere(int type_boisson)//Vérifie le stock et changer les leds en fon
   {
     digitalWrite(tabPinLED[type_boisson], LOW); // met le pin correspondant en état bas
   }
+  print();
 }
 
+void print()
+{
+  Serial.print("cafe: ");
+  Serial.print(tabStockBoisson[0]);
+  Serial.print(" chocolat: ");
+  Serial.print(tabStockBoisson[1]);
+  Serial.print(" thé: ");
+  Serial.print(tabStockBoisson[2]);              
+  Serial.println();
+}
 
