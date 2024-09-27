@@ -1,20 +1,89 @@
-// pour les boutons
-pinMode(2, INPUT); // initialise le pin numéro 2 comme étant un input
-digitalWrite(2, HIGH); // met le pin 2 en état haut
-// pour les leds
-pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
-digitalWrite(13, HIGH); // met le pin 13 en état haut
+int tabPinLED[3]={13,12,11};
+int tabPinBouton[3]={4,3,2};
+int tabStockBoisson[3]={9,9,9};
+String tabNomBoisson[3]={"cafe","chocolat","the"};
+int tabEtatLED[3]={0,1,2};
 
 
 void setup()
 {
-  pinMode(LED_BUILTIN, OUTPUT);
+  for(int i=0;i<3;i++)//Initialise les boutons et les leds
+  {
+    pinMode(tabPinLED[i], OUTPUT);
+    pinMode(tabPinBouton[i], INPUT);
+    digitalWrite(tabPinBouton[i], HIGH);
+  }
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(1000); // Wait for 1000 millisecond(s)
+  for(int i=0;i<3;i++)
+  {
+    checkLumiere(i);
+    if (digitalRead(tabPinBouton[i]) == LOW) // Vérifie si le bouton est appuyé (LOW)
+    {            
+      remplir(i); // Appelle la fonction remplir() pour le type de boisson correspondant    
+      delay(500); // Ajoute un délai pour éviter les rebonds (debouncing)
+    }
+  }
+  String choixString=Serial.readStringUntil('\n');
+  int choixInt=-1;
+  for(int y=0;y<3;y++)
+  {
+    if(choixString.equals(tabNomBoisson[y]))
+    {
+      choixInt=y;
+    }
+  }
+  if(choixInt>=0)
+  {
+    servirBoisson(choixInt);
+  }
+  Serial.print("cafe: ");
+  Serial.print(tabStockBoisson[0]);
+  Serial.print(" chocolat: ");
+  Serial.print(tabStockBoisson[1]);
+  Serial.print(" thé: ");
+  Serial.print(tabStockBoisson[2]);              
+  Serial.println();
+  
 }
+
+void remplir(int type_boisson)//Remet le stock à 10
+{
+	tabStockBoisson[type_boisson]=10;
+}
+
+
+void servirBoisson(int type_boisson)//Enlève su stock les boissons servis
+{
+  if(tabStockBoisson[type_boisson]>0)
+  {
+  	tabStockBoisson[type_boisson]=tabStockBoisson[type_boisson]-1;
+  }
+  else
+  {
+    Serial.print("Le stock de cette boisson est vide.");
+  }
+}
+
+int checkLumiere(int type_boisson)//Vérifie le stock et changer les leds en fonction
+{
+  if(tabStockBoisson[type_boisson]>5)
+  {
+    digitalWrite(tabPinLED[type_boisson], HIGH); // met le pin correspondant en état haut
+  }
+  if(tabStockBoisson[type_boisson]<=5&&tabStockBoisson[type_boisson]>2)
+  {
+    digitalWrite(tabPinLED[type_boisson], HIGH); // met le pin correspondant en état haut
+    delay(500);
+    digitalWrite(tabPinLED[type_boisson], LOW); // met le pin correspondant en état bas
+  }
+  if(tabStockBoisson[type_boisson]<=2)
+  {
+    digitalWrite(tabPinLED[type_boisson], LOW); // met le pin correspondant en état bas
+  }
+}
+
+
