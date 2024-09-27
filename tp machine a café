@@ -16,12 +16,15 @@ digitalWrite(11, HIGH); // met le pin 13 en état haut
 digitalWrite(12, HIGH); // met le pin 13 en état haut
   pinMode(13, OUTPUT); // initialise le pin numéro 13 comme étant un output
 digitalWrite(13, HIGH); // met le pin 13 en état haut
+  int led[]={11,12,13};
+  int boutons[]={2,3,4};
+  int stockBoissons[10];
+  String dictionnaire[] = {"café" , "chocolat chaud" , "thé" };
 }
 
 void loop()
 {
-  int led[]={11,12,13};
-  int boutons[]={2,3,4};
-  int stockBoissons
+ 
+}
   
 }
