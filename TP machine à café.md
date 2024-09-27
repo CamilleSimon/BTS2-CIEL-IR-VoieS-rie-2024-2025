@@ -68,53 +68,50 @@ void setup()
   
   int pinLED[3]={13,12,11};//Tableau du LED
   int pinBUTTON[3]={2,3,4};//Tableau du bouton
-  int Stock[3]={3};//Tableau du stock pour chaque boisson.
+  int stock[3]={10,10,10};//Tableau du stock pour chaque boisson.
   String tab[3]={"Coffee","Chocolate","Tea"};//Tableau du boisson.
-}
-
-int var[10]={10};//10 distributions de chaque
-
-void fill(int type_drink)
-{
-  type_drink = Stock;
-}
-void receptioncommand()
-{
-  int buffer = Serial.available();
-}
-void servedrink()
-{
-  servedrink = Stock;
-}
-void checklights(int type_drink)
-{
-  int light[3] = {0, 25, 50};//Inclure le pourcentage du chaque indication.
+  void refill(int type_drink)
+  {
+	stock[type_drink] = 10;
+  }
+  void receptioncommand()
+  {
+	int buffer = Serial.available();
+  }
+  void servedrink(type_drink)
+  {
+	stock[type_drink] = stock[type_drink]-1;
+  }
+  void checklight(int type_drink)
+  {
+	stock[type_drink] = 1;
+  }
 }
 
 int = i;
+void press(int type_Button); //To press one by drink for each button.
+{
+  pinButton[type_button] = 3;
+}
 
 void loop()
 {
-  while(pinBuuton[1] = 1); //To press one by drink for each button.
+  for (i = 10; i <= 99; i++); //Indicator LED of each drink.
   {
-    
+  if(i = 5);
+  {
+    pinLED[1] = HIGH;
   }
-  for (i = 100; i <= 50; i++); //Indicator LED of each drink.
+  else if (i = 2);
   {
-  if(i = 50);
-  {
-    pinLED[1] = 5000;
-  }
-  else if (i = 25);
-  {
-    pinLED[1] = 5000;
+    pinLED[1] = HIGH;
     delay(2000);
     pinLED[1] = 0;
     delay(2000);
   }
   else
   {
-    pinLED[1] = 0;
+    pinLED[1] = LOW;
   }
   }
 }
