@@ -75,14 +75,14 @@
             <mxRectangle width="220" height="110" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-1" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;" parent="1" source="C-vyLk0tnHw3VtMMgP7b-24" target="C-vyLk0tnHw3VtMMgP7b-6" edge="1">
+        <mxCell id="9teLF3Q1wbpJS2G3__wE-9" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERmandOne;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.005;exitY=0.392;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="C-vyLk0tnHw3VtMMgP7b-27" target="C-vyLk0tnHw3VtMMgP7b-6">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="340" y="720" as="sourcePoint" />
-            <mxPoint x="440" y="620" as="targetPoint" />
+            <mxPoint x="360" y="235" as="sourcePoint" />
+            <mxPoint x="460" y="135" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9teLF3Q1wbpJS2G3__wE-3" value="&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;possède&lt;/font&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="C-vyLk0tnHw3VtMMgP7b-1">
-          <mxGeometry x="-0.0793" y="-1" relative="1" as="geometry">
+        <mxCell id="9teLF3Q1wbpJS2G3__wE-10" value="possède" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="9teLF3Q1wbpJS2G3__wE-9">
+          <mxGeometry x="-0.045" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
